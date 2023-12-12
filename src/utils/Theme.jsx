@@ -18,14 +18,14 @@ const theme = extendTheme({
         },
         button: {
           pepeButton: red[600],
-          
           bgButton: "black",
         },
         border: {
           border: "10px solid black",
         },
-        pepeButtonMui: blue[300],
-        textoParrafo: violet[600],
+        textTitle: {
+          color: grey[900],
+        },
         colorButtonText: {
           color: "white",
           fontSize: "clamp(1.25rem, 4vw, 2rem)",
@@ -40,7 +40,6 @@ const theme = extendTheme({
         background: {
           paper: "hsl(240, 15%, 95%)",
         },
-        anchor: "green",
         backgroundCardIACurrentCourses: {
           background: "linear-gradient(38deg, #00B1B9 1.57%, #0097EC 98.56%)",
           borderRadius: "22px",
@@ -63,12 +62,6 @@ const theme = extendTheme({
           borderRadius: "22px",
           background:
             "linear-gradient(38deg, #9EFF9E 0%, #4CAF50 50%, #087f23 100%)",
-        },
-        textoSignIn: {
-          color: "red",
-        },
-        textoTest: {
-          color: "var(--mui-palette-textoSignIn-color)",
         },
       },
       components: {
@@ -112,8 +105,9 @@ const theme = extendTheme({
           pepeButton: green[300],
           bgButton: "white",
         },
-        pepeButtonMui: yellow[300],
-        textoParrafo: green[300],
+        textTitle: {
+          color: grey[900],
+        },
         colorButtonText: {
           color: "black",
           fontSize: "clamp(1.5rem, 4vw, 2rem)",
@@ -130,10 +124,6 @@ const theme = extendTheme({
         },
         border: {
           border: "10px solid white",
-        },
-        anchor: {
-          color: "white",
-          fontWeight: "bold",
         },
         backgroundCardIACurrentCourses: {
           background: "linear-gradient(38deg, #00B1B9 1.57%, #0097EC 98.56%)",
@@ -157,12 +147,6 @@ const theme = extendTheme({
           borderRadius: "22px",
           background:
             "linear-gradient(38deg, #9EFF9E 0%, #4CAF50 50%, #087f23 100%)",
-        },
-        textoSignIn: {
-          color: "cyan",
-        },
-        textoTest: {
-          color: "var(--mui-palette-textoSignIn-color)",
         },
       },
       components: {

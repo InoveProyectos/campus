@@ -140,14 +140,6 @@ button:focus-visible {
   width: 280px !important;
 }
 
-.textoTest {
-  color: var(--mui-palette-textoTest-color) !important;
-}
-
-.textoSignIn {
-  color: var(--mui-palette-textoSignIn-color) !important;
-}
-
 .containerCard {
   display: flex;
   flex-direction: row;
@@ -235,7 +227,8 @@ button:focus-visible {
 .parrafTitle{
   text-align: start;
     margin: 11px;
-    color: var(--mui-palette-text-primary);
+    /* color: red; */
+    color: var(--mui-palette-textTitle-color) !important;
 }
 
 .effectIcon:hover {

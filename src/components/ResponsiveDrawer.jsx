@@ -43,7 +43,7 @@ function ResponsiveDrawer(props) {
         navigate("/cuotas");
         break;
       default:
-        navigate("/home");
+        navigate("/");
         break;
     }
   };

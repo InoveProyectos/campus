@@ -21,9 +21,9 @@ const RouterPrincipal = () => {
           <Route path="/logout" element={<Logout />} />
 
           <Route path="/" element={<Layout />}>
+            <Route path="/" element={<Home />} />
             <Route path="/cursos" element={<CurrentCourses />} />
             <Route path="/cuotas" element={<Cuotas />} />
-            <Route path="/home" element={<Home />} />
           </Route>
         </Routes>
       </CssVarsProvider>
