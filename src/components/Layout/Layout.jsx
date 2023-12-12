@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 import { AppContext } from "../../context/context";
-import ResponsiveDrawer from "./ResponsiveDrawer";
+import ResponsiveDrawer from "../ResponsiveDrawer";
 
 const Layout = () => {
   const { state } = useContext(AppContext);
@@ -16,7 +16,6 @@ const Layout = () => {
   }
 
   // Usuario logeado, se renderiza la vista
-  //   <ResponsiveDrawer />u
   return <ResponsiveDrawer />;
 };
 export default Layout;

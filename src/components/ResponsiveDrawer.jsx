@@ -16,18 +16,36 @@ import MailIcon from "@mui/icons-material/Mail";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { Outlet } from "react-router-dom"; // Importa Outlet desde react-router-dom
-import App from "../../views/Home";
+import { Outlet, useNavigate, useLocation } from "react-router-dom";
+import App from "../views/Home";
 import ModeSwitcher from "./ModeSwitcher";
+import QuestionMarkIcon from "@mui/icons-material/QuestionMark";
+import RequestQuoteIcon from "@mui/icons-material/RequestQuote";
+import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 
 const drawerWidth = 240;
 
 function ResponsiveDrawer(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const navigate = useNavigate();
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
+  };
+
+  const handleMenuItemClick = (text) => {
+    switch (text) {
+      case "Cursos":
+        navigate("/cursos");
+        break;
+      case "Cuotas":
+        navigate("/cuotas");
+        break;
+      default:
+        navigate("/home");
+        break;
+    }
   };
 
   const drawer = (
@@ -35,11 +53,20 @@ function ResponsiveDrawer(props) {
       <Toolbar />
       <Divider />
       <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
+        {["Cursos", "Cuotas"].map((text, index) => (
           <ListItem key={text} disablePadding>
-            <ListItemButton>
+            <ListItemButton onClick={() => handleMenuItemClick(text)}>
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                {(() => {
+                  switch (text) {
+                    case "Cuotas":
+                      return <AccountBalanceIcon />;
+                    case "Cursos":
+                      return <RequestQuoteIcon />;
+                    default:
+                      break;
+                  }
+                })()}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>
@@ -48,11 +75,11 @@ function ResponsiveDrawer(props) {
       </List>
       <Divider />
       <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
+        {["Contacto", "Nosotros", "Reglamento"].map((text, index) => (
           <ListItem key={text} disablePadding>
-            <ListItemButton>
+            <ListItemButton onClick={() => handleMenuItemClick(text)}>
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                <QuestionMarkIcon />
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>
@@ -133,7 +160,9 @@ function ResponsiveDrawer(props) {
           {drawer}
         </Drawer>
       </Box>
-      <Outlet />
+      <section>
+        <Outlet />
+      </section>
     </Box>
   );
 }
