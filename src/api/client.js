@@ -6,5 +6,3 @@ export const client = axios.create({
     baseURL: baseURL,
     withCredentials: true  // Equivalent to credentials: "include"
 });
-
-
