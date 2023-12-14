@@ -1,6 +1,5 @@
 import "../App.css";
 import CircularWithValueLabel from "../utils/CircularProgressWithLabel.jsx";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import CardCursos from "../components/Cards/CardCursos.jsx";
 import Divider from "@mui/material/Divider";
@@ -9,6 +8,9 @@ import CircularColor from "../utils/CircularProgress.jsx";
 import CursosImg from "../model/CursosImg.jsx";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import { grey, yellow } from "@mui/material/colors";
+import { useContext } from "react";
+import { AppContext } from "../context/context";
+import { cursosAPI } from "../api/cursosAPI";
 
 export default function CurrentCourses() {
   const [data, setData] = useState({});
@@ -17,25 +19,27 @@ export default function CurrentCourses() {
   const [objChoose, setObjChoose] = useState([]);
   const [isCustomizedDialogs, setIsCustomizedDialogs] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const { state } = useContext(AppContext);
+  const { username } = state;
+
 
   useEffect(() => {
-    async function getUser() {
-      try {
-        const response = await axios.get(
-          "https://admin.inovecode.com/api/perfil/cursos/"
-        );
-        setTimeout(() => {
-          setData(response.data);
-          setIsLoading(false);
-        }, 1000);
-      } catch (error) {
-        console.error(error);
-        setIsLoading(false);
-      }
+    if (!username) {
+      return; // Sin un usuario no es posible leer los posteos
     }
 
-    getUser();
-  }, []);
+    cursosAPI
+      .get()
+      .then((response) => {
+        setData(response);
+      })
+      .catch((error) => {
+        console.log(`${error.response.status} | ${error.response.data.detail}`);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, [username]);
 
   const handleOpenDialog = (dialog, title, btn) => {
     setBtnAlertTextDialogs(dialog);
@@ -57,9 +61,7 @@ export default function CurrentCourses() {
 
   return (
     <>
-      <h1 className="titleCard">
-        MIS CURSOS
-      </h1>
+      <h1 className="titleCard">MIS CURSOS</h1>
       <Divider
         variant="middle"
         color="white"

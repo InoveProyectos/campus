@@ -1,0 +1,72 @@
+.centeredContent {
+    display: flex;
+    color: var(--white, #FFF);
+    text-align: center;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: AvertaStd-Bold;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 3%;
+    justify-content: space-between;
+    margin-inline: auto !important;
+    margin-left: 15px;
+    margin-right: 10px;
+    line-height: 22px;
+}
+
+.titleH2 {
+    /* color: var(--mui-palette-titleH2-color) !important; */
+    font-size: var(--mui-palette-titleH2-fontSize) !important;
+}
+
+.parrafTitle {
+    text-align: start;
+    margin: 11px;
+    /* color: red; */
+    color: var(--mui-palette-textTitle-color) !important;
+}
+
+.imageContainerCuotas {
+    display: flex;
+    justify-content: end;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 10px;
+    margin-left: 60%;
+    margin-right: 2%;
+    margin-bottom: -0%;
+    gap: 50%;
+}
+
+.flexContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    background-color: #fefae0;
+    border: 3px solid #dddd;
+}
+
+.effectIcon {
+    opacity: 1;
+    transition: opacity 0.3s;
+    cursor: pointer;
+}
+
+.message {
+    cursor: default;
+    /* Deshabilita el cursor de puntero */
+    opacity: 1;
+    /* Anula la opacidad de .effectIcon */
+    margin-top: -1px;
+    white-space: wrap;
+    margin-right: 0px; /* El valor predeterminado */
+}
+
+.message.messageDescargarRecibo {
+    margin-right: -5px;
+  }
