@@ -57,6 +57,10 @@
     cursor: pointer;
 }
 
+.effectIcon:hover {
+    opacity: 0.7;
+  }
+
 .message {
     cursor: default;
     /* Deshabilita el cursor de puntero */
@@ -64,9 +68,14 @@
     /* Anula la opacidad de .effectIcon */
     margin-top: -1px;
     white-space: wrap;
-    margin-right: 0px; /* El valor predeterminado */
+    margin-right: 0px;
+    /* El valor predeterminado */
+}
+
+.message:hover {
+    opacity: 1;
 }
 
 .message.messageDescargarRecibo {
     margin-right: -5px;
-  }
+}

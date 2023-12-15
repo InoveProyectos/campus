@@ -8,6 +8,7 @@ import CuotasImg from "../model/CuotasImg.jsx";
 import { useContext } from "react";
 import { AppContext } from "../context/context";
 import { cuotasAPI } from "../api/cuotasAPI";
+import styles from "./Cuotas.module.css";
 
 export default function Cuotas() {
   const [data, setData] = useState({});
@@ -57,7 +58,7 @@ export default function Cuotas() {
 
   return (
     <>
-      <h1 className="titleCard">MIS CUOTAS</h1>
+      <h1 className={styles.titleCard}>MIS CUOTAS</h1>
       <Divider
         variant="middle"
         color="white"
@@ -68,12 +69,12 @@ export default function Cuotas() {
       {isLoading ? (
         <CircularColor />
       ) : data ? (
-        <section className="containerCard">
+        <section className={styles.containerCard}>
           {data.map((element, index) => {
             return (
               <article
                 key={index}
-                style={{ display: "flex", marginLeft: "20px" }}
+                className={styles.articleCard}
               >
                 {
                   <CardCuotas
@@ -107,7 +108,7 @@ export default function Cuotas() {
                     amount={element.amount}
                     date={element.expiration}
                     status={element.status}
-                    classNameMain={"backgroundCardCuotas"}
+                    classNameMain={styles.backgroundCardCuotas}
                   />
                 }
                 <CustomizedDialogs

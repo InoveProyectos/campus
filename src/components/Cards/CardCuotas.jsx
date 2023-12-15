@@ -1,7 +1,6 @@
 import React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import "../../App.css";
 import styles from "./CardCuotas.module.css";
 import classnames from "classnames";
 import CuotasIconTitle from "../../model/CuotasIconTitle.jsx";
@@ -23,10 +22,6 @@ function CardCuotas(props) {
     classNameMain,
   } = props;
 
-  // const containerClassName =
-  //   messegeIcon === "Descargar recibo"
-  //     ? `${styles.message} ${styles.messageDescargarRecibo}`
-  //     : styles.customStyles;
 
   return (
     <Card className={classNameMain}>
