@@ -1,0 +1,23 @@
+.topTitle {
+    margin-top: 105px;
+}
+
+.containerDrawer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 700px) {
+    .topTitle {
+        margin-top: 25px;
+    }
+
+    .containerDrawer {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+}

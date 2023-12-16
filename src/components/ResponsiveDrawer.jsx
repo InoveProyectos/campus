@@ -19,6 +19,9 @@ import ModeSwitcher from "./ModeSwitcher";
 import QuestionMarkIcon from "@mui/icons-material/QuestionMark";
 import RequestQuoteIcon from "@mui/icons-material/RequestQuote";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
+import LogoutIcon from "@mui/icons-material/Logout";
+import styles from "./ResponsiveDrawer.module.css";
+import Logout from "../views/Logout";
 
 const drawerWidth = 240;
 
@@ -39,8 +42,10 @@ function ResponsiveDrawer(props) {
       case "Cuotas":
         navigate("/cuotas");
         break;
+      case "Logout":
+        navigate("/logout");
       default:
-        navigate("/");
+        // navigate("/");
         break;
     }
   };
@@ -72,11 +77,18 @@ function ResponsiveDrawer(props) {
       </List>
       <Divider />
       <List>
-        {["Contacto", "Nosotros", "Reglamento"].map((text, index) => (
+        {["Contacto", "Nosotros", "Reglamento", "Logout"].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton onClick={() => handleMenuItemClick(text)}>
               <ListItemIcon>
-                <QuestionMarkIcon />
+                {(() => {
+                  switch (text) {
+                    case "Logout":
+                      return <LogoutIcon />;
+                    default:
+                      return <QuestionMarkIcon />;
+                  }
+                })()}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>
@@ -100,24 +112,27 @@ function ResponsiveDrawer(props) {
           ml: { sm: `${drawerWidth}px` },
         }}
       >
-        <article style={{ justifyContent: "space-between", display: "flex" }}>
-          <Toolbar>
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              edge="start"
-              onClick={handleDrawerToggle}
-              sx={{ mr: 2, display: { sm: "none" } }}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography variant="h6" noWrap component="div">
-              Responsive drawer
-            </Typography>
-            {/* <ModeSwitcher /> */}
-          </Toolbar>
-          <ModeSwitcher />
-        </article>
+        <Toolbar>
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            edge="start"
+            onClick={handleDrawerToggle}
+            sx={{ mr: 2, display: { sm: "none" } }}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6" noWrap component="div" width="100%">
+            <article className={styles.containerDrawer}>
+              <div>
+                <h3> Responsive drawer</h3>
+              </div>
+              <div>
+                <ModeSwitcher />
+              </div>
+            </article>
+          </Typography>
+        </Toolbar>
       </AppBar>
       <Box
         component="nav"
@@ -157,7 +172,7 @@ function ResponsiveDrawer(props) {
           {drawer}
         </Drawer>
       </Box>
-      <section>
+      <section className={styles.topTitle}>
         <Outlet />
       </section>
     </Box>

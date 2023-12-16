@@ -10,6 +10,7 @@ import theme from "../utils/Theme";
 import "../index.css";
 import CurrentCourses from "../components/Cursos";
 import Cuotas from "../components/Cuotas";
+import RecoveryPasswd from "../views/RecoveryPasswd";
 
 const RouterPrincipal = () => {
   return (
@@ -19,6 +20,7 @@ const RouterPrincipal = () => {
         <Routes>
           <Route path="/login" element={<LoginRedirect />} />
           <Route path="/logout" element={<Logout />} />
+          <Route path="/recoveryCredentials" element={<RecoveryPasswd />} />
 
           <Route path="/" element={<Layout />}>
             <Route path="/" element={<Home />} />
