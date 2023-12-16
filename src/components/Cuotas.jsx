@@ -1,11 +1,14 @@
 import "../App.css";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import CardCuotas from "../components/Cards/CardCuotas.jsx";
 import Divider from "@mui/material/Divider";
 import CustomizedDialogs from "../utils/AlerDialogCustomization.jsx";
 import CircularColor from "../utils/CircularProgress.jsx";
 import CuotasImg from "../model/CuotasImg.jsx";
+import { useContext } from "react";
+import { AppContext } from "../context/context";
+import { cuotasAPI } from "../api/cuotasAPI";
+import styles from "./Cuotas.module.css";
 
 export default function Cuotas() {
   const [data, setData] = useState({});
@@ -14,25 +17,26 @@ export default function Cuotas() {
   const [objChoose, setObjChoose] = useState([]);
   const [isCustomizedDialogs, setIsCustomizedDialogs] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const { state } = useContext(AppContext);
+  const { username } = state;
 
   useEffect(() => {
-    async function getCuotas() {
-      try {
-        const response = await axios.get(
-          "https://admin.inovecode.com/api/perfil/cuotas/"
-        );
-        setTimeout(() => {
-          setData(response.data);
-          setIsLoading(false);
-        }, 1000);
-      } catch (error) {
-        console.error(error);
-        setIsLoading(false);
-      }
+    if (!username) {
+      return; // Sin un usuario no es posible leer los posteos
     }
 
-    getCuotas();
-  }, []);
+    cuotasAPI
+      .get()
+      .then((response) => {
+        setData(response);
+      })
+      .catch((error) => {
+        console.log(`${error.response.status} | ${error.response.data.detail}`);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, [username]);
 
   const handleOpenDialog = (dialog, title, btn) => {
     setBtnAlertTextDialogs(dialog);
@@ -54,9 +58,7 @@ export default function Cuotas() {
 
   return (
     <>
-      <h1 className="titleCard">
-        MIS CUOTAS
-      </h1>
+      <h1 className={styles.titleCard}>MIS CUOTAS</h1>
       <Divider
         variant="middle"
         color="white"
@@ -67,12 +69,12 @@ export default function Cuotas() {
       {isLoading ? (
         <CircularColor />
       ) : data ? (
-        <section className="containerCard">
+        <section className={styles.containerCard}>
           {data.map((element, index) => {
             return (
               <article
                 key={index}
-                style={{ display: "flex", marginLeft: "20px" }}
+                className={styles.articleCard}
               >
                 {
                   <CardCuotas
@@ -106,7 +108,7 @@ export default function Cuotas() {
                     amount={element.amount}
                     date={element.expiration}
                     status={element.status}
-                    classNameMain={"backgroundCardCuotas"}
+                    classNameMain={styles.backgroundCardCuotas}
                   />
                 }
                 <CustomizedDialogs

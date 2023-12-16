@@ -1,6 +1,4 @@
-import "../App.css";
 import CircularWithValueLabel from "../utils/CircularProgressWithLabel.jsx";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import CardCursos from "../components/Cards/CardCursos.jsx";
 import Divider from "@mui/material/Divider";
@@ -8,7 +6,10 @@ import CustomizedDialogs from "../utils/AlerDialogCustomization.jsx";
 import CircularColor from "../utils/CircularProgress.jsx";
 import CursosImg from "../model/CursosImg.jsx";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
-import { grey, yellow } from "@mui/material/colors";
+import { useContext } from "react";
+import { AppContext } from "../context/context";
+import { cursosAPI } from "../api/cursosAPI";
+import styles from "./Cursos.module.css";
 
 export default function CurrentCourses() {
   const [data, setData] = useState({});
@@ -17,25 +18,26 @@ export default function CurrentCourses() {
   const [objChoose, setObjChoose] = useState([]);
   const [isCustomizedDialogs, setIsCustomizedDialogs] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const { state } = useContext(AppContext);
+  const { username } = state;
 
   useEffect(() => {
-    async function getUser() {
-      try {
-        const response = await axios.get(
-          "https://admin.inovecode.com/api/perfil/cursos/"
-        );
-        setTimeout(() => {
-          setData(response.data);
-          setIsLoading(false);
-        }, 1000);
-      } catch (error) {
-        console.error(error);
-        setIsLoading(false);
-      }
+    if (!username) {
+      return; // Sin un usuario no es posible leer los posteos
     }
 
-    getUser();
-  }, []);
+    cursosAPI
+      .get()
+      .then((response) => {
+        setData(response);
+      })
+      .catch((error) => {
+        console.log(`${error.response.status} | ${error.response.data.detail}`);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, [username]);
 
   const handleOpenDialog = (dialog, title, btn) => {
     setBtnAlertTextDialogs(dialog);
@@ -57,9 +59,7 @@ export default function CurrentCourses() {
 
   return (
     <>
-      <h1 className="titleCard">
-        MIS CURSOS
-      </h1>
+      <h1 className={styles.titleCard}>MIS CURSOS</h1>
       <Divider
         variant="middle"
         color="white"
@@ -70,7 +70,7 @@ export default function CurrentCourses() {
       {isLoading ? (
         <CircularColor />
       ) : data ? (
-        <section className="containerCard">
+        <section className={styles.containerCard}>
           {data.results.map((element, index) => {
             return (
               <article
@@ -138,14 +138,7 @@ export default function CurrentCourses() {
                           //Si ambos son true, la copa es dorada, si no gris + presentismo
                           !element.desafios && !element.proyecto
                             ? (iconComponent = (
-                                <div
-                                  style={{
-                                    display: "flex",
-                                    gap: "5px",
-                                    marginRight: "10px",
-                                    flexDirection: "row",
-                                  }}
-                                >
+                                <div className={styles.iconComponent}>
                                   <div style={{ marginRight: "-15px" }}>
                                     <CircularWithValueLabel
                                       attendance={element.attendance}
@@ -153,24 +146,13 @@ export default function CurrentCourses() {
                                   </div>
                                   <div>
                                     <EmojiEventsIcon
-                                      sx={{
-                                        width: "40px",
-                                        height: "40px",
-                                        color: yellow[600],
-                                      }}
+                                      className={styles.emojiEventsIconGold}
                                     />
                                   </div>
                                 </div>
                               ))
                             : (iconComponent = (
-                                <div
-                                  style={{
-                                    display: "flex",
-                                    gap: "5px",
-                                    marginRight: "10px",
-                                    flexDirection: "row",
-                                  }}
-                                >
+                                <div className={styles.iconComponent}>
                                   <div style={{ marginRight: "-15px" }}>
                                     <CircularWithValueLabel
                                       attendance={element.attendance}
@@ -178,11 +160,7 @@ export default function CurrentCourses() {
                                   </div>
                                   <div>
                                     <EmojiEventsIcon
-                                      sx={{
-                                        width: "40px",
-                                        height: "40px",
-                                        color: grey[600],
-                                      }}
+                                      className={styles.emojiEventsIconGrey}
                                     />
                                   </div>
                                 </div>
@@ -194,11 +172,13 @@ export default function CurrentCourses() {
                     })()}
                     classNameMain={
                       element.is_disable || element.disabled
-                        ? "backgroundCardNotStartedDisable"
-                        : "backgroundCardIACurrentCourses"
+                        ? styles.backgroundCardNotStartedDisable
+                        : styles.backgroundCardIACurrentCourses
                     }
                     classNameSecondary={
-                      element.id == 20 ? "imageContainerPI" : "imageContainer"
+                      element.id == 20
+                        ? styles.imageContainerPI
+                        : styles.imageContainer
                     }
                   />
                 }

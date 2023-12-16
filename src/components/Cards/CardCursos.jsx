@@ -2,6 +2,8 @@ import React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
+import classnames from "classnames";
+import styles from "./CardCursos.module.css";
 import "../../App.css";
 
 function CardCursos(props) {
@@ -24,19 +26,19 @@ function CardCursos(props) {
   return (
     <Card className={classNameMain}>
       <div
-        style={{ marginLeft: "15px", marginRight: "10px", lineHeight: "22px", }}
-        className="centeredContent titleH2"
+        style={{ marginLeft: "15px", marginRight: "10px", lineHeight: "22px" }}
+        className={classnames(styles.centeredContent, styles.titleH2)}
       >
-        <p className="parrafTitle"> {title} </p>{iconTitle}
-       
+        <p className={styles.parrafTitle}> {title} </p>
+        {iconTitle}
       </div>
 
-      <div style={{ background: "black" }} className="effectIcon">
+      <div style={{ background: "black" }} className={styles.effectIcon}>
         {imageUrl}
       </div>
       <CardContent>
         <Typography textAlign="start" variant="h2">
-          <div className="titleH3">
+          <div className={styles.titleH3}>
             Comisión: {commission}
             <br />
             Del {date}
@@ -48,22 +50,12 @@ function CardCursos(props) {
         </Typography>
         <div className={classNameSecondary}>
           <div>
-            <div className="effectIcon">{icon}</div>
-            <p
-              className="message"
-              style={{ marginTop: "-1px", whiteSpace: "nowrap" }}
-            >
-              {messegeIcon}
-            </p>
+            <div className={styles.effectIcon}>{icon}</div>
+            <p className={styles.message}>{messegeIcon}</p>
           </div>
           <div>
-            <div className="effectIcon">{icon2}</div>
-            <p
-              className="message"
-              style={{ marginTop: "-1px", whiteSpace: "nowrap" }}
-            >
-              {messegeIcon2}
-            </p>
+            <div className={styles.effectIcon}>{icon2}</div>
+            <p className={styles.message}>{messegeIcon2}</p>
           </div>
         </div>
       </CardContent>
