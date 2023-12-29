@@ -58,6 +58,7 @@
     width: 40px;
     height: 40px;
     color: #ffeb3b;
+    font-size: 40px !important;
     /* yellow[600] en Material-UI */
 }
 
@@ -65,6 +66,7 @@
     width: 40px;
     height: 40px;
     color: #757575;
+    font-size: 40px !important;
     /* grey[600] en Material-UI */
 }
 

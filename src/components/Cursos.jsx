@@ -139,7 +139,7 @@ export default function CurrentCourses() {
                                     />
                                   </div>
                                   <div>
-                                    <EmojiEventsIcon
+                                    <EmojiEventsIcon 
                                       className={styles.emojiEventsIconGold}
                                     />
                                   </div>
@@ -153,7 +153,7 @@ export default function CurrentCourses() {
                                     />
                                   </div>
                                   <div>
-                                    <EmojiEventsIcon
+                                    <EmojiEventsIcon style={{fontSize: "35px"}}
                                       className={styles.emojiEventsIconGrey}
                                     />
                                   </div>

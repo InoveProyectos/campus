@@ -1,6 +1,6 @@
 // Importamos React Router:
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import LoginRedirect from "../views/Login";
+import LoginRedirect from "../views/SignInSide";
 import Logout from "../views/Logout";
 import Home from "../views/Home";
 import { CssBaseline } from "@mui/material";

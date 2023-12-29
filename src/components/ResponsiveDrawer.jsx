@@ -61,9 +61,9 @@ function ResponsiveDrawer(props) {
               <ListItemIcon>
                 {(() => {
                   switch (text) {
-                    case "Cuotas":
-                      return <AccountBalanceIcon />;
                     case "Cursos":
+                      return <AccountBalanceIcon />;
+                    case "Cuotas":
                       return <RequestQuoteIcon />;
                     default:
                       break;
