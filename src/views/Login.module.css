@@ -8,23 +8,24 @@
     font-size: 16px;
     line-height: 20px;
     color: #ffffff;
-    padding: 30px; 
+    padding: 30px;
+    top: 50px;
 }
 
 @media screen and (max-width: 600px) {
     .Container {
         background: url("../assets/img/login_bg.png") center center/cover no-repeat local;
-        /* background: url("../assets/img/login_bg.png") center center/cover no-repeat local; */
-        position: absolute;
-        display: flex;
         flex-wrap: wrap;
-        font-weight: 700;
-        bottom: 35%;
-        left: 20px;
-        font-size: 16px;
-        line-height: 20px;
         color: #ffffff;
-        padding: 30px; 
+        padding-left: 0px;
+        box-sizing: border-box; /* Asegura que el padding se tenga en cuenta al calcular el ancho del contenedor */
+        position: fixed; /* Cambiado a posición fija */
+        top: 50px;
+        left: 0;
+        right: 0;
+        width: 100%; /* Ancho del 100% de la pantalla */
+        height: 100vh; /* Altura del 100% de la pantalla */
+        /* overflow: auto; Añadido el desbordamiento automático para casos en los que el contenido sea más largo que la pantalla */
     }
 }
 
@@ -32,8 +33,8 @@
     margin-top: 60px;
     margin-left: 40px;
     margin-bottom: 50px;
-    width: 339px;
-    height: 359px;
+    width: 370px;
+    height: 459px;
     padding: 30px;
     background: #7D674C;
     box-shadow: 0px 0px 7px 4px #7D674C;
@@ -84,17 +85,10 @@ input[type="password"] {
 }
 
 .submitButton {
-    width: 95px;
-    height: 31px;
+    width: 300px;
+    height: 45px;
     background: #323232;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 20px;
     color: #FFFFFF;
-    border-radius: 0px;
-    border: 0px;
-    margin-left: 200px;
-    /* margin-top: 20px; */
 }
 
 .submitButton:hover {
@@ -121,4 +115,9 @@ input[type="password"] {
     font-weight: 1000;
     font-size: 25px;
     line-height: 28px;
+}
+
+.containerButton {
+    display: flex;
+    flex-direction: column;
 }

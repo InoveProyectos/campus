@@ -18,14 +18,8 @@ export default function CurrentCourses() {
   const [objChoose, setObjChoose] = useState([]);
   const [isCustomizedDialogs, setIsCustomizedDialogs] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const { state } = useContext(AppContext);
-  const { username } = state;
 
   useEffect(() => {
-    if (!username) {
-      return; // Sin un usuario no es posible leer los posteos
-    }
-
     cursosAPI
       .get()
       .then((response) => {
@@ -37,7 +31,7 @@ export default function CurrentCourses() {
       .finally(() => {
         setIsLoading(false);
       });
-  }, [username]);
+  }, []);
 
   const handleOpenDialog = (dialog, title, btn) => {
     setBtnAlertTextDialogs(dialog);
@@ -145,7 +139,7 @@ export default function CurrentCourses() {
                                     />
                                   </div>
                                   <div>
-                                    <EmojiEventsIcon
+                                    <EmojiEventsIcon 
                                       className={styles.emojiEventsIconGold}
                                     />
                                   </div>
@@ -159,7 +153,7 @@ export default function CurrentCourses() {
                                     />
                                   </div>
                                   <div>
-                                    <EmojiEventsIcon
+                                    <EmojiEventsIcon style={{fontSize: "35px"}}
                                       className={styles.emojiEventsIconGrey}
                                     />
                                   </div>

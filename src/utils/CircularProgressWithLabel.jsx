@@ -8,10 +8,10 @@ function CircularProgressWithLabel(props) {
 
   return (
     <Box sx={{ position: 'relative', display: 'inline-flex', marginLeft: "10px", marginRight: "20px" }}>
-      <CircularProgress variant="determinate" {...props} />
+      <CircularProgress style={{color: "rgb(195,235,113)"}} variant="determinate" {...props} />
       <Box
         sx={{
-          top: 0,
+          top: 0, 
           left: 0,
           bottom: 0,
           right: 0,

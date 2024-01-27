@@ -2,7 +2,7 @@
     text-align: center;
     align-self: flex-start;
     margin-left: 20px;
-    margin-top: 10%;
+    margin-top: 5vh;
 }
 
 .containerCard {
@@ -10,7 +10,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     gap: 5px;
-    justify-content: center;
+    justify-content: start;
     font-family: AvertaStd-Bold;
     margin: 20px 0px 20px 0px;
 }
@@ -58,6 +58,7 @@
     width: 40px;
     height: 40px;
     color: #ffeb3b;
+    font-size: 40px !important;
     /* yellow[600] en Material-UI */
 }
 
@@ -65,6 +66,7 @@
     width: 40px;
     height: 40px;
     color: #757575;
+    font-size: 40px !important;
     /* grey[600] en Material-UI */
 }
 
@@ -82,5 +84,15 @@
         text-align: center;
         margin-left: 10px;
         margin-top: 35%;
+    }
+
+    .containerCard {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 5px;
+        justify-content: center;
+        font-family: AvertaStd-Bold;
+        margin: 20px 0px 20px 0px;
     }
 }

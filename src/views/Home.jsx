@@ -2,7 +2,6 @@ import { useState } from "react";
 import "../index.css";
 import { useEffect } from "react";
 import { Button } from "@mui/material";
-import react from "../assets/reactjs-icon.svg";
 
 function App() {
   const [count, setCount] = useState(0);

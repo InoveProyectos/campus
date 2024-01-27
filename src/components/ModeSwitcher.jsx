@@ -16,9 +16,9 @@ const ModeSwitcher = () => {
           mode === "light" ? styles.containerLight : styles.containerDark
         )}
       >
-        {mode}
+        <span className={styles.modeName}>{mode}</span>
         <IconButton
-          sx={{ ml: 1 }}
+          className={styles.iconResponsive}
           onClick={() => {
             if (mode === "light") {
               setMode("dark");

@@ -17,14 +17,8 @@ export default function Cuotas() {
   const [objChoose, setObjChoose] = useState([]);
   const [isCustomizedDialogs, setIsCustomizedDialogs] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const { state } = useContext(AppContext);
-  const { username } = state;
 
   useEffect(() => {
-    if (!username) {
-      return; // Sin un usuario no es posible leer los posteos
-    }
-
     cuotasAPI
       .get()
       .then((response) => {
@@ -36,7 +30,7 @@ export default function Cuotas() {
       .finally(() => {
         setIsLoading(false);
       });
-  }, [username]);
+  }, []);
 
   const handleOpenDialog = (dialog, title, btn) => {
     setBtnAlertTextDialogs(dialog);
