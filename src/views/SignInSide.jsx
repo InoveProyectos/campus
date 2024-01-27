@@ -88,8 +88,6 @@ export default function Login() {
     const username = event.target.user.value;
     const password = event.target.password.value;
 
-    console.log(username, password);
-
     if (username == "" || password == "") {
       alert("Debe ingresar username y password");
       return;

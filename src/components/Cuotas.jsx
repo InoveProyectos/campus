@@ -11,7 +11,7 @@ import { cuotasAPI } from "../api/cuotasAPI";
 import styles from "./Cuotas.module.css";
 
 export default function Cuotas() {
-  const [data, setData] = useState({});
+  const [data, setData] = useState([]);
   const [btnAlertTextDialogs, setBtnAlertTextDialogs] = useState("");
   const [btnAlertTitleDialogs, setBtnAlertTitleDialogs] = useState("");
   const [objChoose, setObjChoose] = useState([]);

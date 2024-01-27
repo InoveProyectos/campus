@@ -23,7 +23,7 @@ const RouterPrincipal = () => {
           <Route path="/recoveryCredentials" element={<RecoveryPasswd />} />
 
           <Route path="/" element={<Layout />}>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<CurrentCourses />} />
             <Route path="/cursos" element={<CurrentCourses />} />
             <Route path="/cuotas" element={<Cuotas />} />
           </Route>

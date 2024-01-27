@@ -12,7 +12,7 @@ import { cursosAPI } from "../api/cursosAPI";
 import styles from "./Cursos.module.css";
 
 export default function CurrentCourses() {
-  const [data, setData] = useState({});
+  const [data, setData] = useState([]);
   const [btnAlertTextDialogs, setBtnAlertTextDialogs] = useState("");
   const [btnAlertTitleDialogs, setBtnAlertTitleDialogs] = useState("");
   const [objChoose, setObjChoose] = useState([]);
@@ -23,7 +23,7 @@ export default function CurrentCourses() {
     cursosAPI
       .get()
       .then((response) => {
-        setData(response);
+        setData(response.results);
       })
       .catch((error) => {
         console.log(`${error.response.status} | ${error.response.data.detail}`);
@@ -65,7 +65,7 @@ export default function CurrentCourses() {
         <CircularColor />
       ) : data ? (
         <section className={styles.containerCard}>
-          {data.results.map((element, index) => {
+          {data.map((element, index) => {
             return (
               <article
                 key={element.id}
