@@ -25,8 +25,7 @@
 
 .parrafTitle {
     text-align: start;
-    margin: 11px;
-    /* color: red; */
+    margin-left: 11px;
     color: var(--mui-palette-textTitle-color) !important;
 }
 

@@ -35,6 +35,7 @@ import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 
 import Avatar from '@mui/material/Avatar';
 import { AppContext } from "../context/context";
+import { useTheme } from "@emotion/react";
 
 const drawerWidth = 220;
 
@@ -45,9 +46,14 @@ function ResponsiveDrawer() {
   const { state } = React.useContext(AppContext)
   const { username, isStaff } = state
 
+  console.log(username)
+
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+
+
+  // Puedes acceder a los colores del tema
 
   const drawer = (
     <div>
@@ -56,13 +62,13 @@ function ResponsiveDrawer() {
           <ModeSwitcher />
         </div>
       </Toolbar>
-      <Divider />
+      <Divider className={styles.divider} />
       <List>
         <ListItemButton onClick={() => navigate("/cursos")}>
           <ListItemIcon><AccountBalanceIcon /></ListItemIcon>
           <ListItemText primary={"Cursos"} />
         </ListItemButton>
-        <ListItemButton onClick={() => window.open("https://discord.gg/7YVXDHmtWh", "_blank")}>
+        <ListItemButton onClick={() => window.open(`https://admin.inovecode.com/perfil/chat/discord/link/?username=${username}`, "_blank")}>
           <ListItemIcon><SportsEsportsIcon /></ListItemIcon>
           <ListItemText primary={"Discord"} />
         </ListItemButton>
@@ -71,8 +77,7 @@ function ResponsiveDrawer() {
           <ListItemText primary={"Pagos"} />
         </ListItemButton>
       </List>
-      <Divider />
-      <List></List>
+      <Divider className={styles.divider} />
       <List>
         {/* <ListItemButton  onClick={() => handleMenuItemClick("Cuotas")}>
           <ListItemIcon><ChatIcon /></ListItemIcon>

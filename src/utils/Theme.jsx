@@ -23,6 +23,9 @@ const theme = extendTheme({
         border: {
           border: "10px solid black",
         },
+        dividerBar: {
+          background: "black",
+        },
         textTitle: {
           color: grey[900],
         },
@@ -124,6 +127,9 @@ const theme = extendTheme({
         },
         border: {
           border: "10px solid white",
+        },
+        dividerBar: {
+          background: "white",
         },
         backgroundCardIACurrentCourses: {
           background: "linear-gradient(38deg, #00B1B9 1.57%, #0097EC 98.56%)",

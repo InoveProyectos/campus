@@ -24,7 +24,6 @@ export default function CurrentCourses() {
       .get()
       .then((response) => {
         setData(response.results);
-        console.log(response.results);
       })
       .catch((error) => {
         console.log(`${error.response.status} | ${error.response.data.detail}`);
@@ -70,7 +69,7 @@ export default function CurrentCourses() {
             return (
               <article
                 key={element.id}
-                style={{ display: "flex", marginLeft: "20px" }}
+                style={{ display: "flex", marginLeft: "20px"}}
               >
                 {
                   <CardCursos

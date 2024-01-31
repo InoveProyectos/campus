@@ -14,6 +14,7 @@ import CustomSnackbar from "../utils/SnackBar"; // Asegúrate de que esta import
 const defaultTheme = createTheme();
 import { grey } from "@mui/material/colors";
 import styles from "../views/RecoveryPasswd.module.css";
+import Link from "@mui/material/Link";
 
 export default function RecoveryPasswd() {
   const [isLoading, setIsLoading] = React.useState(false);
@@ -41,22 +42,6 @@ export default function RecoveryPasswd() {
     });
   };
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   console.log("Enviando formulario")
-  //   console.log(formData)
-
-  //   resetAPI.post(formData)
-  //     .then((response) => {
-  //       setSuccessSnackbar(true);
-  //       navigate("/login");
-  //     })
-  //     .catch((error) => {
-  //       setErrorSnackbar(true);
-  //       window.location.reload();
-  //     });
-  //   setIsLoading(false);
-  // };
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Enviando formulario");
@@ -72,7 +57,7 @@ export default function RecoveryPasswd() {
       .catch((error) => {
         console.log(error)
         console.log(error.response.data.message)
-        if(error.response && 'data' in error.response && 'message' in error.response.data ) {
+        if (error.response && 'data' in error.response && 'message' in error.response.data) {
           setErrorSnackbarText(error.response.data.message)
         }
         setErrorSnackbar(true);
@@ -169,16 +154,6 @@ export default function RecoveryPasswd() {
                 onChange={handleInputChange}
               />
             </Box>
-            {/* <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 4, mb: 2, background: "#00DEBC", fontSize: "20px" }}
-              disabled={isLoading}
-              onClick={handleRecovery}
-            >
-              RECUPERAR
-            </Button> */}
             <Button
               fullWidth
               variant="contained"
@@ -188,6 +163,20 @@ export default function RecoveryPasswd() {
             >
               RECUPERAR
             </Button>
+            <p
+              style={{ cursor: 'pointer', color: 'initial' }}
+              onClick={() => navigate("/login")}
+              onMouseOver={(e) => e.target.style.color = '#00DEBC'}
+              onMouseOut={(e) => e.target.style.color = 'initial'}
+            ><b>Volver al login</b>
+            </p>
+            <Grid container>
+              <Grid item xs>
+                <Link href="#" style={{ fontSize: "16px" }}>
+                  ¿Necesitas ayuda?
+                </Link>
+              </Grid>
+            </Grid>
           </Box>
         </Grid>
         <Grid
