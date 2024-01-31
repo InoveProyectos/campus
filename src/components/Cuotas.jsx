@@ -23,6 +23,7 @@ export default function Cuotas() {
       .get()
       .then((response) => {
         setData(response);
+        console.log(response);
       })
       .catch((error) => {
         console.log(`${error.response.status} | ${error.response.data.detail}`);
@@ -52,7 +53,7 @@ export default function Cuotas() {
 
   return (
     <>
-      <h1 className={styles.titleCard}>MIS CUOTAS</h1>
+      <h1 className={styles.titleCard}>MIS PAGOS</h1>
       <Divider
         variant="middle"
         color="white"
@@ -100,7 +101,7 @@ export default function Cuotas() {
                     status_color={element.status_color}
                     cuota={element.cuota}
                     amount={element.amount}
-                    date={element.expiration}
+                    date={element.expiration_date}
                     status={element.status}
                     classNameMain={styles.backgroundCardCuotas}
                   />

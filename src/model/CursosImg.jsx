@@ -7,6 +7,8 @@ import certificate from "../assets/certificado.png";
 import escudoIA2 from "../assets/escudoIA2.png";
 import escudoWBE from "../assets/escudoWBE.png";
 import pythonInicial from "../assets/PythonInicial.png";
+import js from "../assets/jsV1.png";
+import react from "../assets/react.png";
 import programadorPython from "../assets/ProgramadorPython.png";
 import HelpIcon from "@mui/icons-material/Help";
 
@@ -21,10 +23,10 @@ const CursosImg = ({ element, handleBtn, numero, desafios, proyecto }) => {
             onClick={() =>
               element.open_dialog
                 ? handleBtn(
-                    element.text_dialog,
-                    element.title_dialog,
-                    element.btn
-                  )
+                  element.text_dialog,
+                  element.title_dialog,
+                  element.btn
+                )
                 : window.open(element.url, "_blank")
             }
             style={{
@@ -39,10 +41,10 @@ const CursosImg = ({ element, handleBtn, numero, desafios, proyecto }) => {
             onClick={() =>
               element.open_dialog
                 ? handleBtn(
-                    element.text_dialog,
-                    element.title_dialog,
-                    element.btn
-                  )
+                  element.text_dialog,
+                  element.title_dialog,
+                  element.btn
+                )
                 : window.open(element.url, "_blank")
             }
             style={{
@@ -56,10 +58,10 @@ const CursosImg = ({ element, handleBtn, numero, desafios, proyecto }) => {
             onClick={() =>
               element.open_dialog
                 ? handleBtn(
-                    element.text_dialog,
-                    element.title_dialog,
-                    element.btn
-                  )
+                  element.text_dialog,
+                  element.title_dialog,
+                  element.btn
+                )
                 : window.open(element.url, "_blank")
             }
             style={{
@@ -73,10 +75,10 @@ const CursosImg = ({ element, handleBtn, numero, desafios, proyecto }) => {
             onClick={() =>
               element.open_dialog
                 ? handleBtn(
-                    element.text_dialog,
-                    element.title_dialog,
-                    element.btn
-                  )
+                  element.text_dialog,
+                  element.title_dialog,
+                  element.btn
+                )
                 : window.open(element.url, "_blank")
             }
             style={{
@@ -90,10 +92,10 @@ const CursosImg = ({ element, handleBtn, numero, desafios, proyecto }) => {
             onClick={() =>
               element.open_dialog
                 ? handleBtn(
-                    element.text_dialog,
-                    element.title_dialog,
-                    element.btn
-                  )
+                  element.text_dialog,
+                  element.title_dialog,
+                  element.btn
+                )
                 : window.open(element.url, "_blank")
             }
             style={{
@@ -109,10 +111,10 @@ const CursosImg = ({ element, handleBtn, numero, desafios, proyecto }) => {
             onClick={() =>
               element.open_dialog
                 ? handleBtn(
-                    element.text_dialog,
-                    element.title_dialog,
-                    element.btn
-                  )
+                  element.text_dialog,
+                  element.title_dialog,
+                  element.btn
+                )
                 : window.open(element.url, "_blank")
             }
             style={{
@@ -128,10 +130,10 @@ const CursosImg = ({ element, handleBtn, numero, desafios, proyecto }) => {
             onClick={() =>
               element.open_dialog
                 ? handleBtn(
-                    element.text_dialog,
-                    element.title_dialog,
-                    element.btn
-                  )
+                  element.text_dialog,
+                  element.title_dialog,
+                  element.btn
+                )
                 : window.open(element.url, "_blank")
             }
             style={{
@@ -147,10 +149,10 @@ const CursosImg = ({ element, handleBtn, numero, desafios, proyecto }) => {
             onClick={() =>
               element.open_dialog
                 ? handleBtn(
-                    element.text_dialog,
-                    element.title_dialog,
-                    element.btn
-                  )
+                  element.text_dialog,
+                  element.title_dialog,
+                  element.btn
+                )
                 : window.open(element.url, "_blank")
             }
             style={{
@@ -166,10 +168,48 @@ const CursosImg = ({ element, handleBtn, numero, desafios, proyecto }) => {
             onClick={() =>
               element.open_dialog
                 ? handleBtn(
-                    element.text_dialog,
-                    element.title_dialog,
-                    element.btn
-                  )
+                  element.text_dialog,
+                  element.title_dialog,
+                  element.btn
+                )
+                : window.open(element.url, "_blank")
+            }
+            style={{
+              width: "100px",
+            }}
+          />
+        );
+      case 7:
+        return (
+          <img
+            src={js}
+            alt="Escudo curso"
+            onClick={() =>
+              element.open_dialog
+                ? handleBtn(
+                  element.text_dialog,
+                  element.title_dialog,
+                  element.btn
+                )
+                : window.open(element.url, "_blank")
+            }
+            style={{
+              width: "100px",
+            }}
+          />
+        );
+      case 8:
+        return (
+          <img
+            src={js}
+            alt="Escudo curso"
+            onClick={() =>
+              element.open_dialog
+                ? handleBtn(
+                  element.text_dialog,
+                  element.title_dialog,
+                  element.btn
+                )
                 : window.open(element.url, "_blank")
             }
             style={{

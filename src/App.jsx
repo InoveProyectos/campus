@@ -3,6 +3,7 @@ import { CssBaseline } from "@mui/material";
 import { AppProvider } from "./context/context";
 import RouterPrincipal from "./routes/RouterPrincipal";
 
+
 function App() {
   return (
     <div className="App">

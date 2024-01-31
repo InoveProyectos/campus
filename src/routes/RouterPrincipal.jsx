@@ -25,7 +25,7 @@ const RouterPrincipal = () => {
           <Route path="/" element={<Layout />}>
             <Route path="/" element={<CurrentCourses />} />
             <Route path="/cursos" element={<CurrentCourses />} />
-            <Route path="/cuotas" element={<Cuotas />} />
+            <Route path="/pagos" element={<Cuotas />} />
           </Route>
         </Routes>
       </CssVarsProvider>

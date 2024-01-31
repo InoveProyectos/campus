@@ -106,7 +106,7 @@ const theme = extendTheme({
           bgButton: "white",
         },
         textTitle: {
-          color: grey[200],
+          color: grey[900],
         },
         colorButtonText: {
           color: "black",
