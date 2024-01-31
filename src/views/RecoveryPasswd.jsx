@@ -20,6 +20,7 @@ export default function RecoveryPasswd() {
   const [warningSnackbar, setWarningSnackbar] = React.useState(false);
   const [errorSnackbar, setErrorSnackbar] = React.useState(false);
   const [successSnackbar, setSuccessSnackbar] = React.useState(false);
+  const [errorSnackbarText, setErrorSnackbarText] = React.useState("Credenciales inválidas, vuelva a intentarlo a contacto con administración.")
   const navigate = useNavigate();
   const [formData, setFormData] = React.useState({
     email: '',
@@ -66,12 +67,16 @@ export default function RecoveryPasswd() {
         setSuccessSnackbar(true);
         setTimeout(() => {
           navigate("/login");
-        }, 2000);
+        }, 1500);
       })
       .catch((error) => {
+        console.log(error)
+        console.log(error.response.data.message)
+        if(error.response && 'data' in error.response && 'message' in error.response.data ) {
+          setErrorSnackbarText(error.response.data.message)
+        }
         setErrorSnackbar(true);
         setIsLoading(false);
-        window.location.reload();
       })
   };
 
@@ -97,14 +102,14 @@ export default function RecoveryPasswd() {
           onClose={handleSnackbarClose}
           message="Por favor, completa todos los campos."
           severity="warning"
-          duration={1000}
+          duration={2000}
         />
         <CustomSnackbar
           open={errorSnackbar}
           onClose={handleSnackbarClose}
-          message="Error al realizar el inicio de sesión."
+          message={errorSnackbarText}
           severity="error"
-          duration={1000}
+          duration={2000}
         />
         <CustomSnackbar
           open={successSnackbar}
