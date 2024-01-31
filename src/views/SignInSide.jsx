@@ -74,12 +74,7 @@ export default function Login() {
 
       // Si el parámetro next está definido, se hace le redirect allí,
       // de lo contrario se hace el redirect a "home"
-      // const redirectTo = next ? next : "/";
-      const myRedirect = next === "/recoveryCredentials" ? "/" : "/";
-      console.log("NEXT",next);
-      console.log("MYREDIRECT",myRedirect);
-      const redirectTo = myRedirect ? "/" : next;
-      console.log("REDIRECT", redirectTo);
+      const redirectTo = next ? next : "/";
 
       // navigate(redirectTo);
       setSuccessSnackbar(true);
@@ -87,7 +82,7 @@ export default function Login() {
       setTimeout(() => {
         setSuccessSnackbar(false);
         navigate(redirectTo);
-      }, 3000);
+      }, 1500);
     }
   };
 
@@ -127,6 +122,8 @@ export default function Login() {
   };
 
   const handleRecoveryPasswd = (event) => {
+    // Suspendemos el evento para evitar submits erroneos
+    event.preventDefault();
     navigate("/recoveryCredentials");
   };
 

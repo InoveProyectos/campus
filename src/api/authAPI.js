@@ -117,7 +117,7 @@ client.interceptors.response.use((response) => {
   const originalRequest = error.config;
 
   if (!originalRequest._retry && 
-      (error.reponse === undefined || error.response.status === 403 || error.response.status === 401) &&
+      (error.response === undefined || error.response.status === 403 || error.response.status === 401) &&
       !window.location.pathname.includes('login') && !window.location.pathname.includes('logout')
     ) {
     // Check if it's the refresh endpoint
