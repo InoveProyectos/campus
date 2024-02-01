@@ -2,7 +2,7 @@ version: "3.1"
 
 services:
   front:
-    image: node:18.16.1
+    image: node:18.16.1-bullseye
     container_name: campus-front
     command: sh build.sh
     working_dir: /opt/front
