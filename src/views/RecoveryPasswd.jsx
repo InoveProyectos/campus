@@ -8,7 +8,7 @@ import Grid from "@mui/material/Grid";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 import Logo from "../assets/Logo.svg";
-import inove_logo from "../assets/inove_logo.png";
+import inove_logo from "../assets/inove_logo.jpeg";
 import { resetAPI } from "../api/resetAPI.js";
 import CustomSnackbar from "../utils/SnackBar"; // Asegúrate de que esta importación sea correcta
 const defaultTheme = createTheme();
