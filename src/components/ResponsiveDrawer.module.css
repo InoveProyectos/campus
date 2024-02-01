@@ -9,6 +9,15 @@
     justify-content: space-between;
 }
 
+.containerTolbar {
+    justify-content: center;
+    height: 84.22px;
+}
+
+.divider{
+    background: var(--mui-palette-dividerBar-background) !important;
+}
+
 @media screen and (max-width: 700px) {
     .topTitle {
         margin-top: 25px;

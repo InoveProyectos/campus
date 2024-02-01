@@ -69,7 +69,7 @@ export default function CurrentCourses() {
             return (
               <article
                 key={element.id}
-                style={{ display: "flex", marginLeft: "20px" }}
+                style={{ display: "flex", marginLeft: "20px"}}
               >
                 {
                   <CardCursos

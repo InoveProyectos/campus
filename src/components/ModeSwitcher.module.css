@@ -59,10 +59,9 @@
         margin-right: 20px;
     }
 
-    .container .modeName {
+    /* .container .modeName {
         display: none;
-        /* Ocultar el nombre del modo */
-    }
+    } */
 
     .iconResponsive {
         border: none;
@@ -72,7 +71,7 @@
 
     .containerLight {
         display: flex;
-        width: 50px;
+        /* width: 50px; */
         align-items: center;
         justify-content: center;
         background-color: var(--mui-palette-background-paper);
@@ -87,7 +86,7 @@
 
     .containerDark {
         display: flex;
-        width: 50px;
+        /* width: 50px; */
         align-items: center;
         justify-content: center;
         background-color: var(--background-danger);

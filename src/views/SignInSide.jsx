@@ -5,6 +5,7 @@ import TextField from "@mui/material/TextField";
 import Link from "@mui/material/Link";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
+import InputLabel from '@mui/material/InputLabel';
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -13,8 +14,11 @@ import { useEffect, useContext } from "react";
 import { AppContext } from "../context/context";
 import Logo from "../assets/Logo.svg";
 import inove_V2 from "../assets/inove_logo_v2.png";
+import styles from "../views/SignInSide.module.css";
 
 import { authAPI, getSessionInfo } from "../api/authAPI";
+import CustomSnackbar from "../utils/SnackBar";
+import { grey } from "@mui/material/colors";
 
 function Copyright(props) {
   return (
@@ -40,8 +44,18 @@ export default function Login() {
   // Tomar datos del contexto
   const { dispatch } = useContext(AppContext);
 
+  const [warningSnackbar, setWarningSnackbar] = React.useState(false);
+  const [errorSnackbar, setErrorSnackbar] = React.useState(false);
+  const [successSnackbar, setSuccessSnackbar] = React.useState(false);
+
   const navigate = useNavigate();
   const location = useLocation();
+
+  const handleSnackbarClose = () => {
+    setWarningSnackbar(false);
+    setErrorSnackbar(false);
+    setSuccessSnackbar(false);
+  };
 
   const completeLogin = () => {
     const sessionData = getSessionInfo();
@@ -62,7 +76,13 @@ export default function Login() {
       // de lo contrario se hace el redirect a "home"
       const redirectTo = next ? next : "/";
 
-      navigate(redirectTo);
+      // navigate(redirectTo);
+      setSuccessSnackbar(true);
+
+      setTimeout(() => {
+        setSuccessSnackbar(false);
+        navigate(redirectTo);
+      }, 1500);
     }
   };
 
@@ -72,42 +92,38 @@ export default function Login() {
       .refresh()
       .then((response) => {
         // Login efectuado exitosamente
+        setSuccessSnackbar(true);
         completeLogin();
       })
       .catch((error) => {
-        // No se pudo logear desde la session
       });
   }, []);
 
-  // Establecemos la función que guarda los cambios en los datos globales:
   const handleSubmit = (event) => {
-    // Suspendemos el evento para evitar submits erroneos
     event.preventDefault();
 
-    // Seteamos como autorizado al usuario
     const username = event.target.user.value;
     const password = event.target.password.value;
 
     if (username == "" || password == "") {
-      alert("Debe ingresar username y password");
+      setWarningSnackbar(true);
       return;
     }
+
 
     authAPI
       .login(username, password)
       .then((response) => {
-        // Login efectuado exitosamente
         completeLogin();
       })
       .catch((error) => {
-        alert(`No se pudo realizar el login: ${error.code}`);
-        // imprimir el error informado por el backend
-        alert(`${error.response.status} | ${error.response.data.detail}`);
+        setErrorSnackbar(!successSnackbar);
       });
   };
 
   const handleRecoveryPasswd = (event) => {
-    console.log(`Recovery passwd`);
+    // Suspendemos el evento para evitar submits erroneos
+    event.preventDefault();
     navigate("/recoveryCredentials");
   };
 
@@ -115,6 +131,27 @@ export default function Login() {
     <ThemeProvider theme={defaultTheme}>
       <Grid container component="main" sx={{ height: "100vh", width: "100vw" }}>
         <CssBaseline />
+        <CustomSnackbar
+          open={warningSnackbar}
+          onClose={handleSnackbarClose}
+          message="Por favor, completa todos los campos."
+          severity="warning"
+          duration={3000}
+        />
+        <CustomSnackbar
+          open={errorSnackbar}
+          onClose={handleSnackbarClose}
+          message="Error al inicio de sesión, revisa tus credenciales."
+          severity="error"
+          duration={3000}
+        />
+        <CustomSnackbar
+          open={successSnackbar}
+          onClose={handleSnackbarClose}
+          message="Login exitoso!."
+          severity="success"
+          duration={2000}
+        />
         <Grid
           item
           xs={false}
@@ -133,7 +170,7 @@ export default function Login() {
             backgroundPosition: "center",
           }}
         />
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+        <Grid style={{ backgroundColor: grey[900], color: "white", justifyContent: "justify" }} item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
           <Box
             sx={{
               my: 8,
@@ -156,6 +193,7 @@ export default function Login() {
               style={{ width: "90%", marginLeft: "30px" }}
             >
               <TextField
+                className={styles.textfield}
                 margin="normal"
                 required
                 fullWidth
@@ -166,6 +204,7 @@ export default function Login() {
                 autoFocus
               />
               <TextField
+                className={styles.textfield}
                 margin="normal"
                 required
                 fullWidth
@@ -175,10 +214,6 @@ export default function Login() {
                 id="password"
                 autoComplete="current-password"
               />
-              {/* <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
-              /> */}
               <Button
                 type="submit"
                 fullWidth
@@ -187,14 +222,17 @@ export default function Login() {
               >
                 Log in
               </Button>
+              <p>Al iniciar sesión estás aceptando nuestros {" "}
+                {/* window.open("https://discord.gg/7YVXDHmtWh", "_blank")} */}
+                <Link onClick={() => window.open("https://inovecode.com/terminos-y-condiciones", "_blank")} href="#"><u>términos y condiciones</u></Link></p>
               <Grid container>
                 <Grid item xs>
-                  <Link onClick={handleRecoveryPasswd} href="#" style={{fontSize: "16px"}}>
+                  <Link onClick={handleRecoveryPasswd} href="#" style={{ fontSize: "16px" }}>
                     ¿Olvidetaste tu credenciales?
                   </Link>
                 </Grid>
               </Grid>
-              <Copyright sx={{ mt: 5 }} />
+              <Copyright sx={{ mt: 2.5, color: "white" }} />
             </Box>
           </Box>
         </Grid>

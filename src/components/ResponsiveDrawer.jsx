@@ -20,8 +20,22 @@ import QuestionMarkIcon from "@mui/icons-material/QuestionMark";
 import RequestQuoteIcon from "@mui/icons-material/RequestQuote";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import LogoutIcon from "@mui/icons-material/Logout";
+import ChatIcon from '@mui/icons-material/Chat';
+import PlayCircleIcon from '@mui/icons-material/PlayCircle';
+import InfoIcon from '@mui/icons-material/Info';
+import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
+import ForumIcon from '@mui/icons-material/Forum';
+import InsertChartIcon from '@mui/icons-material/InsertChart';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import ImportContactsIcon from '@mui/icons-material/ImportContacts';
 import styles from "./ResponsiveDrawer.module.css";
 import Logout from "../views/Logout";
+import Logo from "../assets/logoInove.png";
+import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
+
+import Avatar from '@mui/material/Avatar';
+import { AppContext } from "../context/context";
+import { useTheme } from "@emotion/react";
 
 const drawerWidth = 220;
 
@@ -29,70 +43,58 @@ function ResponsiveDrawer() {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const navigate = useNavigate();
 
+  const { state } = React.useContext(AppContext)
+  const { username, isStaff } = state
+
+  console.log(username)
+
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
-  const handleMenuItemClick = (text) => {
-    switch (text) {
-      case "Cursos":
-        navigate("/cursos");
-        break;
-      case "Cuotas":
-        navigate("/cuotas");
-        break;
-      case "Logout":
-        navigate("/logout");
-      default:
-        // navigate("/");
-        break;
-    }
-  };
+
+  // Puedes acceder a los colores del tema
 
   const drawer = (
     <div>
-      <Toolbar />
-      <Divider />
+      <Toolbar className={styles.containerTolbar}>
+        <div>
+          <ModeSwitcher />
+        </div>
+      </Toolbar>
+      <Divider className={styles.divider} />
       <List>
-        {["Cursos", "Cuotas"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton onClick={() => handleMenuItemClick(text)}>
-              <ListItemIcon>
-                {(() => {
-                  switch (text) {
-                    case "Cursos":
-                      return <AccountBalanceIcon />;
-                    case "Cuotas":
-                      return <RequestQuoteIcon />;
-                    default:
-                      break;
-                  }
-                })()}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+        <ListItemButton onClick={() => navigate("/cursos")}>
+          <ListItemIcon><AccountBalanceIcon /></ListItemIcon>
+          <ListItemText primary={"Cursos"} />
+        </ListItemButton>
+        <ListItemButton onClick={() => window.open(`https://admin.inovecode.com/perfil/chat/discord/link/?username=${username}`, "_blank")}>
+          <ListItemIcon><SportsEsportsIcon /></ListItemIcon>
+          <ListItemText primary={"Discord"} />
+        </ListItemButton>
+        <ListItemButton onClick={() => navigate("/pagos")}>
+          <ListItemIcon><RequestQuoteIcon /></ListItemIcon>
+          <ListItemText primary={"Pagos"} />
+        </ListItemButton>
       </List>
-      <Divider />
+      <Divider className={styles.divider} />
       <List>
-        {["Contacto", "Nosotros", "Reglamento", "Logout"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton onClick={() => handleMenuItemClick(text)}>
-              <ListItemIcon>
-                {(() => {
-                  switch (text) {
-                    case "Logout":
-                      return <LogoutIcon />;
-                    default:
-                      return <QuestionMarkIcon />;
-                  }
-                })()}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+        {/* <ListItemButton  onClick={() => handleMenuItemClick("Cuotas")}>
+          <ListItemIcon><ChatIcon /></ListItemIcon>
+          <ListItemText primary={"Contacto"} />
+        </ListItemButton>
+        <ListItemButton  onClick={() => handleMenuItemClick("Cuotas")}>
+          <ListItemIcon><InfoIcon /></ListItemIcon>
+          <ListItemText primary={"Nosotros"} />
+        </ListItemButton>
+        <ListItemButton  onClick={() => handleMenuItemClick("Cuotas")}>
+          <ListItemIcon><QuestionMarkIcon /></ListItemIcon>
+          <ListItemText primary={"Reglamento"} />
+        </ListItemButton> */}
+        <ListItemButton onClick={() => navigate("/logout")}>
+          <ListItemIcon><LogoutIcon /></ListItemIcon>
+          <ListItemText primary={"Logout"} />
+        </ListItemButton>
       </List>
     </div>
   );
@@ -107,7 +109,7 @@ function ResponsiveDrawer() {
           ml: { sm: `${drawerWidth}px` },
         }}
       >
-        <Toolbar>
+        <Toolbar style={{ backgroundColor: "linear-gradient(90deg, rgba(0,177,185,1) 0%, rgba(0,151,236,1) 100%)" }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -117,14 +119,14 @@ function ResponsiveDrawer() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div" width="100%">
-            <article className={styles.containerDrawer}>
-              <div>
-                <h3> Responsive drawer</h3>
+          <Typography variant="h6" noWrap component="div" width="100%" height="84.22px">
+            <article style={{ marginTop: "20px", justifyContent: "space-between", display: "flex", flexDirection: "row", alignItems: "center" }}>
+              <div >
+                <img src={Logo} alt="logo inove" />
               </div>
-              <div>
-                <ModeSwitcher />
-              </div>
+              <Avatar sx={{ bgcolor: "red" }} aria-label="recipe">
+                {username ? username[0].toUpperCase() : "."}
+              </Avatar>
             </article>
           </Typography>
         </Toolbar>

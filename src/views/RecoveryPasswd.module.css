@@ -36,3 +36,16 @@ article {
 form {
     place-self: flex-start;
 }
+
+.textfield {
+    margin: normal;
+    color: white !important;
+}
+
+.textfield input {
+    color: white;
+}
+
+.textfield label {
+    color: white;
+}

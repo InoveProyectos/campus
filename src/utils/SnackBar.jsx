@@ -14,14 +14,6 @@ function CustomSnackbar(props) {
       <Alert
         onClose={onClose}
         severity={severity}
-        style={{
-          fontWeight: "bold",
-          width: "400px",
-          fontSize: "20px",
-          opacity: "1",
-          background: "white",
-          color: "green",
-        }}
       >
         {message}
       </Alert>
