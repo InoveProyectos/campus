@@ -23,6 +23,7 @@ export default function Cuotas() {
       .get()
       .then((response) => {
         setData(response);
+        console.log(response);
       })
       .catch((error) => {
         console.log(`${error.response.status} | ${error.response.data.detail}`);
