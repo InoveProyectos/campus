@@ -54,15 +54,15 @@ export const requestAPI = {
         const formData = new FormData();
         formData.append("file", archivo);
 
-        const response = await axios.post(
-          `http://admin.inovecode.com/api/perfil/cuotas/${cuota_id}/comprobante/`,
+        const response = await client.post(
+          `/api/perfil/cuotas/${cuota_id}/comprobante/`,
           formData,
           {
             headers: {
               "Content-Type": "multipart/form-data",
               "Authorization": getAuthHeader(),
             },
-            method: "POST",
+            // No es necesario incluir 'method' en este caso
           }
         );
       } 

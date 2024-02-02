@@ -104,6 +104,9 @@ export default function Cuotas() {
                     amount={element.amount}
                     date={element.expiration_date}
                     status={element.status}
+                    btn_right={
+                      element.btn_right != null ? element.btn_right : null
+                    }
                     classNameMain={styles.backgroundCardCuotas}
                   />
                 }
