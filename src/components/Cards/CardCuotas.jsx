@@ -39,9 +39,9 @@ function CardCuotas(props) {
       </div>
       <CardContent>
         <div style={{ textAlign: "start" }}>
-          <p style={{ marginBottom: "-20px" }}>Pago N°{cuota}</p>
-          <p style={{ marginBottom: "-20px" }}>{amount}</p>
-          <p>Fecha de vencimiento: {date}</p>
+          <p style={{ marginBottom: "-10px" }}>Pago N°{cuota}</p>
+          <p style={{ marginBottom: "-10px" }}>{amount}</p>
+          <p style={{ marginBottom: "15px" }}>Fecha de vencimiento: {date}</p>
         </div>
         <div className={styles.imageContainerCuotas}>
           <div>
