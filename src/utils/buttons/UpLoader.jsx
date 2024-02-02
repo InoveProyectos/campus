@@ -29,7 +29,6 @@ const FileUploader = ({ textButton, nroCuota }) => {
     event.preventDefault();
 
     if (!selectedFile) {
-      // alert("Debe cargar un selectedFile");
       setErrorSnackbar(true);
       return;
     }
@@ -47,20 +46,22 @@ const FileUploader = ({ textButton, nroCuota }) => {
         selectedFile.type === "image/jpeg"
       )
     ) {
-      // alert("Formato inválido, solo se permiten archivo PDF, PNG o JPEG.");
       setErrorSnackbarText("Formato inválido, solo se permiten archivo PDF, PNG o JPEG.")
       setErrorSnackbar(true);
       return;
     }
 
-    // try {
-    //   const api = requestAPI;
-    //   await api.post(selectedFile, nroCuota);
-    //   setSuccessSnackbar(true);
-    // } catch (error) {
-    //   setErrorSnackbarText("Error al subir el archivo")
-    //   setErrorSnackbar(true);
-    // }
+    try {
+      const api = requestAPI;
+      console.log("nroCuota: " + nroCuota)
+      await api.post(selectedFile, nroCuota);
+      setSuccessSnackbar(true);
+      return
+    } catch (error) {
+      setErrorSnackbarText("Error al subir el archivo")
+      setErrorSnackbar(true);
+      return;
+    }
   };
 
   return (

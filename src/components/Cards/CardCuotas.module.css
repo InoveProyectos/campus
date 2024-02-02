@@ -35,10 +35,11 @@
     flex-direction: row;
     align-items: center;
     margin-top: 10px;
-    margin-left: 50%;
+    margin-left: -100%;
     margin-right: 2%;
     margin-bottom: -0%;
-    gap: 50%;
+    gap: 10%;
+    align-items: self-start;
 }
 
 .flexContainer {

@@ -74,6 +74,7 @@ export default function Cuotas() {
                 {
                   <CardCuotas
                     key={element.id}
+                    cuota_id={element.id}
                     title={element.name}
                     numero={element.status}
                     imageUrl={
@@ -103,6 +104,9 @@ export default function Cuotas() {
                     amount={element.amount}
                     date={element.expiration_date}
                     status={element.status}
+                    btn_right={
+                      element.btn_right != null ? element.btn_right : null
+                    }
                     classNameMain={styles.backgroundCardCuotas}
                   />
                 }

@@ -1,15 +1,20 @@
-import axios from "axios";
+import axios from 'axios'
 import { client } from "./client.js";
+import { getAuthHeader } from "./authAPI.js";
+import { React } from 'react';
 
 export const requestAPI = {
-  get: async function () {
+  
+  get: async function (cuota_id) {
     try {
-      const response = await axios.get(
-        "http://127.0.0.1:8000/api/cuota/1/comprobante/",
-        {
-          responseType: "blob",
-        }
-      );
+      const response = await client.request({
+        url: `/api/perfil/cuotas/${cuota_id}/comprobante/`,
+        headers: {
+          "Authorization": getAuthHeader(),
+        },
+        method: "GET",
+        responseType: "blob", // Mantener responseType
+      });
 
       if (response.status !== 200) {
         throw new Error("Error al descargar el comprobante.");
@@ -40,115 +45,29 @@ export const requestAPI = {
       return response.data;
     } catch (error) {
       console.error("Error:", error);
-      // alert("No hay archivo para descargar");
       throw error;
     }
   },
-  /* Este endpoint lo dejo por si tengo que verificar si el archivo ya esta en el back, para no volverlo a subir*/
-  getResponse: async function () {
-    try {
-      const response = await axios.get(
-        "http://127.0.0.1:8000/api/cuota/1/comprobante/",
-        {
-          responseType: "blob",
-        }
-      );
-
-      if (response.status !== 200) {
-        throw new Error("Error al descargar el comprobante.");
-      }
-
-      return response;
-    } catch (error) {
-      console.error("Error:", error);
-      throw error;
-    }
-  },
-  post: async function (archivo) {
+  post: async function (archivo, cuota_id) {
     try {
       if (archivo) {
         const formData = new FormData();
         formData.append("file", archivo);
 
-        const response = await axios.post(
-          `http://127.0.0.1:8000/api/cuota/1/comprobante/`,
+        const response = await client.post(
+          `/api/perfil/cuotas/${cuota_id}/comprobante/`,
           formData,
           {
             headers: {
               "Content-Type": "multipart/form-data",
+              "Authorization": getAuthHeader(),
             },
+            // No es necesario incluir 'method' en este caso
           }
         );
-
-        if (response.status === 201) {
-          console.log("Archivo subido correctamente");
-          // alert("Comprobante subido con éxito!");
-          setTimeout(() => {
-            window.location.reload();
-          }, 500);
-        } else {
-          console.error("Error al subir el archivo.");
-        }
-      } else {
-        console.error("Error: No se proporcionó un archivo válido");
-      }
+      } 
     } catch (error) {
       console.error("Error:", error);
-    }
-  },
-
-  put: async function (archivoActualizado) {
-    try {
-      if (archivoActualizado) {
-        const formData = new FormData();
-        formData.append("archivo_actualizado", archivoActualizado);
-
-        const response = await axios.put(
-          `http://127.0.0.1:8000/api/cuota/1/comprobante/`,
-          formData,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          }
-        );
-
-        if (response.status === 200) {
-          console.log("Archivo actualizado correctamente");
-          // alert("Archivo actualizado correctamente!");
-          setTimeout(() => {
-            window.location.reload();
-          }, 500);
-        } else {
-          console.error("Error al actualizar el archivo.");
-        }
-      } else {
-        console.error(
-          "Error: No se proporcionó un archivo válido para la actualización"
-        );
-      }
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  },
-  delete: async function () {
-    try {
-      const response = await axios.delete(
-        "http://127.0.0.1:8000/api/cuota/1/comprobante/"
-      );
-
-      if (response.status === 200) {
-        console.log(response.status);
-        // alert("Comprobante eliminado con éxito!");
-        setTimeout(() => {
-          window.location.reload();
-        }, 500);
-      } else {
-        console.error("Error al eliminar el comprobante.");
-      }
-    } catch (error) {
-      console.error("Error:", error);
-      // alert("Comprobante no encontrado");
     }
   },
 };

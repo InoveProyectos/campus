@@ -9,6 +9,7 @@ import DownLoader from "../../utils/buttons/DownLoader.jsx";
 
 function CardCuotas(props) {
   const {
+    cuota_id,
     title,
     date,
     numero,
@@ -19,12 +20,13 @@ function CardCuotas(props) {
     status_color,
     icon,
     status,
+    btn_right,
     classNameMain,
   } = props;
 
-
   return (
     <Card className={classNameMain}>
+      {console.log(btn_right)}
       <div className={classnames(styles.centeredContent, styles.titleH2)}>
         <p className={styles.parrafTitle}> {title} </p>
         {<CuotasIconTitle numero={numero} />}
@@ -37,46 +39,38 @@ function CardCuotas(props) {
           </p>
         </div>
       </div>
-      <CardContent>
+      <CardContent style={{ marginTop: "-20px" }}>
         <div style={{ textAlign: "start" }}>
           <p style={{ marginBottom: "-10px" }}>Pago N°{cuota}</p>
           <p style={{ marginBottom: "-10px" }}>{amount}</p>
           <p style={{ marginBottom: "15px" }}>Fecha de vencimiento: {date}</p>
         </div>
-        <div className={styles.imageContainerCuotas}>
-          <div>
+        <div className={styles.imageContainerCuotas} style={title.length <= 16 ? { marginTop: "30px", alignItems: "self-start" } : null}>
+          <div style={messegeIcon.length >= 16 ? { marginLeft: "15px", marginRight: "-35px" } : { marginLeft: "15px", marginRight: "-15px" }}>
             <div className={styles.effectIcon}>{icon}</div>
-            <p
-              className={classnames(styles.containerClassName, styles.message)}
-            >
-              {messegeIcon}
-            </p>
+            {messegeIcon}
           </div>
-          {status === 5 || status_text === "PAGADO" ? null : (
-            <div className={styles.effectIcon}>
-              {(() => {
-                switch (status) {
-                  case 4:
-                  case 3:
-                  case 0:
-                    return (
-                      <Uploader
-                        textButton="Subir comprobante"
-                        nroCuota={cuota}
-                      />
-                    );
-                  default:
-                    return (
-                      <DownLoader
-                        textButton="Ver comprobante"
-                        nroCuota={cuota}
-                      />
-                    );
-                }
-              })()}
-              <br />
-            </div>
-          )}
+          <div className={styles.effectIcon}>
+            {(() => {
+              switch (btn_right.type) {
+                case 19:
+                  return (
+                    <DownLoader
+                      textButton="Ver comprobante"
+                      nroCuota={cuota_id}
+                    />
+                  );
+                case 18:
+                  return (
+                    <Uploader
+                      textButton="Subir comprobante"
+                      nroCuota={cuota_id}
+                    />
+                  );
+              }
+            })()}
+            <br />
+          </div>
         </div>
       </CardContent>
     </Card>
