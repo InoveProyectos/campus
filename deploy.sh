@@ -1,0 +1,1 @@
+git pull && docker-compose -f prod-compose.yml up
