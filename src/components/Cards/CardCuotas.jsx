@@ -52,6 +52,7 @@ function CardCuotas(props) {
           </div>
           <div className={styles.effectIcon}>
             {(() => {
+              if(btn_right == null) return null
               switch (btn_right.type) {
                 case 19:
                   return (
