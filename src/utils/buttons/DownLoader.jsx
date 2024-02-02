@@ -15,14 +15,27 @@ function DownLoader({ textButton, nroCuota }) {
   };
 
   const api = requestAPI;
+  // const handleDownload = async () => {
+  //   if(api.get(nroCuota)) {
+  //     console.log("DIO OK???")
+  //     setSuccessSnackbar(true);
+  //     return;
+  //   }
+  //   console.log("DIO ERROR???")
+  //   setErrorSnackbarText("Error al descargar el archivo.")
+  //   setErrorSnackbar(true);
+  //   console.log("Descargar comprobantes")
+  // };
   const handleDownload = async () => {
-    if(api.get(nroCuota)) {
+    console.log(nroCuota)
+    try {
+      const result = await api.get(nroCuota);
       setSuccessSnackbar(true);
-      return;
+      // return result;
+    } catch (error) {
+      setErrorSnackbarText("No hay archivo para descargar.");
+      setErrorSnackbar(true);
     }
-    setErrorSnackbarText("Error al descargar el archivo.")
-    setErrorSnackbar(true);
-    console.log("Descargar comprobantes")
   };
 
   return (
