@@ -74,6 +74,7 @@ export default function Cuotas() {
                 {
                   <CardCuotas
                     key={element.id}
+                    cuota_id={element.id}
                     title={element.name}
                     numero={element.status}
                     imageUrl={

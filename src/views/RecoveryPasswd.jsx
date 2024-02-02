@@ -172,7 +172,7 @@ export default function RecoveryPasswd() {
             </p>
             <Grid container>
               <Grid item xs>
-                <Link href="#" style={{ fontSize: "16px" }}>
+                <Link onClick={() => window.open("https://wa.me/5491136393904?text=Necesito%20ayuda%20para%20recuperar%20mis%20credenciales%20del%20campus", "_blank")} href="#" style={{ fontSize: "16px" }}>
                   ¿Necesitas ayuda?
                 </Link>
               </Grid>
