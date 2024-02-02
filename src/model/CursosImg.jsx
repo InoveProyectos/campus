@@ -6,9 +6,11 @@ import PlayCircleIcon from "@mui/icons-material/PlayCircle";
 import certificate from "../assets/certificado.png";
 import escudoIA2 from "../assets/escudoIA2.png";
 import escudoWBE from "../assets/escudoWBE.png";
+import escudoIOT from "../assets/escudoIOT.png";
 import pythonInicial from "../assets/PythonInicial.png";
-import js from "../assets/jsV1.png";
-import react from "../assets/react.png";
+import escudoDW from "../assets/html_logo.png";
+import escudoJS from "../assets/javascript.png";
+import escudoReact from "../assets/react_logo.png";
 import programadorPython from "../assets/ProgramadorPython.png";
 import HelpIcon from "@mui/icons-material/Help";
 
@@ -141,10 +143,48 @@ const CursosImg = ({ element, handleBtn, numero, desafios, proyecto }) => {
             }}
           />
         );
+      case 4:
+          return (
+            <img
+              src={escudoIA2}
+              alt="Escudo curso"
+              onClick={() =>
+                element.open_dialog
+                  ? handleBtn(
+                    element.text_dialog,
+                    element.title_dialog,
+                    element.btn
+                  )
+                  : window.open(element.url, "_blank")
+              }
+              style={{
+                width: "100px",
+              }}
+            />
+          );
+      case 5:
+            return (
+              <img
+                src={escudoIOT}
+                alt="Escudo curso"
+                onClick={() =>
+                  element.open_dialog
+                    ? handleBtn(
+                      element.text_dialog,
+                      element.title_dialog,
+                      element.btn
+                    )
+                    : window.open(element.url, "_blank")
+                }
+                style={{
+                  width: "100px",
+                }}
+              />
+            );
       case 6:
         return (
           <img
-            src={escudoIA2}
+            src={escudoDW}
             alt="Escudo curso"
             onClick={() =>
               element.open_dialog
@@ -182,7 +222,7 @@ const CursosImg = ({ element, handleBtn, numero, desafios, proyecto }) => {
       case 7:
         return (
           <img
-            src={js}
+            src={escudoJS}
             alt="Escudo curso"
             onClick={() =>
               element.open_dialog
@@ -201,7 +241,7 @@ const CursosImg = ({ element, handleBtn, numero, desafios, proyecto }) => {
       case 8:
         return (
           <img
-            src={js}
+            src={escudoReact}
             alt="Escudo curso"
             onClick={() =>
               element.open_dialog
