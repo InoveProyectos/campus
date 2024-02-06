@@ -11,6 +11,7 @@ import "../index.css";
 import CurrentCourses from "../components/Cursos";
 import Cuotas from "../components/Cuotas";
 import RecoveryPasswd from "../views/RecoveryPasswd";
+import ApunteLink from "../views/ApunteLink";
 
 const RouterPrincipal = () => {
   return (
@@ -26,6 +27,7 @@ const RouterPrincipal = () => {
             <Route path="/" element={<CurrentCourses />} />
             <Route path="/cursos" element={<CurrentCourses />} />
             <Route path="/pagos" element={<Cuotas />} />
+            <Route path="/cursos/:courseCode/unidades/:uidx/link/:type" element={<ApunteLink />} />
           </Route>
         </Routes>
       </CssVarsProvider>
