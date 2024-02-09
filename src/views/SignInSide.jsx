@@ -15,6 +15,10 @@ import { AppContext } from "../context/context";
 import Logo from "../assets/Logo.svg";
 import inove_V2 from "../assets/inove_logo_v2.jpeg";
 import styles from "../views/SignInSide.module.css";
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import InputAdornment from '@mui/material/InputAdornment';
+import IconButton from '@mui/material/IconButton';
 
 import { authAPI, getSessionInfo } from "../api/authAPI";
 import CustomSnackbar from "../utils/SnackBar";
@@ -47,6 +51,7 @@ export default function Login() {
   const [warningSnackbar, setWarningSnackbar] = React.useState(false);
   const [errorSnackbar, setErrorSnackbar] = React.useState(false);
   const [successSnackbar, setSuccessSnackbar] = React.useState(false);
+  const [shown, setShown] = React.useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -56,6 +61,10 @@ export default function Login() {
     setErrorSnackbar(false);
     setSuccessSnackbar(false);
   };
+
+  const handleToggleVisibility = () => {
+    setShown(!shown);
+  }
 
   const completeLogin = () => {
     const sessionData = getSessionInfo();
@@ -210,9 +219,18 @@ export default function Login() {
                 fullWidth
                 name="password"
                 label="Contraseña"
-                type="password"
+                type={shown ? 'text' : 'password'}
                 id="password"
                 autoComplete="current-password"
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton onClick={handleToggleVisibility}>
+                        {shown ? <VisibilityIcon /> : <VisibilityOffIcon />}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
               />
               <Button
                 type="submit"
