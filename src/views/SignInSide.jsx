@@ -13,7 +13,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect, useContext } from "react";
 import { AppContext } from "../context/context";
 import Logo from "../assets/Logo.svg";
-import inove_V2 from "../assets/inove_logo_v2.jpeg";
+import inove_V2 from "../assets/inove_logo_v2.jpg";
 import styles from "../views/SignInSide.module.css";
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import VisibilityIcon from '@mui/icons-material/Visibility';
