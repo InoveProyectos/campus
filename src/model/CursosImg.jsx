@@ -13,6 +13,7 @@ import escudoJS from "../assets/javascript.png";
 import escudoReact from "../assets/react_logo.png";
 import programadorPython from "../assets/ProgramadorPython.png";
 import HelpIcon from "@mui/icons-material/Help";
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 const CursosImg = ({ element, handleBtn, numero, desafios, proyecto }) => {
   const renderContent = () => {
@@ -254,6 +255,23 @@ const CursosImg = ({ element, handleBtn, numero, desafios, proyecto }) => {
             }
             style={{
               width: "100px",
+            }}
+          />
+        );
+      case 20:
+        return (
+          <VisibilityOffIcon
+            onClick={() =>
+              element.open_dialog
+                ? handleBtn(
+                  element.text_dialog,
+                  element.title_dialog,
+                  element.btn
+                )
+                : window.open(element.url, "_blank")
+            }
+            style={{
+              fontSize: "50px",
             }}
           />
         );
