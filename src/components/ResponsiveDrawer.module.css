@@ -1,5 +1,5 @@
 .topTitle {
-    margin-top: 105px;
+    margin-top: 85px;
 }
 
 .containerDrawer {
@@ -16,17 +16,4 @@
 
 .divider{
     background: var(--mui-palette-dividerBar-background) !important;
-}
-
-@media screen and (max-width: 700px) {
-    .topTitle {
-        margin-top: 25px;
-    }
-
-    .containerDrawer {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-    }
 }
