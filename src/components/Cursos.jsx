@@ -6,8 +6,6 @@ import CustomizedDialogs from "../utils/AlerDialogCustomization.jsx";
 import CircularColor from "../utils/CircularProgress.jsx";
 import CursosImg from "../model/CursosImg.jsx";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
-import { useContext } from "react";
-import { AppContext } from "../context/context";
 import { cursosAPI } from "../api/cursosAPI";
 import styles from "./Cursos.module.css";
 

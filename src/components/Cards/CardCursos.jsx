@@ -48,13 +48,14 @@ function CardCursos(props) {
             {info}
           </div>
         </Typography>
-        <div className={classNameSecondary}>
-          <div>
-            <div className={styles.effectIcon}>{icon}</div>
+        <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-evenly", gap: "50px", marginTop: "20px", marginBottom: "-20px" }}>
+          <div className={styles.effectIcon} style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+            {icon}
             <p className={styles.message}>{messegeIcon}</p>
           </div>
-          <div>
-            <div className={styles.effectIcon}>{icon2}</div>
+          {console.log({ messegeIcon2} )}
+          <div className={styles.effectIcon} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: messegeIcon2 === 'Certificado' ? "5px" : "0px" }}>
+            {icon2}
             <p className={styles.message}>{messegeIcon2}</p>
           </div>
         </div>
