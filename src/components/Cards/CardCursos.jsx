@@ -7,6 +7,7 @@ import styles from "./CardCursos.module.css";
 import "../../App.css";
 
 function CardCursos(props) {
+
   const {
     title,
     imageUrl,
@@ -48,14 +49,14 @@ function CardCursos(props) {
             {info}
           </div>
         </Typography>
-        <div className={classNameSecondary}>
-          <div>
-            <div className={styles.effectIcon}>{icon}</div>
+        <div className={styles.contentIcons}>
+          <div className={classnames(styles.effectIcon, styles.effectLeftIcon)} >
+            {icon}
             <p className={styles.message}>{messegeIcon}</p>
           </div>
-          <div>
-            <div className={styles.effectIcon}>{icon2}</div>
-            <p className={styles.message}>{messegeIcon2}</p>
+          <div className={classnames(styles.effectRightIcon, styles.effectRightIcon, messegeIcon2 === 'Certificado' ? styles.effectRightIconWithGap : styles.effectRightIconWithOutGap)}>
+            {icon2}
+            <p className={classnames(styles.message)}>{messegeIcon2}</p>
           </div>
         </div>
       </CardContent>

@@ -2,7 +2,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginRedirect from "../views/SignInSide";
 import Logout from "../views/Logout";
-import Home from "../views/Home";
 import { CssBaseline } from "@mui/material";
 import { Experimental_CssVarsProvider as CssVarsProvider } from "@mui/material/styles";
 import Layout from "../components/Layout/Layout";

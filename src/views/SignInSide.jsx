@@ -179,7 +179,7 @@ export default function Login() {
             backgroundPosition: "center",
           }}
         />
-        <Grid style={{ backgroundColor: grey[900], color: "white", justifyContent: "justify" }} item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+        <Grid style={{ backgroundColor: "rgb(57,57,57)", color: "white", justifyContent: "justify" }} item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
           <Box
             sx={{
               my: 8,
@@ -211,6 +211,7 @@ export default function Login() {
                 name="user"
                 autoComplete="user"
                 autoFocus
+                
               />
               <TextField
                 className={styles.textfield}
@@ -225,7 +226,7 @@ export default function Login() {
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
-                      <IconButton onClick={handleToggleVisibility}>
+                      <IconButton style={{ color: "white" }}  onClick={handleToggleVisibility}>
                         {shown ? <VisibilityIcon /> : <VisibilityOffIcon />}
                       </IconButton>
                     </InputAdornment>
@@ -242,10 +243,10 @@ export default function Login() {
               </Button>
               <p>Al iniciar sesión estás aceptando nuestros {" "}
                 {/* window.open("https://discord.gg/7YVXDHmtWh", "_blank")} */}
-                <Link onClick={() => window.open("https://inovecode.com/terminos-y-condiciones", "_blank")} href="#"><u>términos y condiciones</u></Link></p>
+                <Link style={{color: "#64b5f6"}} onClick={() => window.open("https://inovecode.com/terminos-y-condiciones", "_blank")} href="#"><u>términos y condiciones</u></Link></p>
               <Grid container>
                 <Grid item xs>
-                  <Link onClick={handleRecoveryPasswd} href="#" style={{ fontSize: "16px" }}>
+                  <Link onClick={handleRecoveryPasswd} href="#" style={{ fontSize: "16px", color: "#64b5f6" }}>
                     ¿Olvidetaste tu credenciales?
                   </Link>
                 </Grid>

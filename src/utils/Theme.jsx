@@ -10,6 +10,9 @@ const theme = extendTheme({
   colorSchemes: {
     light: {
       palette: {
+        action: {
+          active: 'black', // Reemplaza 'tu-color-preferido' con el color deseado
+        },
         primary: {
           main: blue[300],
         },
@@ -68,6 +71,7 @@ const theme = extendTheme({
         },
       },
       components: {
+
         MuiButton: {
           styleOverrides: {
             root: {
@@ -98,6 +102,9 @@ const theme = extendTheme({
     },
     dark: {
       palette: {
+        action: {
+          active: 'white', // Reemplaza 'tu-color-preferido' con el color deseado
+        },
         primary: {
           main: grey[300],
         },

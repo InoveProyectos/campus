@@ -103,7 +103,7 @@ export default function RecoveryPasswd() {
           severity="success"
           duration={1000}
         />
-        <Grid style={{ backgroundColor: grey[900], color: "white" }} item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+        <Grid style={{  backgroundColor: "rgb(57,57,57)", color: "white" }} item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
           <Box
             sx={{
               my: 8,
@@ -166,13 +166,13 @@ export default function RecoveryPasswd() {
             <p
               style={{ cursor: 'pointer', color: 'initial' }}
               onClick={() => navigate("/login")}
-              onMouseOver={(e) => e.target.style.color = '#00DEBC'}
+              onMouseOver={(e) => e.target.style.color = '#3F7EEB'}
               onMouseOut={(e) => e.target.style.color = 'initial'}
             ><b>Volver al login</b>
             </p>
             <Grid container>
               <Grid item xs>
-                <Link onClick={() => window.open("https://wa.me/5491136393904?text=Necesito%20ayuda%20para%20recuperar%20mis%20credenciales%20del%20campus", "_blank")} href="#" style={{ fontSize: "16px" }}>
+                <Link onClick={() => window.open("https://wa.me/5491136393904?text=Necesito%20ayuda%20para%20recuperar%20mis%20credenciales%20del%20campus", "_blank")} href="#" style={{ fontSize: "16px", color: "#64b5f6" }}>
                   ¿Necesitas ayuda?
                 </Link>
               </Grid>
