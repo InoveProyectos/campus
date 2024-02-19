@@ -63,10 +63,13 @@ function ResponsiveDrawer() {
         </div>
       </Toolbar>
       <Divider className={styles.divider} />
-      <List>
+      <List >
         <ListItemButton onClick={() => navigate("/cursos")}>
           <ListItemIcon><AccountBalanceIcon /></ListItemIcon>
-          <ListItemText primary={"Cursos"} />
+          <ListItemText sx={{
+    fontFamily: 'AvertaStd-Semibold',
+    color:'red'
+      }} primary={"Cursos"} />
         </ListItemButton>
         <ListItemButton onClick={() => window.open(`https://admin.inovecode.com/perfil/chat/discord/link/?username=${username}`, "_blank")}>
           <ListItemIcon><SportsEsportsIcon /></ListItemIcon>
@@ -109,7 +112,7 @@ function ResponsiveDrawer() {
           ml: { sm: `${drawerWidth}px` },
         }}
       >
-        <Toolbar style={{ backgroundColor: "linear-gradient(90deg, rgba(0,177,185,1) 0%, rgba(0,151,236,1) 100%)" }}>
+        <Toolbar style={{ background: "linear-gradient(270deg, rgba(0,177,185,1) 0%, rgba(0,151,236,1) 100%)" }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
