@@ -53,7 +53,7 @@ export default function Cuotas() {
 
   return (
     <>
-      <h1 className={styles.titleCard}>MIS PAGOS</h1>
+      <h1 className={styles.titleCard}>Mis pagos</h1>
       <Divider
         variant="middle"
         color="white"
