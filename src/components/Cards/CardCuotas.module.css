@@ -39,8 +39,7 @@
     margin-top: 10px;
     margin-left: -100%;
     margin-right: 2%;
-    margin-bottom: -0%;
-    gap: 10%;
+    margin-bottom: 0%;
     align-items: self-start;
 }
 
@@ -49,8 +48,7 @@
     align-items: center;
     justify-content: center;
     height: 100px;
-    background-color: #fefae0;
-    border: 3px solid #dddd;
+    background-color: #191A26;
 }
 
 .effectIcon {

@@ -112,7 +112,7 @@ function ResponsiveDrawer() {
               <div >
                 <img src={Logo} alt="logo inove" />
               </div>
-              <Avatar sx={{ bgcolor: "red" }} aria-label="recipe">
+              <Avatar sx={{ background: "linear-gradient(to right top, #ee146d, #f00b60, #f00753, #f00b45, #ee1437)", color: 'white' }} aria-label="recipe">
                 {username ? username[0].toUpperCase() : "."}
               </Avatar>
             </article>

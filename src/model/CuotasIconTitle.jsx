@@ -3,8 +3,12 @@ import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import CancelIcon from "@mui/icons-material/Cancel";
 import AccessTimeFilledIcon from "@mui/icons-material/AccessTimeFilled";
 import WarningIcon from "@mui/icons-material/Warning";
-import { grey, yellow } from "@mui/material/colors";
 import MoneyOffCsredIcon from '@mui/icons-material/MoneyOffCsred';
+
+const inoveYellow = '#FAF74D';
+const inoveGreen = '#C4F071';
+const inoveRed = '#EE146D';
+
 
 const CuotasIconTitle = ({ numero }) => {
   const renderContent = () => {
@@ -23,7 +27,7 @@ const CuotasIconTitle = ({ numero }) => {
         return (
           <AccessTimeFilledIcon
             style={{
-              color: grey[600],
+              color: inoveGreen,
               fontSize: "50px",
               marginRight: "20px"
             }}
@@ -33,7 +37,7 @@ const CuotasIconTitle = ({ numero }) => {
         return (
           <CheckCircleOutlineIcon
             style={{
-              color: "green",
+              color: inoveGreen,
               fontSize: "50px",
               marginRight: "20px"
             }}
@@ -43,7 +47,7 @@ const CuotasIconTitle = ({ numero }) => {
         return (
           <WarningIcon
             style={{
-              color: yellow[600],
+              color: inoveYellow,
               fontSize: "50px",
               marginRight: "20px"
             }}
@@ -53,7 +57,7 @@ const CuotasIconTitle = ({ numero }) => {
         return (
           <WarningIcon
             style={{
-              color: "red",
+              color: inoveRed,
               fontSize: "50px",
               marginRight: "20px"
             }}
@@ -63,7 +67,7 @@ const CuotasIconTitle = ({ numero }) => {
         return (
           <CancelIcon
             style={{
-              color: "red",
+              color: inoveRed,
               fontSize: "50px",
               marginRight: "20px"
             }}
