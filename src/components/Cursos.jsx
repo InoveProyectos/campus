@@ -52,7 +52,7 @@ export default function CurrentCourses() {
 
   return (
     <>
-      <h1 className={styles.titleCard}>MIS CURSOS</h1>
+      <h1 className={styles.titleCard}>Mis cursos</h1>
       <Divider
         variant="middle"
         color="white"
@@ -68,7 +68,8 @@ export default function CurrentCourses() {
             return (
               <article
                 key={element.id}
-                style={{ display: "flex", marginLeft: "20px"}}
+                style={{ display: "flex", marginLeft: "20px",
+              }}
               >
                 {
                   <CardCursos

@@ -25,20 +25,21 @@ function CardCursos(props) {
   } = props;
 
   return (
-    <Card className={classNameMain}>
+    <Card sx={{ boxShadow: '-8px 8px 26px -7px rgba(0,0,0,0.57)'}} className={classNameMain}>
       <div
         style={{ marginLeft: "15px", marginRight: "10px", lineHeight: "22px" }}
         className={classnames(styles.centeredContent, styles.titleH2)}
       >
+
         <p className={styles.parrafTitle}> {title} </p>
+
         {iconTitle}
       </div>
 
-      <div style={{ background: "black" }} className={styles.effectIcon}>
+      <div style={{ background: "#191A26" }} className={styles.effectIcon}>
         {imageUrl}
       </div>
       <CardContent>
-        <Typography textAlign="start" variant="h2">
           <div className={styles.titleH3}>
             Comisión: {commission}
             <br />
@@ -48,7 +49,6 @@ function CardCursos(props) {
             <br />
             {info}
           </div>
-        </Typography>
         <div className={styles.contentIcons}>
           <div className={classnames(styles.effectIcon, styles.effectLeftIcon)} >
             {icon}

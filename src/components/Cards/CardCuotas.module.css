@@ -26,10 +26,12 @@
 .parrafTitle {
     text-align: start;
     margin: 11px;
-    color: var(--mui-palette-textTitle-color) !important;
+    color: white;
+    /* color: var(--mui-palette-textTitle-color) !important; */
 }
 
 .imageContainerCuotas {
+    color: white;
     display: flex;
     justify-content: end;
     flex-direction: row;

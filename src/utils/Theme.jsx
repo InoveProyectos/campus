@@ -5,8 +5,28 @@ import green from "@mui/material/colors/green";
 import yellow from "@mui/material/colors/yellow";
 import violet from "@mui/material/colors/purple";
 import { grey } from "@mui/material/colors";
+import AvertaStdBold from "../assets/fonts/avertaStandard/AvertaStd-Bold.ttf"
+import AvertaStdSemibold from "../assets/fonts/avertaStandard/AvertaStd-Semibold.ttf"
+
 
 const theme = extendTheme({
+    typography: {
+      fontFamily: 'Inter, system-ui, Avenir, Helvetica, Arial, sans-serif, AvertaStd-Bold, AvertaStd-Semibold',
+    },
+    components: {
+      MuiCssBaseline: {
+        styleOverrides: `
+        @font-face {
+          font-family: 'AvertaStd-Bold';
+          src: local('AvertaStd-Bold'), url(${AvertaStdBold}) format('truetype');
+        }
+        @font-face {
+          font-family: 'AvertaStd-Semibold';
+          src: local('AvertaStd-Semibold'), url(${AvertaStdSemibold}) format('truetype');
+        }
+        `,
+      },
+    },
   colorSchemes: {
     light: {
       palette: {
@@ -55,10 +75,9 @@ const theme = extendTheme({
           borderRadius: "22px",
         },
         backgroundCardCuotas: {
-          background: "#edf2f4",
+          background: "linear-gradient(to right top, #969696, #838383, #717171, #5f5f5f, #4e4e4e);",
           borderRadius: "22px",
-          marginTop: "5%",
-          border: "3px solid black",
+          marginTop: "5%"
         },
         backgroundCardNotStarted: {
           borderRadius: "22px",
@@ -87,15 +106,27 @@ const theme = extendTheme({
         },
         MuiTypography: {
           styleOverrides: {
+            h1:{fontFamily: 'AvertaStd-Bold'},
             h2: {
               color: "white",
               fontFeatureSettings: "'clig' off, 'liga' off",
-              fontFamily: "AvertaStd-Semibold",
+              fontFamily: "AvertaStd-Bold",
               fontSize: "12px",
               fontStyle: "normal",
               fontWeight: "400",
               lineHeight: "1.5",
             },
+            h3:{fontFamily: 'AvertaStd-Semibold'},
+            h4:{fontFamily: 'AvertaStd-Semibold'},
+            h5:{fontFamily: 'AvertaStd-Semibold'},
+            h6:{fontFamily: 'AvertaStd-Semibold'},
+            subtitle1:{fontFamily: 'AvertaStd-Semibold'},
+            subtitle2:{fontFamily: 'AvertaStd-Semibold'},
+            body1:{fontFamily: 'AvertaStd-Semibold'},
+            body2:{fontFamily: 'AvertaStd-Semibold'},
+            button:{fontFamily: 'AvertaStd-Semibold'},
+            caption:{fontFamily: 'AvertaStd-Semibold'},
+            overline:{fontFamily: 'AvertaStd-Semibold'},
           },
         },
       },
@@ -143,7 +174,7 @@ const theme = extendTheme({
           borderRadius: "22px",
         },
         backgroundCardCuotas: {
-          background: "#edf2f4",
+          background: "linear-gradient(to right top, #969696, #838383, #717171, #5f5f5f, #4e4e4e);",
           borderRadius: "22px",
           marginTop: "5%",
           border: "0px ",

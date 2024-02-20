@@ -36,7 +36,7 @@ import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 import Avatar from '@mui/material/Avatar';
 import { AppContext } from "../context/context";
 import { useTheme } from "@emotion/react";
-
+import footWave from '../assets/footWave.svg'
 const drawerWidth = 220;
 
 function ResponsiveDrawer() {
@@ -56,7 +56,7 @@ function ResponsiveDrawer() {
   // Puedes acceder a los colores del tema
 
   const drawer = (
-    <div>
+    <div className={styles.panel}>
       <Toolbar className={styles.containerTolbar}>
         <div>
           <ModeSwitcher />
@@ -78,19 +78,7 @@ function ResponsiveDrawer() {
         </ListItemButton>
       </List>
       <Divider className={styles.divider} />
-      <List>
-        {/* <ListItemButton  onClick={() => handleMenuItemClick("Cuotas")}>
-          <ListItemIcon><ChatIcon /></ListItemIcon>
-          <ListItemText primary={"Contacto"} />
-        </ListItemButton>
-        <ListItemButton  onClick={() => handleMenuItemClick("Cuotas")}>
-          <ListItemIcon><InfoIcon /></ListItemIcon>
-          <ListItemText primary={"Nosotros"} />
-        </ListItemButton>
-        <ListItemButton  onClick={() => handleMenuItemClick("Cuotas")}>
-          <ListItemIcon><QuestionMarkIcon /></ListItemIcon>
-          <ListItemText primary={"Reglamento"} />
-        </ListItemButton> */}
+      <List >
         <ListItemButton onClick={() => navigate("/logout")}>
           <ListItemIcon><LogoutIcon /></ListItemIcon>
           <ListItemText primary={"Logout"} />
@@ -109,7 +97,7 @@ function ResponsiveDrawer() {
           ml: { sm: `${drawerWidth}px` },
         }}
       >
-        <Toolbar style={{ backgroundColor: "linear-gradient(90deg, rgba(0,177,185,1) 0%, rgba(0,151,236,1) 100%)" }}>
+        <Toolbar style={{ background: "linear-gradient(270deg, rgba(0,177,185,1) 0%, rgba(0,151,236,1) 100%)" }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -133,7 +121,7 @@ function ResponsiveDrawer() {
       </AppBar>
       <Box
         component="nav"
-        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 }}}
         aria-label="mailbox folders"
       >
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
@@ -166,9 +154,12 @@ function ResponsiveDrawer() {
           open
         >
           {drawer}
-        </Drawer>
+
+            <img className={styles.footWave} src={footWave} alt="photo"></img>
+            </Drawer>
       </Box>
       <section className={styles.topTitle}>
+
         <Outlet />
       </section>
     </Box>

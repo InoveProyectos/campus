@@ -1,5 +1,82 @@
+@font-face {
+  font-family: 'AvertaStd-Black';
+  src: local('AvertaStd-Black'), url('./assets/fonts/avertaStandard/AvertaStd-Black.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'AvertaStd-BlackItalic';
+  src: local('AvertaStd-BlackItalic'), url('./assets/fonts/avertaStandard/AvertaStd-BlackItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'AvertaStd-Bold';
+  src: local('AvertaStd-Bold'), url('./assets/fonts/avertaStandard/AvertaStd-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'AvertaStd-BoldItalic';
+  src: local('AvertaStd-BoldItalic'), url('./assets/fonts/avertaStandard/AvertaStd-BoldItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'AvertaStd-ExtraBold';
+  src: local('AvertaStd-ExtraBold'), url('./assets/fonts/avertaStandard/AvertaStd-ExtraBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'AvertaStd-ExtraBoldItalic';
+  src: local('AvertaStd-ExtraBoldItalic'), url('./assets/fonts/avertaStandard/AvertaStd-ExtraBoldItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'AvertaStd-Extrathin';
+  src: local('AvertaStd-Extrathin'), url('./assets/fonts/avertaStandard/AvertaStd-Extrathin.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'AvertaStd-ExtrathinItalic';
+  src: local('AvertaStd-ExtrathinItalic'), url('./assets/fonts/avertaStandard/AvertaStd-ExtrathinItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'AvertaStd-Light';
+  src: local('AvertaStd-Light'), url('./assets/fonts/avertaStandard/AvertaStd-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'AvertaStd-LightItalic';
+  src: local('AvertaStd-LightItalic'), url('./assets/fonts/avertaStandard/AvertaStd-LightItalic.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'AvertaStd-Regular';
+  src: local('AvertaStd-Regular'), url('./assets/fonts/avertaStandard/AvertaStd-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'AvertaStd-RegularItalic';
+  src: local('AvertaStd-RegularItalic'), url('./assets/fonts/avertaStandard/AvertaStd-RegularItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'AvertaStd-Semibold';
+  src: local('AvertaStd-Semibold'), url('./assets/fonts/avertaStandard/AvertaStd-Semibold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'AvertaStd-SemiboldItalic';
+  src: local('AvertaStd-SemiboldItalic'), url('./assets/fonts/avertaStandard/AvertaStd-SemiboldItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'AvertaStd-Thin';
+  src: local('AvertaStd-Thin'), url('./assets/fonts/avertaStandard/AvertaStd-Thin.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'AvertaStd-ThinItalic';
+  src: local('AvertaStd-ThinItalic'), url('./assets/fonts/avertaStandard/AvertaStd-ThinItalic.ttf') format('truetype');
+}
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif, AvertaStd-Black, AvertaStd-BlackItalic, AvertaStd-Bold, AvertaStd-BoldItalic, AvertaStd-ExtraBold, AvertaStd-ExtraBoldItalic, AvertaStd-Extrathin, AvertaStd-ExtrathinItalic, AvertaStd-Light, AvertaStd-LightItalic, AvertaStd-Regular, AvertaStd-RegularItalic, AvertaStd-Semibold, AvertaStd-SemiboldItalic, AvertaStd-Thin, AvertaStd-ThinItalic;
   line-height: 1.5;
   font-weight: 400;
 
@@ -30,7 +107,7 @@ body {
   justify-content: center;
   min-width: 320px;
   min-height: 100vh;
-  background-color:var(--mui-palette-background-paper);
+  background-color: var(--mui-palette-background-paper);
 }
 
 h1 {
