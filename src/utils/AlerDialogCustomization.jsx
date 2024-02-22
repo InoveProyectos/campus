@@ -25,14 +25,21 @@ export default function CustomizedDialogs({
   title,
   btn,
 }) {
+  const btn_style = {
+    fontFamily:'AvertaStd-Semibold',
+    border : '0px',
+    borderRadius : '15px', 
+    background : 'linear-gradient(38deg, #00B1B9 1.57%, #0097EC 98.56%)'
+  } 
   return (
     <div>
       <BootstrapDialog
+        sx={{background : 'radial-gradient(circle, #212231, #1f1a25, #1a1319, #110b0e, #000000)' }}
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"
         open={open}
       >
-        <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
+        <DialogTitle sx={{ m: 0, p: 2, fontFamily:'AvertaStd-Regular' }} id="customized-dialog-title">
           {title}
         </DialogTitle>
         <IconButton
@@ -48,16 +55,18 @@ export default function CustomizedDialogs({
           <CloseIcon />
         </IconButton>
         <DialogContent dividers>
-          <Typography gutterBottom>{text}</Typography>
+          <Typography sx={{fontFamily:'AvertaStd-Regular'}} gutterBottom>{text}</Typography>
         </DialogContent>
         <DialogActions>
           {btn.length > 0 ? (
             <>
               <Button
                 autoFocus
+                sx={btn_style}
                 onClick={() => {
                   handleClose();
                   btn[0].url != null ? window.open(btn[0].url, "_blank"): null;
+                  
                 }}
               >
                 {btn[0].text}
@@ -65,6 +74,7 @@ export default function CustomizedDialogs({
               {btn.length === 2 && (
                 <Button
                   autoFocus
+                  sx={btn_style}
                   onClick={() => {
                     handleClose();
                     btn[1].url != null ? window.open(btn[1].url, "_blank"): null;

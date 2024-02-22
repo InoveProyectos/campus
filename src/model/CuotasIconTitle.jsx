@@ -17,7 +17,7 @@ const CuotasIconTitle = ({ numero }) => {
         return (
           <MoneyOffCsredIcon
             style={{
-              color: "black",
+              color: inoveGreen,
               fontSize: "50px",
               marginRight: "20px",
             }}

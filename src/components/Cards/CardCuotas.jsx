@@ -28,19 +28,19 @@ function CardCuotas(props) {
   const inoveGreen = '#C4F071';
   const inoveRed = '#EE146D';
   const getStatusColor = (statusColor)=>{
-    return statusColor === 'red'? inoveRed : statusColor === 'green'? inoveGreen : statusColor === 'yellow'? inoveYellow : statusColor === 'black' ? 'white' : statusColor
+    return statusColor === 'red'? inoveRed : statusColor === 'green'? inoveGreen : statusColor === 'yellow' | statusColor === 'orange' ? inoveYellow : statusColor === 'black' ? 'white' : statusColor
   }
   return (
-    <Card sx={{ boxShadow: '-8px 8px 26px -7px rgba(0,0,0,0.57)'}} className={classNameMain}>
+    <Card sx={{ boxShadow: '-8px 8px 26px -7px rgba(0,0,0,0.57)' }} className={classNameMain}>
       {console.log(btn_right)}
       <div className={classnames(styles.centeredContent, styles.titleH2)}>
-        <p className={styles.parrafTitle}> {title} </p>
-        {<CuotasIconTitle numero={numero} />}
+        <p  className={styles.parrafTitle}> {title} </p>
+        {<CuotasIconTitle  numero={numero} />}
       </div>
 
       <div>
         <div className={styles.flexContainer}>
-          <h2 style={{ color: `${ getStatusColor(status_color) }` }}>
+          <h2 style={{ color: getStatusColor(status_color) }}>
             <b>{status_text}</b>
           </h2>
         </div>
@@ -49,7 +49,13 @@ function CardCuotas(props) {
         <div style={{ textAlign: "start" }}>
           <p style={{ marginBottom: "-10px" }}>Pago N°{cuota}</p>
           <p style={{ marginBottom: "-10px" }}>{amount}</p>
-          <p style={{ marginBottom: "15px", color: getStatusColor(status_color) }}>Fecha de vencimiento: {date}</p>
+          <p style={{
+              marginBottom: "15px",
+              color: status_text === 'CUOTA VENCIDA'? 'white' : getStatusColor(status_color),
+              background: status_text === 'CUOTA VENCIDA'? inoveRed : null,
+              paddingLeft: status_text === 'CUOTA VENCIDA'? '10px' : null,
+              borderRadius: status_text === 'CUOTA VENCIDA'? '10px' : null,
+             }}>{status_text === 'PAGADO'? 'Cuota saldada' : status_text === 'CUOTA VENCIDA' ? `Venció el ${date}` : `Vence el ${date}`}</p>
         </div>
         <div className={styles.imageContainerCuotas} style={title.length <= 16 ? { marginTop: "25px", alignItems: "self-start", gap: '10%'} : null}>
           <div style={messegeIcon.length >= 16 ? null : { marginLeft: "15px", marginRight: "-15px" }}>
