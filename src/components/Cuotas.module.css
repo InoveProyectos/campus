@@ -27,6 +27,7 @@
 .titleCard {
     text-align: left;
     align-self: flex-start;
+    margin: 10px;
     margin-left: 20px;
 }
 

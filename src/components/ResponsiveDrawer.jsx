@@ -37,6 +37,7 @@ import Avatar from '@mui/material/Avatar';
 import { AppContext } from "../context/context";
 import { useTheme } from "@emotion/react";
 import footWave from '../assets/footWave.svg'
+import theme from "../utils/Theme";
 const drawerWidth = 220;
 
 function ResponsiveDrawer() {
@@ -138,6 +139,12 @@ function ResponsiveDrawer() {
               boxSizing: "border-box",
               width: drawerWidth,
             },
+            "& .MuiPaper-root" : {
+              boxSizing: "border-box",
+              width: drawerWidth,
+              background: theme => theme.palette.background.paper,
+              zIndex: 1
+            }
           }}
         >
           {drawer}

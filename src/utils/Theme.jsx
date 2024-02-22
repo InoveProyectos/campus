@@ -166,7 +166,7 @@ const theme = extendTheme({
           fontSize: "clamp(0.75rem, 2.5vw, 0.88rem)",
         },
         background: {
-          paper: "black",
+          paper: "black"
         },
         border: {
           border: "10px solid white",
