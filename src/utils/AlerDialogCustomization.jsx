@@ -34,7 +34,7 @@ export default function CustomizedDialogs({
   return (
     <div>
       <BootstrapDialog
-        sx={{background : 'radial-gradient(circle, #212231, #1f1a25, #1a1319, #110b0e, #000000)' }}
+        sx={{background : 'radial-gradient(circle, #5d5f6f, #4a4651, #352f35, #1f1b1d, #000000)' }}
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"
         open={open}
