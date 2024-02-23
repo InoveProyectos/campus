@@ -7,6 +7,7 @@ import violet from "@mui/material/colors/purple";
 import { grey } from "@mui/material/colors";
 import AvertaStdBold from "../assets/fonts/avertaStandard/AvertaStd-Bold.ttf"
 import AvertaStdSemibold from "../assets/fonts/avertaStandard/AvertaStd-Semibold.ttf"
+import AvertaStdRegular from "../assets/fonts/avertaStandard/AvertaStd-Regular.ttf"
 
 
 const theme = extendTheme({
@@ -23,6 +24,10 @@ const theme = extendTheme({
         @font-face {
           font-family: 'AvertaStd-Semibold';
           src: local('AvertaStd-Semibold'), url(${AvertaStdSemibold}) format('truetype');
+        }
+        @font-face {
+          font-family: 'AvertaStd-Regular';
+          src: local('AvertaStd-Regular'), url(${AvertaStdRegular}) format('truetype');
         }
         `,
       },
@@ -161,7 +166,7 @@ const theme = extendTheme({
           fontSize: "clamp(0.75rem, 2.5vw, 0.88rem)",
         },
         background: {
-          paper: "black",
+          paper: "black"
         },
         border: {
           border: "10px solid white",

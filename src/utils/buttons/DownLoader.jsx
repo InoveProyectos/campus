@@ -31,7 +31,7 @@ function DownLoader({ textButton, nroCuota }) {
           variant="contained"
           type="button"
           onClick={handleDownload}
-          style={{ width: "130px" }}
+          sx={{ width: "130px", border: '0px', borderRadius: '10px', color: 'white', background: 'linear-gradient(to right top, #00b1b9, #00adc9, #00a8d8, #00a0e5, #0097ec)' }}
         >
           {textButton}
         </Button>

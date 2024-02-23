@@ -37,6 +37,7 @@ import Avatar from '@mui/material/Avatar';
 import { AppContext } from "../context/context";
 import { useTheme } from "@emotion/react";
 import footWave from '../assets/footWave.svg'
+import theme from "../utils/Theme";
 const drawerWidth = 220;
 
 function ResponsiveDrawer() {
@@ -112,7 +113,7 @@ function ResponsiveDrawer() {
               <div >
                 <img src={Logo} alt="logo inove" />
               </div>
-              <Avatar sx={{ bgcolor: "red" }} aria-label="recipe">
+              <Avatar sx={{ background: "linear-gradient(to right top, #ee146d, #f00b60, #f00753, #f00b45, #ee1437)", color: 'white' }} aria-label="recipe">
                 {username ? username[0].toUpperCase() : "."}
               </Avatar>
             </article>
@@ -138,6 +139,12 @@ function ResponsiveDrawer() {
               boxSizing: "border-box",
               width: drawerWidth,
             },
+            "& .MuiPaper-root" : {
+              boxSizing: "border-box",
+              width: drawerWidth,
+              background: theme => theme.palette.background.paper,
+              zIndex: 1
+            }
           }}
         >
           {drawer}
