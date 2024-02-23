@@ -69,9 +69,31 @@ const theme = extendTheme({
           background:
             "linear-gradient(38deg, #9EFF9E 0%, #4CAF50 50%, #087f23 100%)",
         },
+        middleTitle: {
+          color: "black",
+        },
+        colorIcons: {
+          color: "black",
+        },
       },
       components: {
-
+        MuiCard: {
+          styleOverrides: {
+            root:{
+              maxWidth: "410px",
+              background: "white",
+              border: "1px solid black",
+              flexWrap: "wrap",
+            }
+          }
+        },
+        MuiChip: {
+          styleOverrides: {
+            icon: {
+              color: 'black',
+            },
+          },
+        },
         MuiButton: {
           styleOverrides: {
             root: {
@@ -161,8 +183,23 @@ const theme = extendTheme({
           background:
             "linear-gradient(38deg, #9EFF9E 0%, #4CAF50 50%, #087f23 100%)",
         },
+        middleTitle: {
+          color: "var(--mui-palette-text-secondary)",
+        },
+        colorIcons: {
+          color: "white",
+        },
       },
       components: {
+        MuiCard: {
+          styleOverrides: {
+            root:{
+              maxWidth: "410px",
+              background: "rgb(13,13,13)",
+              border: "1px solid black",
+            }
+          }
+        },
         MuiButton: {
           styleOverrides: {
             root: {

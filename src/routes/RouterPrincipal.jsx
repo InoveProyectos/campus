@@ -11,6 +11,8 @@ import CurrentCourses from "../components/Cursos";
 import Cuotas from "../components/Cuotas";
 import RecoveryPasswd from "../views/RecoveryPasswd";
 import ApunteLink from "../views/ApunteLink";
+import CardNosotros from "../components/Cards/CardNosotros";
+import CardPerfil from "../components/Cards/CardPerfil";
 
 const RouterPrincipal = () => {
   return (
@@ -26,6 +28,8 @@ const RouterPrincipal = () => {
             <Route path="/" element={<CurrentCourses />} />
             <Route path="/cursos" element={<CurrentCourses />} />
             <Route path="/pagos" element={<Cuotas />} />
+            <Route path="/nosotros" element={<CardNosotros />} />
+            <Route path="/perfil/:username" element={<CardPerfil />} />
             <Route path="/cursos/:courseCode/unidades/:uidx/link/:type" element={<ApunteLink />} />
           </Route>
         </Routes>
