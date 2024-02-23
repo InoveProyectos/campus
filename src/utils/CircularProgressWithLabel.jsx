@@ -20,10 +20,7 @@ function CircularProgressWithLabel(props) {
           alignItems: 'center',
           justifyContent: 'center',
         }}
-      >
-          {<Typography variant="caption" component="div" color="text.secondary">
-            {`${Math.round(props.value)}%`}
-          </Typography>}
+      ><h6>{`${Math.round(props.value)}%`}</h6>
       </Box>
     </Box>
   );

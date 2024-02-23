@@ -76,7 +76,7 @@ const FileUploader = ({ textButton, nroCuota }) => {
       <Button
         variant="contained"
         color="primary"
-        style={{ width: "130px" }}
+        sx={{ width: "130px", border: '0px', borderRadius: '10px', color: 'white', background: 'linear-gradient(to right top, #ef5c98, #e163b6, #c86fd2, #a37de9, #6d8af8);' }}
         onClick={handleButtonClick}
       >
         {textButton}

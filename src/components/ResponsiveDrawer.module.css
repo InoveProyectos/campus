@@ -17,3 +17,11 @@
 .divider{
     background: var(--mui-palette-dividerBar-background) !important;
 }
+
+.footWave {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: scaleX(-1);
+}

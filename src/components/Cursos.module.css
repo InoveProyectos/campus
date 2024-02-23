@@ -1,6 +1,8 @@
 .titleCard {
-    text-align: center;
+    font-family: 'AvertaStd-Semibold';
+    text-align: left;
     align-self: flex-start;
+    margin: 10px;
     margin-left: 20px;
 }
 
@@ -26,7 +28,8 @@
     background: var(--mui-palette-backgroundCardIACurrentCourses-background) !important;
     border-radius: var(--mui-palette-backgroundCardIACurrentCourses-borderRadius) !important;
     width: 300px !important;
-    margin-inline: 0px !important;
+    /* margin-inline: 0px !important; */
+    
 }
 
 .imageContainerPI {
@@ -82,6 +85,7 @@
     .titleCard {
         text-align: center;
         margin-left: 10px;
+        
     }
 
     .containerCard {
@@ -92,5 +96,6 @@
         justify-content: center;
         font-family: AvertaStd-Bold;
         margin: 20px 0px 20px 0px;
+        
     }
 }
