@@ -33,14 +33,11 @@
 .imageContainerCuotas {
     color: white;
     display: flex;
-    justify-content: end;
+    justify-content: space-between;
     flex-direction: row;
     align-items: center;
-    margin-top: 10px;
-    margin-left: -100%;
-    margin-right: 2%;
-    margin-bottom: 0%;
-    align-items: self-start;
+    padding-right: 10px;
+    padding-left: 10px;
 }
 
 .flexContainer {
@@ -59,7 +56,7 @@
 
 .effectIcon:hover {
     opacity: 0.7;
-  }
+}
 
 .message {
     cursor: default;

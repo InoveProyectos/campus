@@ -28,11 +28,13 @@ const RouterPrincipal = () => {
             <Route path="/" element={<CurrentCourses />} />
             <Route path="/cursos" element={<CurrentCourses />} />
             <Route path="/pagos" element={<Cuotas />} />
-            <Route path="/nosotros" element={<CardNosotros />} />
             <Route path="/perfil/:username" element={<CardPerfil />} />
             <Route path="/cursos/:courseCode/unidades/:uidx/link/:type" element={<ApunteLink />} />
           </Route>
         </Routes>
+      <Routes>
+        <Route path="/nosotros" element={<CardNosotros />} />
+      </Routes>
       </CssVarsProvider>
     </BrowserRouter>
   );

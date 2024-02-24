@@ -17,3 +17,34 @@
 .colorIcons {
     color: var(--mui-palette-button-colorIcons-color);
 }
+
+.myBody {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    /* Color de fondo de la página */
+    color: #333;
+    /* Color del texto */
+}
+
+.resetContainer {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* CardNosotrosComponent.css */
+
+/* Estilos específicos para la página Nosotros */
+body {
+    /* Restablecer todos los estilos del body */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* Agregar estilos específicos según sea necesario */
+}
+
+/* Agregar más estilos según sea necesario para la página Nosotros */
