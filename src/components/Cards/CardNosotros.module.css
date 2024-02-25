@@ -4,6 +4,7 @@
     gap: 3px;
     color: var(--mui-palette-middleTitle-color);
     padding-left: 30px;
+    color: white;
 }
 
 .divNiddleTitle {
@@ -23,10 +24,6 @@
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    /* Color de fondo de la página */
-    color: #333;
-    /* Color del texto */
 }
 
 .resetContainer {
@@ -35,16 +32,33 @@
     box-sizing: border-box;
 }
 
-
-/* CardNosotrosComponent.css */
-
-/* Estilos específicos para la página Nosotros */
 body {
-    /* Restablecer todos los estilos del body */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* Agregar estilos específicos según sea necesario */
 }
 
-/* Agregar más estilos según sea necesario para la página Nosotros */
+.customExpand {
+
+    margin-left: 15px;
+
+    @media (max-width: 768px) {
+        margin-left: 5px;
+    }
+}
+
+.customChip {
+
+    display: flex;
+    flex-direction: row;
+    margin-inline-start: auto;
+    align-items: center;
+    gap: 5px;
+
+    @media (max-width: 768px) {
+        display: flex;
+        margin-inline-start: auto;
+        align-items: center;
+        gap: 5px;
+    }
+}

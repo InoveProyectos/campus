@@ -11,7 +11,7 @@ import CurrentCourses from "../components/Cursos";
 import Cuotas from "../components/Cuotas";
 import RecoveryPasswd from "../views/RecoveryPasswd";
 import ApunteLink from "../views/ApunteLink";
-import CardNosotros from "../components/Cards/CardNosotros";
+import Nosotros from "../components/Nosotros";
 import CardPerfil from "../components/Cards/CardPerfil";
 
 const RouterPrincipal = () => {
@@ -33,7 +33,7 @@ const RouterPrincipal = () => {
           </Route>
         </Routes>
       <Routes>
-        <Route path="/nosotros" element={<CardNosotros />} />
+        <Route path="/nosotros" element={<Nosotros />} />
       </Routes>
       </CssVarsProvider>
     </BrowserRouter>

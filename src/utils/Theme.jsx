@@ -105,16 +105,20 @@ const theme = extendTheme({
           styleOverrides: {
             root:{
               maxWidth: "410px",
-              background: "white",
+              background: "#5a5a5a",
               border: "1px solid black",
               flexWrap: "wrap",
+              color: "white",
             }
           }
         },
         MuiChip: {
           styleOverrides: {
+            root: {
+              color: "white",
+            },
             icon: {
-              color: 'black',
+              color: 'white',
             },
           },
         },
@@ -231,7 +235,7 @@ const theme = extendTheme({
           styleOverrides: {
             root:{
               maxWidth: "410px",
-              background: "rgb(13,13,13)",
+              background: "#5a5a5a",
               border: "1px solid black",
             }
           }
