@@ -31,29 +31,29 @@ const AppContainer = styled('div')({
 
 const HeadingUs = styled('h1')({
     textAlign: 'start',
-    marginTop: '180px',
+    paddingTop: '20px',
     paddingLeft: '20px',
     '@media (max-width: 768px)': {
         paddingLeft: '40px',
         textAlign: 'start',
-        marginTop: '180px',
+        paddingTop: '10px',
     },
 });
 
 const HeadingHonor = styled('h1')({
     textAlign: 'start',
-    marginTop: '20px',
+    paddingTop: '20px',
     paddingLeft: '20px',
     '@media (max-width: 768px)': {
         paddingLeft: '40px',
         textAlign: 'start',
-        marginTop: '20px',
+        paddingTop: '20px',
     },
 });
 
 const NavBar = styled('nav')({
-    position: 'absolute', 
-    top: 20,  
+    position: 'absolute',
+    top: 20,
     left: 20,
     zIndex: 1000,
     marginTop: '20px',
@@ -72,14 +72,16 @@ const Container = styled('div')({
     flexDirection: 'row',
     flexWrap: 'wrap',
     gap: 20,
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
     padding: '20px',
+    paddingBottom: '50px',
 
     '@media (max-width: 768px)': {
         textAlign: "center",
         padding: '10px',
         paddingRight: '1px',
         justifyContent: 'center',
+        paddingBottom: '50px',
     },
 });
 
@@ -89,23 +91,20 @@ function Nosotros() {
             <GlobalStyle />
             <AppContainer>
                 <NavBar><img src={logoCompleto} style={{ width: 150, height: 100 }} alt="" /></NavBar>
+                <Divider style={{ backgroundColor: "white", marginTop: '180px' }}></Divider>
                 <HeadingUs>Nosotros</HeadingUs>
-                <Divider style={{ backgroundColor: "white" }}></Divider>
                 <Container>
-                    <CardNosotros />
-                    <CardNosotros />
-                    <CardNosotros />
-                    <CardNosotros />
-                    <CardNosotros />
-                    <CardNosotros />
-                    <CardNosotros />
-                    <CardNosotros />
                     <CardNosotros />
                     <CardNosotros />
                     <CardNosotros />
                 </Container>
                 <Divider style={{ backgroundColor: "white" }}></Divider>
-                  <HeadingHonor>Cuadro de Honor</HeadingHonor>
+                <HeadingHonor>Cuadro de Honor</HeadingHonor>
+                <Container>
+                    <CardNosotros />
+                    <CardNosotros />
+                    <CardNosotros />
+                </Container>
             </AppContainer>
         </>
     );
