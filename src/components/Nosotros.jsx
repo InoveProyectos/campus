@@ -3,6 +3,7 @@ import CardNosotros from './Cards/CardNosotros';
 import backgroundCardNosotros from "../assets/backgorund-cardNosotros.png";
 import logoCompleto from "../assets/logo_completo_color.png";
 import styled, { createGlobalStyle } from 'styled-components';
+import Divider from "@mui/material/Divider";
 
 const GlobalStyle = createGlobalStyle`
   html, body {
@@ -14,18 +15,45 @@ const GlobalStyle = createGlobalStyle`
     background-size: cover;
     background-position: center;
     background-attachment: fixed;  // Fija la imagen de fondo
+    box-sizing: border-box;
+  }
+
+  *, *::before, *::after {
+    box-sizing: inherit;
   }
 `;
 
 const AppContainer = styled('div')({
-    // position: 'relative',
     minHeight: '100%',
     overflow: 'hidden',
+    color: 'white',
+});
+
+const HeadingUs = styled('h1')({
+    textAlign: 'start',
+    marginTop: '180px',
+    paddingLeft: '20px',
+    '@media (max-width: 768px)': {
+        paddingLeft: '40px',
+        textAlign: 'start',
+        marginTop: '180px',
+    },
+});
+
+const HeadingHonor = styled('h1')({
+    textAlign: 'start',
+    marginTop: '20px',
+    paddingLeft: '20px',
+    '@media (max-width: 768px)': {
+        paddingLeft: '40px',
+        textAlign: 'start',
+        marginTop: '20px',
+    },
 });
 
 const NavBar = styled('nav')({
-    position: 'absolute',  // Cambiado de 'relative' a 'absolute'
-    top: 20,  // Ajusta según sea necesario
+    position: 'absolute', 
+    top: 20,  
     left: 20,
     zIndex: 1000,
     marginTop: '20px',
@@ -40,7 +68,6 @@ const NavBar = styled('nav')({
 });
 
 const Container = styled('div')({
-    marginTop: "10%",
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'wrap',
@@ -52,7 +79,6 @@ const Container = styled('div')({
         textAlign: "center",
         padding: '10px',
         paddingRight: '1px',
-        marginTop: "200px",
         justifyContent: 'center',
     },
 });
@@ -63,6 +89,8 @@ function Nosotros() {
             <GlobalStyle />
             <AppContainer>
                 <NavBar><img src={logoCompleto} style={{ width: 150, height: 100 }} alt="" /></NavBar>
+                <HeadingUs>Nosotros</HeadingUs>
+                <Divider style={{ backgroundColor: "white" }}></Divider>
                 <Container>
                     <CardNosotros />
                     <CardNosotros />
@@ -76,6 +104,8 @@ function Nosotros() {
                     <CardNosotros />
                     <CardNosotros />
                 </Container>
+                <Divider style={{ backgroundColor: "white" }}></Divider>
+                  <HeadingHonor>Cuadro de Honor</HeadingHonor>
             </AppContainer>
         </>
     );
