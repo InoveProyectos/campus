@@ -189,7 +189,7 @@ export default function Login() {
               alignItems: "center",
             }}
           >
-            <img src={Logo} alt="" />
+            <img className={styles.logo} src={Logo} alt="" />
             <div>
               <h1>¡Bienvenido!</h1>
               <p>Login con su usuario o email de inove</p>
@@ -247,7 +247,7 @@ export default function Login() {
               <Grid container>
                 <Grid item xs>
                   <Link onClick={handleRecoveryPasswd} href="#" style={{ fontSize: "16px", color: "#64b5f6" }}>
-                    ¿Olvidetaste tu credenciales?
+                    ¿Olvidaste tu credenciales?
                   </Link>
                 </Grid>
               </Grid>

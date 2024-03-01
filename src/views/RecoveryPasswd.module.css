@@ -49,3 +49,7 @@ form {
 .textfield label {
     color: white;
 }
+
+.logo {
+    width: 150px;
+  }
