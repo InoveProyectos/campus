@@ -113,7 +113,7 @@ export default function RecoveryPasswd() {
               alignItems: "center",
             }}
           >
-            <img src={Logo} alt="" />
+            <img className={styles.logo} src={Logo} alt="" />
             <div>
               <h3 style={{ textAlign: "start" }}>
                 Ingrese su email de alumno, el sistema le enviará un mail con
