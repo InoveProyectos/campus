@@ -16,8 +16,12 @@ const labels = {
   5: 'Excellent+',
 };
 
-export default function TextRating() {
-  const value = 3.5;
+export default function TextRating(valoracion) {
+
+  const val = valoracion.valoracion; 
+
+  const roundedValue = val % 1 >= 0.5 ? Math.ceil(val) : Math.floor(val);
+  const clampedValue = Math.min(5, Math.max(0.5, roundedValue));
 
   return (
     <Box
@@ -29,12 +33,12 @@ export default function TextRating() {
     >
       <Rating
         name="text-feedback"
-        value={value}
+        value={clampedValue}
         readOnly
-        precision={0.5}
+        precision={0.5}  
         emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
       />
-      <Box sx={{ ml: 2 }}>{labels[value]}</Box>
+      <Box sx={{ ml: 2 }}>{labels[clampedValue]}</Box>
     </Box>
   );
 }

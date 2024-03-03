@@ -1,9 +1,11 @@
-import React from 'react';
+import { useEffect, useState } from "react";
 import CardNosotros from './Cards/CardNosotros';
 import backgroundCardNosotros from "../assets/backgorund-cardNosotros.png";
 import logoCompleto from "../assets/logo_completo_color.png";
 import styled, { createGlobalStyle } from 'styled-components';
 import Divider from "@mui/material/Divider";
+import { staffAPI } from '../api/staffAPI';
+import CircularColor from "../utils/CircularProgress";
 
 const GlobalStyle = createGlobalStyle`
   html, body {
@@ -72,8 +74,8 @@ const Container = styled('div')({
     flexDirection: 'row',
     flexWrap: 'wrap',
     gap: 20,
-    justifyContent: 'center',
-    padding: '20px',
+    justifyContent: 'flex-start',
+    paddingLeft: '100px',
     paddingBottom: '50px',
 
     '@media (max-width: 768px)': {
@@ -86,26 +88,50 @@ const Container = styled('div')({
 });
 
 function Nosotros() {
+    const [data, setData] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        staffAPI
+            .get()
+            .then((response) => {
+                setData(response);
+            })
+            .catch((error) => {
+                console.log(`${error.response.status} | ${error.response.data.detail}`);
+            })
+            .finally(() => {
+                setIsLoading(false);
+            });
+    }, []);
+
     return (
         <>
             <GlobalStyle />
-            <AppContainer>
-                <NavBar><img src={logoCompleto} style={{ width: 150, height: 100 }} alt="" /></NavBar>
-                <Divider style={{ backgroundColor: "white", marginTop: '180px' }}></Divider>
-                <HeadingUs>Nosotros</HeadingUs>
-                <Container>
-                    <CardNosotros />
-                    <CardNosotros />
-                    <CardNosotros />
-                </Container>
-                <Divider style={{ backgroundColor: "white" }}></Divider>
-                <HeadingHonor>Cuadro de Honor</HeadingHonor>
-                <Container>
-                    <CardNosotros />
-                    <CardNosotros />
-                    <CardNosotros />
-                </Container>
-            </AppContainer>
+            {isLoading ? (
+                <CircularColor />
+            ) : data ? (
+                <AppContainer>
+                    <NavBar><img src={logoCompleto} style={{ width: 150, height: 100 }} alt="" /></NavBar>
+                    <Divider style={{ backgroundColor: "white", marginTop: '180px' }}></Divider>
+                    <HeadingUs>Nosotros</HeadingUs>
+                    <Container>
+                        {data.map((item, index) => (
+                            <div key={index}>
+                                <CardNosotros data={item} />
+                            </div>
+                        ))}
+                    </Container>
+                    <Divider style={{ backgroundColor: "white" }}></Divider>
+                    <HeadingHonor>Cuadro de Honor</HeadingHonor>
+                    <h1 style={{ textAlign: "start", marginLeft: "20px" }}>Primero hacer NOSOTROS</h1>
+                    {/* <Container>
+                        <CardNosotros data={data}/>
+                        <CardNosotros data={data}/>
+                        <CardNosotros data={data}/>
+                    </Container> */}
+                </AppContainer>
+            ) : null}
         </>
     );
 }

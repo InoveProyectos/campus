@@ -2,12 +2,14 @@
     display: flex;
     flex-direction: column;
     gap: 3px;
+    text-align: start;
     color: var(--mui-palette-middleTitle-color);
     padding-left: 30px;
+    height: 150px;
     color: white;
 }
 
-.divNiddleTitle {
+.divMiddleTitle {
     display: flex;
     flex-direction: row;
     gap: 10px;
@@ -52,6 +54,7 @@ body {
     display: flex;
     flex-direction: row;
     margin-inline-start: auto;
+    padding-right: 40px;
     align-items: center;
     gap: 5px;
 
