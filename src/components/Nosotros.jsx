@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import CardNosotros from './Cards/CardNosotros';
+import CardHonor from './Cards/CardHonor';
 import backgroundCardNosotros from "../assets/backgorund-cardNosotros.png";
 import logoCompleto from "../assets/logo_completo_color.png";
 import styled, { createGlobalStyle } from 'styled-components';
 import Divider from "@mui/material/Divider";
 import { staffAPI } from '../api/staffAPI';
+import { cuadroHonorAPI } from '../api/cuadroHonorAPI';
 import CircularColor from "../utils/CircularProgress";
 
 const GlobalStyle = createGlobalStyle`
@@ -88,17 +90,30 @@ const Container = styled('div')({
 });
 
 function Nosotros() {
-    const [data, setData] = useState([]);
+    const [dataNosotros, setDataNosotros] = useState([]);
+    const [dataHonor, setDataHonor] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         staffAPI
             .get()
             .then((response) => {
-                setData(response);
+                setDataNosotros(response);
             })
             .catch((error) => {
-                console.log(`${error.response.status} | ${error.response.data.detail}`);
+                console.log(`${error.response.status} | ${error.response.dataNosotros.detail}`);
+            })
+            .finally(() => {
+                setIsLoading(false);
+            });
+
+        cuadroHonorAPI
+            .get()
+            .then((response) => {
+                setDataHonor(response);
+            })
+            .catch((error) => {
+                console.log(`${error.response.status} | ${error.response.dataHonor.detail}`);
             })
             .finally(() => {
                 setIsLoading(false);
@@ -110,13 +125,14 @@ function Nosotros() {
             <GlobalStyle />
             {isLoading ? (
                 <CircularColor />
-            ) : data ? (
+            ) : dataNosotros ? (
                 <AppContainer>
                     <NavBar><img src={logoCompleto} style={{ width: 150, height: 100 }} alt="" /></NavBar>
                     <Divider style={{ backgroundColor: "white", marginTop: '180px' }}></Divider>
                     <HeadingUs>Nosotros</HeadingUs>
+                    <h3 style={{ textAlign: 'start', paddingLeft: '20px' }}>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta modi ipsa repellendus voluptates, sit quis inventore, tempora eius aut tenetur veritatis voluptas, dignissimos cum? Ad similique quo consectetur voluptatum porro!</h3>
                     <Container>
-                        {data.map((item, index) => (
+                        {dataNosotros.map((item, index) => (
                             <div key={index}>
                                 <CardNosotros data={item} />
                             </div>
@@ -124,12 +140,14 @@ function Nosotros() {
                     </Container>
                     <Divider style={{ backgroundColor: "white" }}></Divider>
                     <HeadingHonor>Cuadro de Honor</HeadingHonor>
-                    <h1 style={{ textAlign: "start", marginLeft: "20px" }}>Primero hacer NOSOTROS</h1>
-                    {/* <Container>
-                        <CardNosotros data={data}/>
-                        <CardNosotros data={data}/>
-                        <CardNosotros data={data}/>
-                    </Container> */}
+                    <h3 style={{ textAlign: 'start', paddingLeft: '20px' }}>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta modi ipsa repellendus voluptates, sit quis inventore, tempora eius aut tenetur veritatis voluptas, dignissimos cum? Ad similique quo consectetur voluptatum porro!</h3>
+                    <Container>
+                        {dataHonor.map((item, index) => (
+                            <div key={index}>
+                                <CardHonor data={item} />
+                            </div>
+                        ))}
+                    </Container>
                 </AppContainer>
             ) : null}
         </>

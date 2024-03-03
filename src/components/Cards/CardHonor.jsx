@@ -19,8 +19,9 @@ import styles from "./CardNosotros.module.css";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../../context/context";
 
-export default function CardNosotros({ data }) {
+export default function CardHonor({ data }) {
   const myData = data;
+
   const text = myData.description == "" ? "" : myData.description;
   const truncatedSubheader = text.length > 60 ? `${text.slice(0, 60)}...` : text;
   const navigate = useNavigate();
@@ -69,17 +70,17 @@ export default function CardNosotros({ data }) {
               <SchoolIcon />
               <h5>{myData.destacado != null ? `${myData.destacado}` : null}</h5>
             </div>) : <br />}
-            <div style={myData.destacado != null || myData.desarrollos != null ? { marginTop: "30px" } : { marginTop: "60px" }}>
+            {myData.valoracion != null ? (<div style={myData.destacado != null && myData.desarrollos != null ? { marginTop: "30px" } : { marginTop: "60px" }}>
               <TextRating valoracion={myData.valoracion} />
-            </div>
+            </div>) : null}
           </div>
         </Typography>
       </CardContent>
       <Divider />
       <CardActions disableSpacing>
-        <section style={myData.linkedin == null ? { marginLeft: "25px" } : {}} className={styles.customChip}>
+        <section  style={myData.linkedin == null ? { marginLeft: "25px" } : {}} className={styles.customChip}>
           <Stack direction="row" >
-            <Chip 
+            <Chip className={styles.colorIcons}
               icon={<AccountBoxIcon />}
               label="Ver perfil completo"
               href="#basic-chip"
