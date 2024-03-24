@@ -17,7 +17,6 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import styles from "./CardNosotros.module.css";
 import { useNavigate } from "react-router-dom";
-import { AppContext } from "../../context/context";
 
 export default function CardHonor({ data }) {
   const myData = data;
@@ -25,9 +24,6 @@ export default function CardHonor({ data }) {
   const text = myData.description == "" ? "" : myData.description;
   const truncatedSubheader = text.length > 60 ? `${text.slice(0, 60)}...` : text;
   const navigate = useNavigate();
-
-  const { state } = React.useContext(AppContext)
-  const { username, isStaff } = state
 
   return (
     <Card sx={{ width: "407.08px", height: "auto", boxShadow: '-8px 8px 26px -7px rgba(0,0,0,0.57)' }}>
@@ -86,7 +82,7 @@ export default function CardHonor({ data }) {
               href="#basic-chip"
               variant="outlined"
               onClick={() => {
-                navigate(`/perfil/${username}`)
+                navigate(`/perfil/${data.username}`)
               }}
               clickable
             />

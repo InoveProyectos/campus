@@ -37,8 +37,6 @@ function ResponsiveDrawer() {
   const { state } = React.useContext(AppContext)
   const { username, isStaff } = state
 
-  console.log(username)
-
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
