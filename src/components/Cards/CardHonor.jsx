@@ -82,7 +82,7 @@ export default function CardHonor({ data }) {
               href="#basic-chip"
               variant="outlined"
               onClick={() => {
-                navigate(`/perfil/${data.username}`)
+                navigate(`/login`)
               }}
               clickable
             />

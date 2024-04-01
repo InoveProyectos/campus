@@ -85,7 +85,7 @@ export default function CardNosotros({ data }) {
               href="#basic-chip"
               variant="outlined"
               onClick={() => {
-                navigate(`/perfil/${username}`)
+                navigate(`/login`)
               }}
               clickable
             />
