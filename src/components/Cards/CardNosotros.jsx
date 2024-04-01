@@ -69,9 +69,9 @@ export default function CardNosotros({ data }) {
               <SchoolIcon />
               <h5>{myData.destacado != null ? `${myData.destacado}` : null}</h5>
             </div>) : <br />}
-            <div style={myData.destacado != null || myData.desarrollos != null ? { marginTop: "30px" } : { marginTop: "60px" }}>
+            {myData.valoracion != null ? (<div style={myData.destacado != null && myData.desarrollos != null ? { marginTop: "30px" } : { marginTop: "60px" }}>
               <TextRating valoracion={myData.valoracion} />
-            </div>
+            </div>) : null}
           </div>
         </Typography>
       </CardContent>
