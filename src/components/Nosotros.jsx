@@ -119,6 +119,7 @@ function Nosotros() {
       .get()
       .then((response) => {
         setDataHonor(response);
+        console.log(response);
       })
       .catch((error) => {
         console.log(

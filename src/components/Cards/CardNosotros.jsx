@@ -26,7 +26,6 @@ export default function CardNosotros({ data }) {
   const navigate = useNavigate();
 
   const { state } = React.useContext(AppContext)
-  const { username, isStaff } = state
 
   return (
     <Card sx={{ width: "407.08px", height: "auto", boxShadow: '-8px 8px 26px -7px rgba(0,0,0,0.57)' }}>
@@ -85,7 +84,7 @@ export default function CardNosotros({ data }) {
               href="#basic-chip"
               variant="outlined"
               onClick={() => {
-                navigate(`/perfil/${username}`)
+                navigate(`/perfil/${myData.username}`)
               }}
               clickable
             />
