@@ -5,7 +5,7 @@
     text-align: start;
     color: var(--mui-palette-middleTitle-color);
     padding-left: 30px;
-    height: 150px;
+    height: 180px;
     color: white;
 }
 
@@ -15,6 +15,21 @@
     gap: 10px;
     align-items: center;
     height: 25px;
+}
+
+.divMiddleCertificados {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.certificateConteiner{
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
 }
 
 .myBody {

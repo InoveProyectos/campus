@@ -17,6 +17,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import styles from "./CardNosotros.module.css";
 import { useNavigate } from "react-router-dom";
+import certificate from "../../assets/certificado.png";
 
 export default function CardHonor({ data }) {
   const myData = data;
@@ -69,6 +70,27 @@ export default function CardHonor({ data }) {
             {myData.valoracion != null ? (<div style={myData.destacado != null && myData.desarrollos != null ? { marginTop: "30px" } : { marginTop: "60px" }}>
               <TextRating valoracion={myData.valoracion} />
             </div>) : null}
+            <div className={styles.divMiddleCertificados}>
+              {myData.certificate_backend_url != null?
+              (<div className={styles.certificateConteiner}>
+                <img
+                  src={certificate}
+                  alt="photo"
+                  onClick={() =>window.open(myData.certificate_backend_url, "_blank")}
+                />
+                Cert. Backend
+              </div>)
+              : null}
+              {myData.certificate_frontend_url != null?
+              (<div className={styles.certificateConteiner}>
+                <img
+                  src={certificate}
+                  alt="photo"
+                  onClick={() =>window.open(myData.certificate_frontend_url, "_blank")}
+                />
+                Cert. Frontend
+              </div>): null}
+            </div>
           </div>
         </Typography>
       </CardContent>
@@ -81,6 +103,7 @@ export default function CardHonor({ data }) {
               label="Ver perfil completo"
               href="#basic-chip"
               variant="outlined"
+              disabled="true"
               onClick={() => {
                 navigate(`/login`)
               }}
