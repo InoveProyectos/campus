@@ -2,8 +2,6 @@ import { experimental_extendTheme as extendTheme } from "@mui/material/styles";
 import red from "@mui/material/colors/red";
 import blue from "@mui/material/colors/blue";
 import green from "@mui/material/colors/green";
-import yellow from "@mui/material/colors/yellow";
-import violet from "@mui/material/colors/purple";
 import { grey } from "@mui/material/colors";
 import AvertaStdBold from "../assets/fonts/avertaStandard/AvertaStd-Bold.ttf"
 import AvertaStdSemibold from "../assets/fonts/avertaStandard/AvertaStd-Semibold.ttf"

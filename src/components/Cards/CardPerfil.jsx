@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import CardHeader from "@mui/material/CardHeader";
 import Avatar from "@mui/material/Avatar";
@@ -6,7 +6,6 @@ import Typography from "@mui/material/Typography";
 import SchoolIcon from "@mui/icons-material/School";
 import StarIcon from "@mui/icons-material/Star";
 import DiamondIcon from "@mui/icons-material/Diamond";
-import Rating from "@mui/material/Rating";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { InputAdornment } from "@mui/material";
@@ -14,20 +13,22 @@ import LoginIcon from "@mui/icons-material/Login";
 import { perfilAPI } from "../../api/perfilAPI";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import CircularColor from "../../utils/CircularProgress";
-import styles from "./CardPerfil.module.css";
+import { useTheme } from "@mui/material/styles";
 import RatingWithValoration from "../../utils/RatingWithValoration";
 
 function CardPerfil() {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState([]);
   const { username } = useParams();
+  const theme = useTheme();
+  const [mediaQueryMatches, setMediaQueryMatches] = useState(false);
 
   useEffect(() => {
     perfilAPI
       .get(username)
       .then((response) => {
         setData(response);
-        console.log(response);
+        // console.log(response);
       })
       .catch((error) => {
         console.log(`${error.response.status} | ${error.response.data.detail}`);
@@ -35,6 +36,18 @@ function CardPerfil() {
       .finally(() => {
         setIsLoading(false);
       });
+  }, []);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 764px)");
+    const handleMediaQueryChange = (event) => {
+      setMediaQueryMatches(event.matches);
+    };
+    mediaQuery.addEventListener("change", handleMediaQueryChange);
+    setMediaQueryMatches(mediaQuery.matches);
+    return () => {
+      mediaQuery.removeEventListener("change", handleMediaQueryChange);
+    };
   }, []);
 
   return (
@@ -45,9 +58,12 @@ function CardPerfil() {
         <section
           style={{
             border: "2px solid black",
-            padding: "10px",
+            padding: mediaQueryMatches ? "0px" : "10px",
             borderRadius: "10px",
-            width: "850px",
+            width: mediaQueryMatches ? "470px" : "850px",
+            marginTop: mediaQueryMatches ? "100px" : "0px",
+            marginLeft: mediaQueryMatches ? "200px" : "0px",
+            marginRight: mediaQueryMatches ? "20px" : "0px",
           }}
         >
           <article
@@ -73,49 +89,68 @@ function CardPerfil() {
                 <h2 style={{ textAlign: "start" }}>{`${data.full_name}`}</h2>
               }
               subheader={
-                <div style={{ color: "black", fontSize: "25px" }}>
-                  <h6 style={{ marginTop: "-10px" }}>{data.cargo}</h6>
-                  <h6 style={{ marginTop: "-40px" }}>{data.country}</h6>
+                <div
+                  style={{
+                    color: theme.palette.text.primary,
+                    fontSize: "25px",
+                  }}
+                >
+                  <Typography>{data.cargo}</Typography>
+                  <Typography>{data.country}</Typography>
                 </div>
               }
             />
           </article>
           <article>
-            <div style={{ marginLeft: "-30px" }}>
-              <Box style={{ overflowY: "auto" }}>
-                <TextField
-                  id="outlined-read-only-input"
-                  label="Acerca de"
-                  multiline
-                  value={`${
-                    data.description == ""
-                      ? "No hay descripción"
-                      : data.description
-                  }`}
-                  InputProps={{
-                    readOnly: true,
-                    shrink: true,
-                    style: {
-                      fontSize: "24px",
-                      width: "800px",
-                      marginTop: "10px",
-                      maxHeight: "550px",
-                      maxWidth: "100%",
-                      whiteSpace: "pre-wrap",
-                      overflowWrap: "break-word",
-                      overflowY: "auto",
-                    },
-                  }}
-                  InputLabelProps={{
-                    style: { fontSize: "24px", marginTop: "13px" },
-                  }}
-                />
-              </Box>
+            <div
+              style={{
+                width: "100%",
+                marginLeft: mediaQueryMatches ? "-10px" : "-13px",
+              }}
+            >
+              <TextField
+                id="outlined-read-only-input"
+                label="Acerca de"
+                multiline
+                value={`${
+                  data.description === ""
+                    ? "No hay descripción"
+                    : data.description
+                }`}
+                InputProps={{
+                  readOnly: true,
+                  shrink: true,
+                  style: {
+                    fontSize: "24px",
+                    width: mediaQueryMatches ? "450px" : "800px",
+                    marginTop: "10px",
+                    maxHeight: "550px",
+                    maxWidth: "100%",
+                    whiteSpace: "pre-wrap",
+                    overflowWrap: "break-word",
+                    overflowY: "auto",
+                  },
+                }}
+                InputLabelProps={{
+                  style: { fontSize: "24px", marginTop: "13px" },
+                }}
+              />
             </div>
             <br />
-            <div style={{ marginLeft: "-10px" }}>
-              <Box style={{ width: "450px" }}>
+            <div
+              style={{
+                width: "100%",
+                marginLeft: mediaQueryMatches ? "-105px" : "-10px",
+              }}
+            >
+              <Box
+                style={{
+                  width: "450px",
+                  marginLeft: mediaQueryMatches ? "25px" : "-10px",
+                }}
+              >
                 <TextField
+                  style={{ marginLeft: mediaQueryMatches ? "70px" : "10px",}}
                   id="outlined-read-only-input"
                   label="Destacado"
                   multiline
@@ -212,7 +247,7 @@ function CardPerfil() {
                     style: {
                       fontSize: "24px",
                       height: "200px",
-                      width: "800px",
+                      width: mediaQueryMatches ? "450px" : "800px",
                       padding: "8px",
                     },
                   }}
@@ -223,11 +258,11 @@ function CardPerfil() {
               </Box>
             </div>
             <br />
-            <div style={{ marginLeft: "-10px" }}>
+            <div style={{ marginLeft: mediaQueryMatches ? "-10px" : "-10px" }}>
               <Box style={{ width: "450px" }}>
                 <TextField
                   id="outlined-read-only-input"
-                  label="Destacado"
+                  label="Actividad"
                   multiline
                   InputProps={{
                     readOnly: true,
@@ -286,7 +321,7 @@ function CardPerfil() {
                     style: {
                       fontSize: "24px",
                       height: "100px",
-                      width: "800px",
+                      width: mediaQueryMatches ? "450px" : "800px",
                       padding: "8px",
                     },
                   }}

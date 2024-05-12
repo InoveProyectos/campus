@@ -1,5 +1,3 @@
-import * as React from 'react';
-import { styled } from '@mui/material/styles';
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardContent from "@mui/material/CardContent";
@@ -17,15 +15,13 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import styles from "./CardNosotros.module.css";
 import { useNavigate } from "react-router-dom";
-import { AppContext } from "../../context/context";
 
+// eslint-disable-next-line react/prop-types
 export default function CardNosotros({ data }) {
   const myData = data;
   const text = myData.description == "" ? "" : myData.description;
   const truncatedSubheader = text.length > 60 ? `${text.slice(0, 60)}...` : text;
   const navigate = useNavigate();
-
-  const { state } = React.useContext(AppContext)
 
   return (
     <Card sx={{ width: "407.08px", height: "auto", boxShadow: '-8px 8px 26px -7px rgba(0,0,0,0.57)' }}>

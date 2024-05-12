@@ -17,7 +17,6 @@ import ModeSwitcher from "./ModeSwitcher";
 import RequestQuoteIcon from "@mui/icons-material/RequestQuote";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import LogoutIcon from "@mui/icons-material/Logout";
-import InfoIcon from '@mui/icons-material/Info';
 import styles from "./ResponsiveDrawer.module.css";
 import Groups3Icon from '@mui/icons-material/Groups3';
 import Logo from "../assets/logoInove.png";
@@ -25,9 +24,7 @@ import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 
 import Avatar from '@mui/material/Avatar';
 import { AppContext } from "../context/context";
-import { useTheme } from "@emotion/react";
 import footWave from '../assets/footWave.svg'
-import theme from "../utils/Theme";
 const drawerWidth = 220;
 
 function ResponsiveDrawer() {
@@ -35,7 +32,7 @@ function ResponsiveDrawer() {
   const navigate = useNavigate();
 
   const { state } = React.useContext(AppContext)
-  const { username, isStaff } = state
+  const { username } = state
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
