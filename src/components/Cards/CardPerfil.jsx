@@ -39,7 +39,7 @@ function CardPerfil() {
   }, []);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(max-width: 764px)");
+    const mediaQuery = window.matchMedia("(max-width: 399px)");
     const handleMediaQueryChange = (event) => {
       setMediaQueryMatches(event.matches);
     };
@@ -58,12 +58,13 @@ function CardPerfil() {
         <section
           style={{
             border: "2px solid black",
-            padding: mediaQueryMatches ? "0px" : "10px",
             borderRadius: "10px",
-            width: mediaQueryMatches ? "470px" : "850px",
-            marginTop: mediaQueryMatches ? "100px" : "0px",
-            marginLeft: mediaQueryMatches ? "200px" : "0px",
-            marginRight: mediaQueryMatches ? "20px" : "0px",
+            width: mediaQueryMatches
+              ? "clamp(300px, 60%, 800px)"
+              : "clamp(400px, 80%, 764px)",
+            marginLeft: mediaQueryMatches ? "185px" : "65px",
+            // marginRight: mediaQueryMatches ? "-90px" : "0px",
+            marginTop: mediaQueryMatches ? "25px" : "40px",
           }}
         >
           <article
@@ -105,7 +106,6 @@ function CardPerfil() {
             <div
               style={{
                 width: "100%",
-                marginLeft: mediaQueryMatches ? "-10px" : "-13px",
               }}
             >
               <TextField
@@ -122,7 +122,6 @@ function CardPerfil() {
                   shrink: true,
                   style: {
                     fontSize: "24px",
-                    width: mediaQueryMatches ? "450px" : "800px",
                     marginTop: "10px",
                     maxHeight: "550px",
                     maxWidth: "100%",
@@ -140,17 +139,14 @@ function CardPerfil() {
             <div
               style={{
                 width: "100%",
-                marginLeft: mediaQueryMatches ? "-105px" : "-10px",
               }}
             >
               <Box
                 style={{
                   width: "450px",
-                  marginLeft: mediaQueryMatches ? "25px" : "-10px",
                 }}
               >
                 <TextField
-                  style={{ marginLeft: mediaQueryMatches ? "70px" : "10px",}}
                   id="outlined-read-only-input"
                   label="Destacado"
                   multiline
@@ -247,7 +243,6 @@ function CardPerfil() {
                     style: {
                       fontSize: "24px",
                       height: "200px",
-                      width: mediaQueryMatches ? "450px" : "800px",
                       padding: "8px",
                     },
                   }}
@@ -258,7 +253,7 @@ function CardPerfil() {
               </Box>
             </div>
             <br />
-            <div style={{ marginLeft: mediaQueryMatches ? "-10px" : "-10px" }}>
+            <div>
               <Box style={{ width: "450px" }}>
                 <TextField
                   id="outlined-read-only-input"
@@ -321,7 +316,6 @@ function CardPerfil() {
                     style: {
                       fontSize: "24px",
                       height: "100px",
-                      width: mediaQueryMatches ? "450px" : "800px",
                       padding: "8px",
                     },
                   }}
