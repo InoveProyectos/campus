@@ -28,7 +28,7 @@ function CardPerfil() {
       .get(username)
       .then((response) => {
         setData(response);
-        // console.log(response);
+        console.log(response);
       })
       .catch((error) => {
         console.log(`${error.response.status} | ${error.response.data.detail}`);
@@ -61,10 +61,19 @@ function CardPerfil() {
             borderRadius: "10px",
             width: mediaQueryMatches
               ? "clamp(300px, 60%, 800px)"
-              : "clamp(400px, 80%, 764px)",
-            marginLeft: mediaQueryMatches ? "185px" : "65px",
-            // marginRight: mediaQueryMatches ? "-90px" : "0px",
-            marginTop: mediaQueryMatches ? "25px" : "40px",
+              : "clamp(400px, 100%, 800px)",
+            // height: mediaQueryMatches ? "clamp(400px, 100%, 1200px)" : "clamp(400px, 100%, 1200px)",
+            height: "clamp(400px, 100%, 1200px)",
+            marginLeft: mediaQueryMatches ? "40px" : "5px",
+            marginTop: mediaQueryMatches ? "25px" : "10px",
+            marginBottom: mediaQueryMatches ? "25px" : "10px",
+            textAlign: "start",
+            overflowWrap: "break-word",
+            wordWrap: "break-word",
+            display: "flex",
+            flexDirection: "column",
+            // flexWrap: "wrap",
+            gap: mediaQueryMatches ? "60px" : "20px",
           }}
         >
           <article
@@ -102,230 +111,309 @@ function CardPerfil() {
               }
             />
           </article>
-          <article>
-            <div
+          <Box
+            sx={{
+              marginLeft: "20px",
+              width: "calc(100% - 40px)",
+              "&:hover": {
+                boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
+                cursor: "pointer",
+              },
+              "&:active": {
+                boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.2)",
+                transform: "scale(0.98)",
+              },
+              transition: "all 0.2s ease-in-out",
+            }}
+          >
+            <TextField
+              id="outlined-read-only-input"
+              label="Acerca de"
+              multiline
+              value={`${
+                data.description === ""
+                  ? "No hay descripción"
+                  : data.description
+              }`}
+              InputProps={{
+                readOnly: true,
+                shrink: true,
+                style: {
+                  fontSize: "16px",
+                  maxHeight: "200px",
+                  width: "100%",
+                  whiteSpace: "pre-wrap",
+                  overflowWrap: "break-word",
+                  display: "flex",
+                  alignItems: "start",
+                },
+              }}
+              InputLabelProps={{
+                style: {
+                  marginTop: "1px",
+                  margdescriptioninLeft: "-1px",
+                },
+              }}
               style={{
                 width: "100%",
               }}
-            >
-              <TextField
-                id="outlined-read-only-input"
-                label="Acerca de"
-                multiline
-                value={`${
-                  data.description === ""
-                    ? "No hay descripción"
-                    : data.description
-                }`}
-                InputProps={{
-                  readOnly: true,
-                  shrink: true,
-                  style: {
-                    fontSize: "24px",
-                    marginTop: "10px",
-                    maxHeight: "550px",
-                    maxWidth: "100%",
-                    whiteSpace: "pre-wrap",
-                    overflowWrap: "break-word",
-                    overflowY: "auto",
-                  },
-                }}
-                InputLabelProps={{
-                  style: { fontSize: "24px", marginTop: "13px" },
-                }}
-              />
-            </div>
-            <br />
-            <div
+              variant="outlined"
+            />
+          </Box>
+          <Box
+            sx={{
+              marginLeft: "20px",
+              marginTop: mediaQueryMatches ? "-45px" : "0px",
+              // marginButton: mediaQueryMatches ? "50px" : "50px",
+              width: "calc(100% - 40px)",
+              "&:hover": {
+                boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
+                cursor: "pointer",
+              },
+              "&:active": {
+                boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.2)",
+                transform: "scale(0.98)",
+              },
+              height: mediaQueryMatches ? "300px" : "270px",
+
+              transition: "all 0.2s ease-in-out",
+            }}
+          >
+            <TextField
+              id="outlined-read-only-input"
+              label="Destacado"
+              multiline
+              InputProps={{
+                readOnly: true,
+                startAdornment: (
+                  <Box
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      marginBottom: mediaQueryMatches ? "15px" : "35px",
+                      gap: "5px",
+                    }}
+                  >
+                    <Box display="flex" alignItems="center" mb={1}>
+                      <InputAdornment position="start">
+                        <SchoolIcon style={{ marginRight: "5px" }} />
+                      </InputAdornment>
+                      <Typography variant="body1">
+                        {data.estudiantes == 0
+                          ? "No tiene estudiantes"
+                          : `${data.estudiantes} estudiantes`}
+                      </Typography>
+                    </Box>
+                    <Box
+                      display="flex"
+                      marginTop={"10px"}
+                      alignItems="center"
+                      mb={1}
+                    >
+                      <InputAdornment position="start">
+                        <CalendarMonthIcon style={{ marginRight: "5px" }} />
+                      </InputAdornment>
+                      <Typography variant="body1">
+                        Miembro de inove desde {data.miembro_desde}
+                      </Typography>
+                    </Box>
+                    <Box display="flex" alignItems="center" mb={1}>
+                      <InputAdornment position="start">
+                        <DiamondIcon style={{ marginRight: "5px" }} />
+                      </InputAdornment>
+                      <Typography variant="body1">
+                        {data.desarrollos == null
+                          ? "No tiene desarrollos"
+                          : data.desarrollos}
+                      </Typography>
+                    </Box>
+                    <Box display="flex" alignItems="center">
+                      <InputAdornment position="start">
+                        <StarIcon style={{ marginRight: "5px" }} />
+                      </InputAdornment>
+                      <Typography variant="body1">
+                        {data.destacado == null
+                          ? "N/A"
+                          : "Cuadro de honor: " + data.destacado}
+                      </Typography>
+                    </Box>
+                    <Box
+                      display="flex"
+                      flexDirection={"row"}
+                      width={"200px"}
+                      alignItems="center"
+                      marginTop={"10px"}
+                      flexWrap={"wrap"}
+                      mb={1}
+                    >
+                      <Typography variant="body1">
+                        <RatingWithValoration
+                          style={{ marginRight: "5px", marginTop: "5px" }}
+                          valoracion={4}
+                          cantidadOpiniones={400}
+                        />
+                      </Typography>
+                    </Box>
+                  </Box>
+                ),
+                style: {
+                  fontSize: "16px",
+                  maxHeight: mediaQueryMatches ? "350px" : "270px",
+                  width: "100%",
+                  whiteSpace: "pre-wrap",
+                  overflowWrap: "break-word",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "start",
+                },
+              }}
+              InputLabelProps={{
+                style: {
+                  marginTop: "1px",
+                  marginLeft: "-1px",
+                },
+              }}
               style={{
                 width: "100%",
               }}
-            >
-              <Box
-                style={{
-                  width: "450px",
-                }}
-              >
-                <TextField
-                  id="outlined-read-only-input"
-                  label="Destacado"
-                  multiline
-                  InputProps={{
-                    readOnly: true,
-                    shrink: true,
-                    startAdornment: (
-                      <InputAdornment
-                        position="start"
-                        style={{
-                          display: "flex",
-                          flexDirection: "column",
-                          height: "100%",
-                          width: "100%",
-                          alignItems: "flex-start",
-                          marginTop: "-180px",
-                          gap: "10px",
-                        }}
-                      >
-                        <div
-                          style={{
-                            display: "flex",
-                            flexDirection: "row",
-                            alignItems: "center",
-                          }}
-                        >
-                          <SchoolIcon />
-                          <Typography
-                            variant="body1"
-                            style={{ marginLeft: "5px" }}
-                          >
-                            {data.estudiantes == 0
-                              ? "No tiene estudiantes"
-                              : `${data.estudiantes} estudiantes`}
-                          </Typography>
-                        </div>
-                        <div
-                          style={{
-                            display: "flex",
-                            flexDirection: "row",
-                            alignItems: "center",
-                          }}
-                        >
-                          <CalendarMonthIcon />
-                          <Typography
-                            variant="body1"
-                            style={{ marginLeft: "5px" }}
-                          >
-                            Miembro de inove desde {data.miembro_desde}
-                          </Typography>
-                        </div>
-                        <div
-                          style={{
-                            display: "flex",
-                            flexDirection: "row",
-                            alignItems: "center",
-                          }}
-                        >
-                          <DiamondIcon />
-                          <Typography
-                            variant="body1"
-                            style={{ marginLeft: "5px" }}
-                          >
-                            {data.desarrollos == null
-                              ? "No tiene desarrollos"
-                              : data.desarrollos}
-                          </Typography>
-                        </div>
-                        <div
-                          style={{
-                            display: "flex",
-                            flexDirection: "row",
-                            alignItems: "center",
-                          }}
-                        >
-                          <StarIcon />
-                          <Typography
-                            variant="body1"
-                            style={{ marginLeft: "5px" }}
-                          >
-                            {data.destacado == null
-                              ? "N/A"
-                              : "Cuadro de honor: " + data.destacado}
-                          </Typography>
-                        </div>
-                        <div>
-                          <RatingWithValoration
-                            valoracion={4}
-                            cantidadOpiniones={400}
-                          />
-                        </div>
+              variant="outlined"
+            />
+          </Box>
+          <Box
+            sx={{
+              marginLeft: "20px",
+              width: "calc(100% - 40px)",
+              "&:hover": {
+                boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
+                cursor: "pointer",
+              },
+              "&:active": {
+                boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.2)",
+                transform: "scale(0.98)",
+              },
+              transition: "all 0.2s ease-in-out",
+            }}
+          >
+            <TextField
+              id="outlined-read-only-input"
+              label="Actividad"
+              multiline
+              InputProps={{
+                readOnly: true,
+                startAdornment: (
+                  <Box
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      marginBottom: "-35px",
+                      gap: "5px",
+                    }}
+                  >
+                    <Box display="flex" alignItems="center" mb={1}>
+                      <InputAdornment position="start">
+                        <SchoolIcon style={{ marginRight: "5px" }} />
                       </InputAdornment>
-                    ),
-                    style: {
-                      fontSize: "24px",
-                      height: "200px",
-                      padding: "8px",
-                    },
-                  }}
-                  InputLabelProps={{
-                    style: { fontSize: "24px", marginTop: "3px" },
-                  }}
-                />
-              </Box>
-            </div>
-            <br />
-            <div>
-              <Box style={{ width: "450px" }}>
-                <TextField
-                  id="outlined-read-only-input"
-                  label="Actividad"
-                  multiline
-                  InputProps={{
-                    readOnly: true,
-                    shrink: true,
-                    startAdornment: (
-                      <InputAdornment
-                        position="start"
-                        style={{
-                          display: "flex",
-                          flexDirection: "column",
-                          alignItems: "flex-start",
-                          marginTop: "-130px",
-                          gap: "10px",
-                        }}
-                      >
-                        <div
-                          style={{
-                            display: "flex",
-                            flexDirection: "row",
-                            alignItems: "center",
-                          }}
-                        >
-                          <SchoolIcon />
-                          <Typography
-                            variant="body1"
-                            style={{ marginLeft: "5px" }}
-                          >
-                            {`Cursando: ${
-                              data.cursando == null
-                                ? "Ningun curso"
-                                : data.cursando
-                            }`}
-                          </Typography>
-                        </div>
-                        <div
-                          style={{
-                            display: "flex",
-                            flexDirection: "row",
-                            alignItems: "center",
-                          }}
-                        >
-                          <LoginIcon />
-                          <Typography
-                            variant="body1"
-                            style={{ marginLeft: "5px" }}
-                          >
-                            {`Ultimo login: ${
-                              data.last_login == null
-                                ? "Nunca"
-                                : data.last_login
-                            }`}
-                          </Typography>
-                        </div>
+                      <Typography variant="body1">
+                        {" "}
+                        {`Cursando: ${
+                          data.cursando == null ? "Ningun curso" : data.cursando
+                        }`}
+                      </Typography>
+                    </Box>
+                    <Box
+                      display="flex"
+                      // marginTop={"10px"}
+                      alignItems="center"
+                      mb={1}
+                    >
+                      <InputAdornment position="start">
+                        <LoginIcon style={{ marginRight: "5px" }} />
                       </InputAdornment>
-                    ),
-                    style: {
-                      fontSize: "24px",
-                      height: "100px",
-                      padding: "8px",
-                    },
-                  }}
-                  InputLabelProps={{
-                    style: { fontSize: "24px", marginTop: "3px" },
-                  }}
-                />
-              </Box>
-            </div>
-          </article>
+                      <Typography variant="body1">
+                        {" "}
+                        {`Ultimo login: ${
+                          data.last_login == null ? "Nunca" : data.last_login
+                        }`}
+                      </Typography>
+                    </Box>
+                  </Box>
+                ),
+                style: {
+                  fontSize: "16px",
+                  maxHeight: "250px",
+                  width: "100%",
+                  whiteSpace: "pre-wrap",
+                  overflowWrap: "break-word",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "start",
+                },
+              }}
+              InputLabelProps={{
+                style: {
+                  marginTop: "1px",
+                  marginLeft: "-1px",
+                },
+              }}
+              style={{
+                width: "100%",
+              }}
+              variant="outlined"
+            />
+          </Box>
+          <Box
+            sx={{
+              marginLeft: "20px",
+              marginTop: mediaQueryMatches ? "-45px" : "0px",
+              width: "calc(100% - 40px)",
+              "&:hover": {
+                boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
+                cursor: "pointer",
+              },
+              "&:active": {
+                boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.2)",
+                transform: "scale(0.98)",
+              },
+              transition: "all 0.2s ease-in-out",
+            }}
+            cursando
+          >
+            <TextField
+              id="outlined-read-only-input"
+              label="Datos"
+              multiline
+              value={data.desarrollos}
+              InputProps={{
+                readOnly: true,
+                shrink: true,
+                style: {
+                  fontSize: "16px",
+                  maxHeight: "250px",
+                  width: "100%",
+                  whiteSpace: "pre-wrap",
+                  overflowWrap: "break-word",
+                  display: "flex",
+                  alignItems: "start",
+                  placeItems: "center",
+                },
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <SchoolIcon style={{ marginRight: "5px" }} />
+                  </InputAdornment>
+                ),
+              }}
+              InputLabelProps={{
+                style: {
+                  marginTop: "1px",
+                  marginLeft: "-1px",
+                },
+              }}
+              style={{
+                width: "100%",
+              }}
+              variant="outlined"
+            />
+          </Box>
         </section>
       ) : null}
     </>

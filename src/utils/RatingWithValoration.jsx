@@ -19,6 +19,8 @@ export default function RatingWithValoration({
         width: 200,
         display: "flex",
         alignItems: "center",
+        flexDirection: "row",
+        flexWrap: "wrap",
       }}
     >
       <Rating
@@ -29,9 +31,20 @@ export default function RatingWithValoration({
         emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
       />
       <Box sx={{ ml: 2 }}>
-        <div style={{ display: "flex" }}>
+        <div
+          style={{
+            display: "flex",
+            width: "200px",
+            flexDirection: "row",
+            flexWrap: "wrap",
+            marginLeft: "2px",
+          }}
+        >
           <Typography variant="body1">{val}</Typography>
-          <Typography variant="body2" style={{ marginLeft: "5px", marginTop: "2.1px" }}>
+          <Typography
+            variant="body2"
+            style={{ marginLeft: "5px", marginTop: "2.1px" }}
+          >
             ({cantidadOpiniones} de opiniones)
           </Typography>
         </div>
