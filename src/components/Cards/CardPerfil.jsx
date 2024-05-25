@@ -183,7 +183,7 @@ function CardPerfil() {
                 boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.2)",
                 transform: "scale(0.98)",
               },
-              height: mediaQueryMatches ? "300px" : "180px",
+              height: mediaQueryMatches ? "300px" : "190px",
 
               transition: "all 0.2s ease-in-out",
             }}
@@ -200,8 +200,6 @@ function CardPerfil() {
                       display: "flex",
                       flexDirection: "column",
                       marginBottom: mediaQueryMatches ? "15px" : "0px",
-                      // gap: mediaQueryMatches ? "0px" : "8px",
-                      // gap: mediaQueryMatches ? "0px" : "11px",
                     }}
                   >
                     <Box display="flex" alignItems="center" mb={1}>
@@ -263,7 +261,7 @@ function CardPerfil() {
                 ),
                 style: {
                   fontSize: "16px",
-                  maxHeight: mediaQueryMatches ? "300px" : "180px",
+                  maxHeight: mediaQueryMatches ? "300px" : "190px",
                   width: "100%",
                   whiteSpace: "pre-wrap",
                   overflowWrap: "break-word",
@@ -372,7 +370,6 @@ function CardPerfil() {
               sx={{
                 marginLeft: "20px",
                 marginTop: mediaQueryMatches ? "-45px" : "0px",
-                // marginButton: mediaQueryMatches ? "50px" : "50px",
                 width: "calc(100% - 40px)",
                 "&:hover": {
                   boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
@@ -483,7 +480,6 @@ function CardPerfil() {
                       >
                         <InputAdornment position="start">
                           <img src={cuit} alt="" />
-                          {/* <LoginIcon style={{ marginRight: "5px" }} /> */}
                         </InputAdornment>
                         <Typography variant="body1">
                           {" "}
@@ -497,17 +493,19 @@ function CardPerfil() {
                         alignItems="center"
                         marginTop={"10px"}
                       >
-                        <InputAdornment position="start">
-                          <AssignmentIndIcon style={{ marginRight: "5px" }} />
-                        </InputAdornment>
-                        <Typography variant="body1">
-                          {" "}
-                          {`Linkedin: ${
-                            data.linkedin == null
-                              ? "Linkedin no registrado"
-                              : data.linkedin
-                          }`}
-                        </Typography>
+                        <div>
+                          <InputAdornment position="start">
+                            <AssignmentIndIcon style={{ marginRight: "5px" }} />
+                          </InputAdornment>
+                          <Typography variant="body1">
+                            {" "}
+                            {`Linkedin: ${
+                              data.linkedin == null
+                                ? "Linkedin no registrado"
+                                : data.linkedin
+                            }`}
+                          </Typography>
+                        </div>
                       </Box>
                     </Box>
                   ),
