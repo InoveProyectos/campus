@@ -7,16 +7,18 @@ import { Typography } from "@mui/material";
 export default function RatingWithValoration({
   valoracion,
   cantidadOpiniones,
+  tamanio,
 }) {
   const val = valoracion;
 
+  console.log("tamanio: " + tamanio);
   const roundedValue = val % 1 >= 0.5 ? Math.ceil(val) : Math.floor(val);
   const clampedValue = Math.min(5, Math.max(0.5, roundedValue));
 
   return (
     <Box
       sx={{
-        width: 200,
+        width: tamanio ? "200px" : "400px",
         display: "flex",
         alignItems: "center",
         flexDirection: "row",
@@ -30,25 +32,12 @@ export default function RatingWithValoration({
         precision={0.5}
         emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
       />
-      <Box sx={{ ml: 2 }}>
-        <div
-          style={{
-            display: "flex",
-            width: "200px",
-            flexDirection: "row",
-            flexWrap: "wrap",
-            marginLeft: "2px",
-          }}
-        >
-          <Typography variant="body1">{val}</Typography>
-          <Typography
-            variant="body2"
-            style={{ marginLeft: "5px", marginTop: "2.1px" }}
-          >
-            ({cantidadOpiniones} de opiniones)
-          </Typography>
-        </div>
-      </Box>
+      <Typography
+        variant="body2"
+        style={{ marginLeft: "5px", marginTop: "2.1px" }}
+      >
+        {val}({cantidadOpiniones} de opiniones)
+      </Typography>
     </Box>
   );
 }
