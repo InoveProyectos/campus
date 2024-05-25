@@ -72,7 +72,7 @@ function CardPerfil() {
             height: mediaQueryMatches
               ? "clamp(400px, 97%, 1200px)"
               : "clamp(400px, 99%, 1200px)",
-            marginLeft: mediaQueryMatches ? "100px" : "5px",
+            marginLeft: mediaQueryMatches ? "130px" : "5px",
             marginTop: mediaQueryMatches ? "25px" : "5px",
             marginBottom: mediaQueryMatches ? "70px" : "20px",
             textAlign: "start",
@@ -183,7 +183,7 @@ function CardPerfil() {
                 boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.2)",
                 transform: "scale(0.98)",
               },
-              height: mediaQueryMatches ? "300px" : "270px",
+              height: mediaQueryMatches ? "300px" : "180px",
 
               transition: "all 0.2s ease-in-out",
             }}
@@ -199,8 +199,9 @@ function CardPerfil() {
                     style={{
                       display: "flex",
                       flexDirection: "column",
-                      marginBottom: mediaQueryMatches ? "15px" : "35px",
-                      gap: mediaQueryMatches ? "5px" : "11px",
+                      marginBottom: mediaQueryMatches ? "15px" : "0px",
+                      // gap: mediaQueryMatches ? "0px" : "8px",
+                      // gap: mediaQueryMatches ? "0px" : "11px",
                     }}
                   >
                     <Box display="flex" alignItems="center" mb={1}>
@@ -213,12 +214,7 @@ function CardPerfil() {
                           : `${data.estudiantes} estudiantes`}
                       </Typography>
                     </Box>
-                    <Box
-                      display="flex"
-                      marginTop={"10px"}
-                      alignItems="center"
-                      mb={1}
-                    >
+                    <Box display="flex" alignItems="center" mb={1}>
                       <InputAdornment position="start">
                         <CalendarMonthIcon style={{ marginRight: "5px" }} />
                       </InputAdornment>
@@ -251,7 +247,6 @@ function CardPerfil() {
                       flexDirection={"row"}
                       width={"200px"}
                       alignItems="center"
-                      marginTop={"10px"}
                       flexWrap={"wrap"}
                       mb={1}
                     >
@@ -268,7 +263,7 @@ function CardPerfil() {
                 ),
                 style: {
                   fontSize: "16px",
-                  maxHeight: mediaQueryMatches ? "350px" : "270px",
+                  maxHeight: mediaQueryMatches ? "300px" : "180px",
                   width: "100%",
                   whiteSpace: "pre-wrap",
                   overflowWrap: "break-word",
@@ -316,7 +311,7 @@ function CardPerfil() {
                       display: "flex",
                       flexDirection: "column",
                       marginBottom: "-35px",
-                      gap: "9px",
+                      // gap: "9px",
                     }}
                   >
                     <Box display="flex" alignItems="center" mb={1}>
@@ -367,6 +362,7 @@ function CardPerfil() {
               }}
               style={{
                 width: "100%",
+                marginTop: mediaQueryMatches ? "-40px" : "0px",
               }}
               variant="outlined"
             />
@@ -386,7 +382,7 @@ function CardPerfil() {
                   boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.2)",
                   transform: "scale(0.98)",
                 },
-                height: mediaQueryMatches ? "300px" : "270px",
+                height: mediaQueryMatches ? "300px" : "260px",
 
                 transition: "all 0.2s ease-in-out",
               }}
@@ -403,7 +399,7 @@ function CardPerfil() {
                         display: "flex",
                         flexDirection: "column",
                         marginBottom: mediaQueryMatches ? "15px" : "35px",
-                        gap: mediaQueryMatches ? "5px" : "0px",
+                        // gap: mediaQueryMatches ? "5px" : "0px",
                       }}
                     >
                       <Box display="flex" alignItems="center" mb={1}>
@@ -517,7 +513,7 @@ function CardPerfil() {
                   ),
                   style: {
                     fontSize: "16px",
-                    maxHeight: mediaQueryMatches ? "350px" : "270px",
+                    maxHeight: mediaQueryMatches ? "300px" : "260px",
                     width: "100%",
                     whiteSpace: "pre-wrap",
                     overflowWrap: "break-word",
