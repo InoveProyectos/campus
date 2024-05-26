@@ -10,8 +10,6 @@ export default function RatingWithValoration({
   tamanio,
 }) {
   const val = valoracion;
-
-  console.log("tamanio: " + tamanio);
   const roundedValue = val % 1 >= 0.5 ? Math.ceil(val) : Math.floor(val);
   const clampedValue = Math.min(5, Math.max(0.5, roundedValue));
 

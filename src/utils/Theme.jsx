@@ -3,18 +3,18 @@ import red from "@mui/material/colors/red";
 import blue from "@mui/material/colors/blue";
 import green from "@mui/material/colors/green";
 import { grey } from "@mui/material/colors";
-import AvertaStdBold from "../assets/fonts/avertaStandard/AvertaStd-Bold.ttf"
-import AvertaStdSemibold from "../assets/fonts/avertaStandard/AvertaStd-Semibold.ttf"
-import AvertaStdRegular from "../assets/fonts/avertaStandard/AvertaStd-Regular.ttf"
-
+import AvertaStdBold from "../assets/fonts/avertaStandard/AvertaStd-Bold.ttf";
+import AvertaStdSemibold from "../assets/fonts/avertaStandard/AvertaStd-Semibold.ttf";
+import AvertaStdRegular from "../assets/fonts/avertaStandard/AvertaStd-Regular.ttf";
 
 const theme = extendTheme({
-    typography: {
-      fontFamily: 'Inter, system-ui, Avenir, Helvetica, Arial, sans-serif, AvertaStd-Bold, AvertaStd-Semibold',
-    },
-    components: {
-      MuiCssBaseline: {
-        styleOverrides: `
+  typography: {
+    fontFamily:
+      "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif, AvertaStd-Bold, AvertaStd-Semibold",
+  },
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: `
         @font-face {
           font-family: 'AvertaStd-Bold';
           src: local('AvertaStd-Bold'), url(${AvertaStdBold}) format('truetype');
@@ -28,13 +28,13 @@ const theme = extendTheme({
           src: local('AvertaStd-Regular'), url(${AvertaStdRegular}) format('truetype');
         }
         `,
-      },
     },
+  },
   colorSchemes: {
     light: {
       palette: {
         action: {
-          active: 'black', // Reemplaza 'tu-color-preferido' con el color deseado
+          active: "black",
         },
         primary: {
           main: blue[300],
@@ -78,9 +78,10 @@ const theme = extendTheme({
           borderRadius: "22px",
         },
         backgroundCardCuotas: {
-          background: "linear-gradient(to right top, #969696, #838383, #717171, #5f5f5f, #4e4e4e);",
+          background:
+            "linear-gradient(to right top, #969696, #838383, #717171, #5f5f5f, #4e4e4e);",
           borderRadius: "22px",
-          marginTop: "5%"
+          marginTop: "5%",
         },
         backgroundCardNotStarted: {
           borderRadius: "22px",
@@ -101,14 +102,14 @@ const theme = extendTheme({
       components: {
         MuiCard: {
           styleOverrides: {
-            root:{
+            root: {
               maxWidth: "410px",
               background: "#5a5a5a",
               border: "1px solid black",
               flexWrap: "wrap",
               color: "white",
-            }
-          }
+            },
+          },
         },
         MuiChip: {
           styleOverrides: {
@@ -116,7 +117,7 @@ const theme = extendTheme({
               color: "white",
             },
             icon: {
-              color: 'white',
+              color: "white",
             },
           },
         },
@@ -135,7 +136,7 @@ const theme = extendTheme({
         },
         MuiTypography: {
           styleOverrides: {
-            h1:{fontFamily: 'AvertaStd-Bold'},
+            h1: { fontFamily: "AvertaStd-Bold" },
             h2: {
               color: "white",
               fontFeatureSettings: "'clig' off, 'liga' off",
@@ -145,17 +146,17 @@ const theme = extendTheme({
               fontWeight: "400",
               lineHeight: "1.5",
             },
-            h3:{fontFamily: 'AvertaStd-Semibold'},
-            h4:{fontFamily: 'AvertaStd-Semibold'},
-            h5:{fontFamily: 'AvertaStd-Semibold'},
-            h6:{fontFamily: 'AvertaStd-Semibold'},
-            subtitle1:{fontFamily: 'AvertaStd-Semibold'},
-            subtitle2:{fontFamily: 'AvertaStd-Semibold'},
-            body1:{fontFamily: 'AvertaStd-Semibold'},
-            body2:{fontFamily: 'AvertaStd-Semibold'},
-            button:{fontFamily: 'AvertaStd-Semibold'},
-            caption:{fontFamily: 'AvertaStd-Semibold'},
-            overline:{fontFamily: 'AvertaStd-Semibold'},
+            h3: { fontFamily: "AvertaStd-Semibold" },
+            h4: { fontFamily: "AvertaStd-Semibold" },
+            h5: { fontFamily: "AvertaStd-Semibold" },
+            h6: { fontFamily: "AvertaStd-Semibold" },
+            subtitle1: { fontFamily: "AvertaStd-Semibold" },
+            subtitle2: { fontFamily: "AvertaStd-Semibold" },
+            body1: { fontFamily: "AvertaStd-Semibold" },
+            body2: { fontFamily: "AvertaStd-Semibold" },
+            button: { fontFamily: "AvertaStd-Semibold" },
+            caption: { fontFamily: "AvertaStd-Semibold" },
+            overline: { fontFamily: "AvertaStd-Semibold" },
           },
         },
       },
@@ -163,7 +164,7 @@ const theme = extendTheme({
     dark: {
       palette: {
         action: {
-          active: 'white', // Reemplaza 'tu-color-preferido' con el color deseado
+          active: "white", // Reemplaza 'tu-color-preferido' con el color deseado
         },
         primary: {
           main: grey[300],
@@ -190,7 +191,7 @@ const theme = extendTheme({
           fontSize: "clamp(0.75rem, 2.5vw, 0.88rem)",
         },
         background: {
-          paper: "black"
+          paper: "black",
         },
         border: {
           border: "10px solid white",
@@ -203,7 +204,8 @@ const theme = extendTheme({
           borderRadius: "22px",
         },
         backgroundCardCuotas: {
-          background: "linear-gradient(to right top, #969696, #838383, #717171, #5f5f5f, #4e4e4e);",
+          background:
+            "linear-gradient(to right top, #969696, #838383, #717171, #5f5f5f, #4e4e4e);",
           borderRadius: "22px",
           marginTop: "5%",
           border: "0px ",
@@ -231,12 +233,12 @@ const theme = extendTheme({
       components: {
         MuiCard: {
           styleOverrides: {
-            root:{
+            root: {
               maxWidth: "410px",
               background: "#5a5a5a",
               border: "1px solid black",
-            }
-          }
+            },
+          },
         },
         MuiButton: {
           styleOverrides: {

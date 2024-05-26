@@ -22,6 +22,7 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import GpsFixedIcon from "@mui/icons-material/GpsFixed";
 import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
 import cuit from "../../assets/cuitx24.png";
+import styles from "./CardPerfil.module.css";
 
 function CardPerfil() {
   const [isLoading, setIsLoading] = useState(true);
@@ -63,36 +64,13 @@ function CardPerfil() {
         <CircularColor />
       ) : data ? (
         <section
-          style={{
-            border: "2px solid black",
-            borderRadius: "10px",
-            width: mediaQueryMatches
-              ? "clamp(300px, 60%, 800px)"
-              : "clamp(400px, 80%, 800px)",
-            height: mediaQueryMatches
-              ? "clamp(400px, 97%, 1200px)"
-              : "clamp(400px, 99%, 1200px)",
-            marginLeft: mediaQueryMatches ? "130px" : "5px",
-            marginTop: mediaQueryMatches ? "25px" : "5px",
-            marginBottom: mediaQueryMatches ? "70px" : "20px",
-            textAlign: "start",
-            overflowWrap: "break-word",
-            wordWrap: "break-word",
-            display: "flex",
-            flexDirection: "column",
-            // flexWrap: "wrap",
-            gap: mediaQueryMatches ? "60px" : "20px",
-          }}
+          className={`${styles.borderStyle} ${styles.sectionPrincipal} ${
+            mediaQueryMatches
+              ? styles.containerFullScreen
+              : styles.containerResponsiveScreen
+          }`}
         >
-          <article
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              textAlign: "left",
-              marginLeft: "0px",
-              padding: "0px",
-            }}
-          >
+          <article className={styles.articleMain}>
             <CardHeader
               sx={{ display: "flex", flexDirection: "row" }}
               avatar={
@@ -120,18 +98,8 @@ function CardPerfil() {
             />
           </article>
           <Box
+            className={styles.box}
             sx={{
-              marginLeft: "20px",
-              width: "calc(100% - 40px)",
-              "&:hover": {
-                boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
-                cursor: "pointer",
-              },
-              "&:active": {
-                boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.2)",
-                transform: "scale(0.98)",
-              },
-              transition: "all 0.2s ease-in-out",
               marginTop: mediaQueryMatches ? "-55px" : "0px",
             }}
           >
@@ -147,15 +115,7 @@ function CardPerfil() {
               InputProps={{
                 readOnly: true,
                 shrink: true,
-                style: {
-                  fontSize: "16px",
-                  maxHeight: "200px",
-                  width: "100%",
-                  whiteSpace: "pre-wrap",
-                  overflowWrap: "break-word",
-                  display: "flex",
-                  alignItems: "start",
-                },
+                className: styles.InputPropsAcercaDe,
               }}
               InputLabelProps={{
                 style: {
@@ -170,21 +130,10 @@ function CardPerfil() {
             />
           </Box>
           <Box
+            className={styles.box}
             sx={{
-              marginLeft: "20px",
               marginTop: mediaQueryMatches ? "-45px" : "0px",
-              width: "calc(100% - 40px)",
-              "&:hover": {
-                boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
-                cursor: "pointer",
-              },
-              "&:active": {
-                boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.2)",
-                transform: "scale(0.98)",
-              },
               height: mediaQueryMatches ? "330px" : "210px",
-
-              transition: "all 0.2s ease-in-out",
             }}
           >
             <TextField
@@ -259,15 +208,9 @@ function CardPerfil() {
                     </Box>
                   </Box>
                 ),
+                className: styles.boxDestacado,
                 style: {
-                  fontSize: "16px",
                   maxHeight: mediaQueryMatches ? "330px" : "210px",
-                  width: "100%",
-                  whiteSpace: "pre-wrap",
-                  overflowWrap: "break-word",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "start",
                 },
               }}
               InputLabelProps={{
@@ -282,21 +225,7 @@ function CardPerfil() {
               variant="outlined"
             />
           </Box>
-          <Box
-            sx={{
-              marginLeft: "20px",
-              width: "calc(100% - 40px)",
-              "&:hover": {
-                boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
-                cursor: "pointer",
-              },
-              "&:active": {
-                boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.2)",
-                transform: "scale(0.98)",
-              },
-              transition: "all 0.2s ease-in-out",
-            }}
-          >
+          <Box className={styles.box}>
             <TextField
               id="outlined-read-only-input"
               label="Actividad"
@@ -309,7 +238,6 @@ function CardPerfil() {
                       display: "flex",
                       flexDirection: "column",
                       marginBottom: "-35px",
-                      // gap: "9px",
                     }}
                   >
                     <Box display="flex" alignItems="center" mb={1}>
@@ -323,12 +251,7 @@ function CardPerfil() {
                         }`}
                       </Typography>
                     </Box>
-                    <Box
-                      display="flex"
-                      // marginTop={"10px"}
-                      alignItems="center"
-                      mb={1}
-                    >
+                    <Box display="flex" alignItems="center" mb={1}>
                       <InputAdornment position="start">
                         <LoginIcon style={{ marginRight: "5px" }} />
                       </InputAdornment>
@@ -341,16 +264,7 @@ function CardPerfil() {
                     </Box>
                   </Box>
                 ),
-                style: {
-                  fontSize: "16px",
-                  maxHeight: "250px",
-                  width: "100%",
-                  whiteSpace: "pre-wrap",
-                  overflowWrap: "break-word",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "start",
-                },
+                className: styles.startAdornmentBoxActividad,
               }}
               InputLabelProps={{
                 style: {
@@ -367,21 +281,10 @@ function CardPerfil() {
           </Box>
           {!data.readonly ? (
             <Box
+              className={styles.boxDatosSobreTi}
               sx={{
-                marginLeft: "20px",
                 marginTop: mediaQueryMatches ? "-45px" : "0px",
-                width: "calc(100% - 40px)",
-                "&:hover": {
-                  boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
-                  cursor: "pointer",
-                },
-                "&:active": {
-                  boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.2)",
-                  transform: "scale(0.98)",
-                },
-                height: mediaQueryMatches ? "350px" : "275px",
-
-                transition: "all 0.2s ease-in-out",
+                height: mediaQueryMatches ? "400px" : "275px",
               }}
             >
               <TextField
@@ -396,7 +299,6 @@ function CardPerfil() {
                         display: "flex",
                         flexDirection: "column",
                         marginBottom: mediaQueryMatches ? "15px" : "35px",
-                        // gap: mediaQueryMatches ? "5px" : "0px",
                       }}
                     >
                       <Box display="flex" alignItems="center" mb={1}>
@@ -491,7 +393,11 @@ function CardPerfil() {
                         marginTop={"10px"}
                       >
                         <InputAdornment position="start">
-                          <img src={cuit} alt="" />
+                          <img
+                            src={cuit}
+                            alt="cuit"
+                            style={{ background: "white" }}
+                          />
                         </InputAdornment>
                         <Typography variant="body1">
                           {" "}
@@ -529,14 +435,14 @@ function CardPerfil() {
                     </Box>
                   ),
                   style: {
+                    maxHeight: mediaQueryMatches ? "401px" : "275px",
                     fontSize: "16px",
-                    maxHeight: mediaQueryMatches ? "350px" : "275px",
                     width: "100%",
                     whiteSpace: "pre-wrap",
                     overflowWrap: "break-word",
                     display: "flex",
                     flexDirection: "column",
-                    alignItems: "start",
+                    alignItems: "normal",
                   },
                 }}
                 InputLabelProps={{
