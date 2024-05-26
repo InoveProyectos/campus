@@ -46,7 +46,7 @@ function CardPerfil() {
   }, []);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(max-width: 399px)");
+    const mediaQuery = window.matchMedia("(max-width: 409px)");
     const handleMediaQueryChange = (event) => {
       setMediaQueryMatches(event.matches);
     };
@@ -68,7 +68,7 @@ function CardPerfil() {
             borderRadius: "10px",
             width: mediaQueryMatches
               ? "clamp(300px, 60%, 800px)"
-              : "clamp(400px, 100%, 800px)",
+              : "clamp(400px, 80%, 800px)",
             height: mediaQueryMatches
               ? "clamp(400px, 97%, 1200px)"
               : "clamp(400px, 99%, 1200px)",
@@ -173,7 +173,6 @@ function CardPerfil() {
             sx={{
               marginLeft: "20px",
               marginTop: mediaQueryMatches ? "-45px" : "0px",
-              // marginButton: mediaQueryMatches ? "50px" : "50px",
               width: "calc(100% - 40px)",
               "&:hover": {
                 boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
@@ -183,7 +182,7 @@ function CardPerfil() {
                 boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.2)",
                 transform: "scale(0.98)",
               },
-              height: mediaQueryMatches ? "300px" : "190px",
+              height: mediaQueryMatches ? "330px" : "210px",
 
               transition: "all 0.2s ease-in-out",
             }}
@@ -200,6 +199,7 @@ function CardPerfil() {
                       display: "flex",
                       flexDirection: "column",
                       marginBottom: mediaQueryMatches ? "15px" : "0px",
+                      marginRight: mediaQueryMatches ? "15px" : "0px",
                     }}
                   >
                     <Box display="flex" alignItems="center" mb={1}>
@@ -261,7 +261,7 @@ function CardPerfil() {
                 ),
                 style: {
                   fontSize: "16px",
-                  maxHeight: mediaQueryMatches ? "300px" : "190px",
+                  maxHeight: mediaQueryMatches ? "330px" : "210px",
                   width: "100%",
                   whiteSpace: "pre-wrap",
                   overflowWrap: "break-word",
@@ -379,7 +379,7 @@ function CardPerfil() {
                   boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.2)",
                   transform: "scale(0.98)",
                 },
-                height: mediaQueryMatches ? "300px" : "260px",
+                height: mediaQueryMatches ? "350px" : "275px",
 
                 transition: "all 0.2s ease-in-out",
               }}
@@ -430,15 +430,29 @@ function CardPerfil() {
                           }`}
                         </Typography>
                       </Box>
-                      <Box display="flex" alignItems="center" mb={1}>
-                        <InputAdornment position="start">
+                      <Box display="flex" alignItems="center" flexWrap="wrap">
+                        <InputAdornment
+                          position="start"
+                          style={{ marginRight: "5px", flexShrink: 0 }}
+                        >
                           <CalendarMonth style={{ marginRight: "5px" }} />
                         </InputAdornment>
-                        <Typography variant="body1">
+                        <Typography
+                          variant="body1"
+                          style={{
+                            wordWrap: "break-word",
+                            maxWidth: mediaQueryMatches
+                              ? "calc(80% - 50px)"
+                              : "calc(100% - 50px)",
+                            flex: 1,
+                            minWidth: 0,
+                            marginTop: "10px",
+                          }}
+                        >
                           {" "}
                           {`Fecha de nacimiento: ${
                             data.birth == null
-                              ? "Nohay fecha registrada"
+                              ? "No hay fecha registrada"
                               : data.birth
                           }`}
                         </Typography>
@@ -451,7 +465,7 @@ function CardPerfil() {
                           {" "}
                           {`Dirección: ${
                             data.address == null
-                              ? "No hay dirección registrada"
+                              ? "No registrada"
                               : data.address
                           }`}
                         </Typography>
@@ -467,9 +481,7 @@ function CardPerfil() {
                         <Typography variant="body1">
                           {" "}
                           {`Ciudad: ${
-                            data.city == null
-                              ? "Ciudad no registrada"
-                              : data.city
+                            data.city == null ? "No registrada" : data.city
                           }`}
                         </Typography>
                       </Box>
@@ -484,34 +496,41 @@ function CardPerfil() {
                         <Typography variant="body1">
                           {" "}
                           {`Cuit: ${
-                            data.cuit == null ? "Cuit no registrado" : data.cuit
+                            data.cuit == null ? "No registrado" : data.cuit
                           }`}
                         </Typography>
                       </Box>
-                      <Box
-                        display="flex"
-                        alignItems="center"
-                        marginTop={"10px"}
-                      >
-                        <div>
-                          <InputAdornment position="start">
-                            <AssignmentIndIcon style={{ marginRight: "5px" }} />
-                          </InputAdornment>
-                          <Typography variant="body1">
-                            {" "}
-                            {`Linkedin: ${
-                              data.linkedin == null
-                                ? "Linkedin no registrado"
-                                : data.linkedin
-                            }`}
-                          </Typography>
-                        </div>
+                      <Box display="flex" alignItems="center" flexWrap="wrap">
+                        <InputAdornment
+                          position="start"
+                          style={{ marginRight: "5px", flexShrink: 0 }}
+                        >
+                          <AssignmentIndIcon style={{ marginRight: "5px" }} />
+                        </InputAdornment>
+                        <Typography
+                          variant="body1"
+                          style={{
+                            wordWrap: "break-word",
+                            maxWidth: mediaQueryMatches
+                              ? "calc(80% - 50px)"
+                              : "calc(100% - 50px)",
+                            flex: 1,
+                            minWidth: 0,
+                            marginTop: "10px",
+                          }}
+                        >
+                          {`${
+                            data.linkedin == null
+                              ? "Linkedin no registrado"
+                              : data.linkedin
+                          }`}
+                        </Typography>
                       </Box>
                     </Box>
                   ),
                   style: {
                     fontSize: "16px",
-                    maxHeight: mediaQueryMatches ? "300px" : "260px",
+                    maxHeight: mediaQueryMatches ? "350px" : "275px",
                     width: "100%",
                     whiteSpace: "pre-wrap",
                     overflowWrap: "break-word",
