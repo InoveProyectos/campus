@@ -103,37 +103,48 @@ function CardPerfil() {
               marginTop: mediaQueryMatches ? "-55px" : "0px",
             }}
           >
-            <TextField
-              id="outlined-read-only-input"
-              label="Acerca de"
-              multiline
-              value={`${
-                data.description === ""
-                  ? "No hay descripción"
-                  : data.description
-              }`}
-              InputProps={{
-                readOnly: true,
-                shrink: true,
-                className: styles.InputPropsAcercaDe,
-              }}
-              InputLabelProps={{
-                style: {
-                  marginTop: "1px",
-                  margdescriptioninLeft: "-1px",
-                },
-              }}
-              style={{
-                width: "100%",
-              }}
-              variant="outlined"
-            />
+            {data.description === "" ? null : (
+              <TextField
+                id="outlined-read-only-input"
+                label="Acerca de"
+                multiline
+                value={`${
+                  data.description === ""
+                    ? "No hay descripción"
+                    : data.description
+                }`}
+                InputProps={{
+                  readOnly: true,
+                  shrink: true,
+                  className: styles.InputPropsAcercaDe,
+                }}
+                InputLabelProps={{
+                  style: {
+                    marginTop: "1px",
+                    margdescriptioninLeft: "-1px",
+                  },
+                }}
+                style={{
+                  width: "100%",
+                }}
+                variant="outlined"
+              />
+            )}
           </Box>
           <Box
             className={styles.box}
             sx={{
               marginTop: mediaQueryMatches ? "-45px" : "0px",
-              height: mediaQueryMatches ? "330px" : "210px",
+              height:
+                mediaQueryMatches &&
+                data.destacado != null &&
+                data.desarrollos != null
+                  ? "240px"
+                  : data.destacado == null && data.desarrollos == null
+                  ? "100px"
+                  : data.description == null
+                  ? "120px"
+                  : "130px",
             }}
           >
             <TextField
@@ -151,16 +162,18 @@ function CardPerfil() {
                       marginRight: mediaQueryMatches ? "15px" : "0px",
                     }}
                   >
-                    <Box display="flex" alignItems="center" mb={1}>
-                      <InputAdornment position="start">
-                        <SchoolIcon style={{ marginRight: "5px" }} />
-                      </InputAdornment>
-                      <Typography variant="body1">
-                        {data.estudiantes == 0
-                          ? "No tiene estudiantes"
-                          : `${data.estudiantes} estudiantes`}
-                      </Typography>
-                    </Box>
+                    {data.estudiantes == 0 ? null : (
+                      <Box display="flex" alignItems="center" mb={1}>
+                        <InputAdornment position="start">
+                          <SchoolIcon style={{ marginRight: "5px" }} />
+                        </InputAdornment>
+                        <Typography variant="body1">
+                          {data.estudiantes == 0
+                            ? "No tiene estudiantes"
+                            : `${data.estudiantes} estudiantes`}
+                        </Typography>
+                      </Box>
+                    )}
                     <Box display="flex" alignItems="center" mb={1}>
                       <InputAdornment position="start">
                         <CalendarMonthIcon style={{ marginRight: "5px" }} />
@@ -169,48 +182,54 @@ function CardPerfil() {
                         Miembro de inove desde {data.miembro_desde}
                       </Typography>
                     </Box>
-                    <Box display="flex" alignItems="center" mb={1}>
-                      <InputAdornment position="start">
-                        <DiamondIcon style={{ marginRight: "5px" }} />
-                      </InputAdornment>
-                      <Typography variant="body1">
-                        {data.desarrollos == null
-                          ? "No tiene desarrollos"
-                          : data.desarrollos}
-                      </Typography>
-                    </Box>
-                    <Box display="flex" alignItems="center">
-                      <InputAdornment position="start">
-                        <StarIcon style={{ marginRight: "5px" }} />
-                      </InputAdornment>
-                      <Typography variant="body1">
-                        {data.destacado == null
-                          ? "N/A"
-                          : "Cuadro de honor: " + data.destacado}
-                      </Typography>
-                    </Box>
-                    <Box
-                      display="flex"
-                      flexDirection={"row"}
-                      width={"200px"}
-                      alignItems="center"
-                      flexWrap={"wrap"}
-                      mb={1}
-                    >
-                      <Typography variant="body1">
-                        <RatingWithValoration
-                          style={{ marginRight: "5px", marginTop: "5px" }}
-                          valoracion={4}
-                          cantidadOpiniones={400}
-                          tamanio={mediaQueryMatches}
-                        />
-                      </Typography>
-                    </Box>
+                    {data.desarrollos == null ? null : (
+                      <Box display="flex" alignItems="center" mb={1}>
+                        <InputAdornment position="start">
+                          <DiamondIcon style={{ marginRight: "5px" }} />
+                        </InputAdornment>
+                        <Typography variant="body1">
+                          {data.desarrollos}
+                        </Typography>
+                      </Box>
+                    )}
+                    {data.destacado == null ? null : (
+                      <Box display="flex" alignItems="center">
+                        <InputAdornment position="start">
+                          <StarIcon style={{ marginRight: "5px" }} />
+                        </InputAdornment>
+                        <Typography variant="body1">
+                          {"Cuadro de honor: " + data.destacado}
+                        </Typography>
+                      </Box>
+                    )}
+                    {data.valoracion == null ? null : (
+                      <Box
+                        display="flex"
+                        flexDirection={"row"}
+                        width={"200px"}
+                        alignItems="center"
+                        flexWrap={"wrap"}
+                        mb={1}
+                      >
+                        <Typography variant="body1">
+                          <RatingWithValoration
+                            style={{ marginRight: "5px", marginTop: "5px" }}
+                            valoracion={4}
+                            cantidadOpiniones={400}
+                            tamanio={mediaQueryMatches}
+                          />
+                        </Typography>
+                      </Box>
+                    )}
                   </Box>
                 ),
                 className: styles.boxDestacado,
                 style: {
-                  maxHeight: mediaQueryMatches ? "330px" : "210px",
+                  maxHeight: mediaQueryMatches
+                    ? "330px"
+                    : data.cursando == null && data.last_login == null
+                    ? "160px"
+                    : "210px",
                 },
               }}
               InputLabelProps={{
@@ -226,58 +245,74 @@ function CardPerfil() {
             />
           </Box>
           <Box className={styles.box}>
-            <TextField
-              id="outlined-read-only-input"
-              label="Actividad"
-              multiline
-              InputProps={{
-                readOnly: true,
-                startAdornment: (
-                  <Box
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      marginBottom: "-35px",
-                    }}
-                  >
-                    <Box display="flex" alignItems="center" mb={1}>
-                      <InputAdornment position="start">
-                        <SchoolIcon style={{ marginRight: "5px" }} />
-                      </InputAdornment>
-                      <Typography variant="body1">
-                        {" "}
-                        {`Cursando: ${
-                          data.cursando == null ? "Ningun curso" : data.cursando
-                        }`}
-                      </Typography>
+            {data.cursando == null && data.last_login == null ? null : (
+              <TextField
+                id="outlined-read-only-input"
+                label="Actividad"
+                multiline
+                InputProps={{
+                  readOnly: true,
+                  startAdornment: (
+                    <Box
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        marginBottom: "-35px",
+                      }}
+                    >
+                      {data.cursando == null ? null : (
+                        <Box display="flex" alignItems="center" mb={1}>
+                          <InputAdornment position="start">
+                            <SchoolIcon style={{ marginRight: "5px" }} />
+                          </InputAdornment>
+                          <Typography variant="body1">
+                            {" "}
+                            {`Cursando: ${
+                              data.cursando == null
+                                ? "Ningun curso"
+                                : data.cursando
+                            }`}
+                          </Typography>
+                        </Box>
+                      )}
+                      {data.last_login == null ? null : (
+                        <Box display="flex" alignItems="center" mb={1}>
+                          <InputAdornment position="start">
+                            <LoginIcon style={{ marginRight: "5px" }} />
+                          </InputAdornment>
+                          <Typography variant="body1">
+                            {" "}
+                            {`Ultimo login: ${
+                              data.last_login == null
+                                ? "Nunca"
+                                : data.last_login
+                            }`}
+                          </Typography>
+                        </Box>
+                      )}
                     </Box>
-                    <Box display="flex" alignItems="center" mb={1}>
-                      <InputAdornment position="start">
-                        <LoginIcon style={{ marginRight: "5px" }} />
-                      </InputAdornment>
-                      <Typography variant="body1">
-                        {" "}
-                        {`Ultimo login: ${
-                          data.last_login == null ? "Nunca" : data.last_login
-                        }`}
-                      </Typography>
-                    </Box>
-                  </Box>
-                ),
-                className: styles.startAdornmentBoxActividad,
-              }}
-              InputLabelProps={{
-                style: {
-                  marginTop: "1px",
-                  marginLeft: "-1px",
-                },
-              }}
-              style={{
-                width: "100%",
-                marginTop: mediaQueryMatches ? "-40px" : "0px",
-              }}
-              variant="outlined"
-            />
+                  ),
+                  className: styles.startAdornmentBoxActividad,
+                }}
+                InputLabelProps={{
+                  style: {
+                    marginTop: "1px",
+                    marginLeft: "-1px",
+                  },
+                }}
+                style={{
+                  width: "100%",
+                  marginTop: mediaQueryMatches
+                    ? "35px"
+                    : data.description != null &&
+                      data.desarrollos != null &&
+                      data.destacado
+                    ? "75px"
+                    : "40px",
+                }}
+                variant="outlined"
+              />
+            )}
           </Box>
           {!data.readonly ? (
             <Box
