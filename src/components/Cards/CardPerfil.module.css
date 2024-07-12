@@ -22,7 +22,7 @@
 
 .containerFullScreen {
   width: clamp(300px, 60%, 800px);
-  height: clamp(400px, 97%, 1200px);
+  /* height: clamp(400px, 97%, 1200px); */
   margin-left: 50px;
   margin-top: 25px;
   margin-bottom: 70px;

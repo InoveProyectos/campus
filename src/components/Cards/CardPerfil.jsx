@@ -21,8 +21,9 @@ import { CalendarMonth } from "@mui/icons-material";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import GpsFixedIcon from "@mui/icons-material/GpsFixed";
 import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
-import cuit from "../../assets/cuitx24.png";
+import cuitImg from "../../assets/cuitx24.png";
 import styles from "./CardPerfil.module.css";
+import EditIcon from "@mui/icons-material/Edit";
 
 function CardPerfil() {
   const [isLoading, setIsLoading] = useState(true);
@@ -30,6 +31,63 @@ function CardPerfil() {
   const { username } = useParams();
   const theme = useTheme();
   const [mediaQueryMatches, setMediaQueryMatches] = useState(false);
+  const [editableFields, setEditableFields] = useState({
+    dni: {
+      value: data.dni || "",
+      isEditing: false,
+    },
+    phone: {
+      value: data.phone || "",
+      isEditing: false,
+    },
+    address: {
+      value: data.address || "",
+      isEditing: false,
+    },
+    city: {
+      value: data.city || "",
+      isEditing: false,
+    },
+    cuit: {
+      value: data.cuit || "",
+      isEditing: false,
+    },
+    linkedin: {
+      value: data.linkedin || "",
+      isEditing: false,
+    },
+    // Agrego mas campos editables....
+  });
+
+  const handleEditClick = (field) => {
+    setEditableFields({
+      ...editableFields,
+      [field]: {
+        ...editableFields[field],
+        isEditing: true,
+      },
+    });
+  };
+
+  const handleChange = (field, e) => {
+    setEditableFields({
+      ...editableFields,
+      [field]: {
+        ...editableFields[field],
+        value: e.target.value,
+      },
+    });
+  };
+
+  const handleBlur = (field) => {
+    setEditableFields({
+      ...editableFields,
+      [field]: {
+        ...editableFields[field],
+        isEditing: false,
+      },
+    });
+  };
 
   useEffect(() => {
     perfilAPI
@@ -75,7 +133,11 @@ function CardPerfil() {
               sx={{ display: "flex", flexDirection: "row" }}
               avatar={
                 <Avatar
-                  sx={{ width: 72, height: 72, color: "#008588" }}
+                  sx={{
+                    width: 72,
+                    height: 72,
+                    color: "#008588",
+                  }}
                   aria-label="recipe"
                 >
                   {username[0].toUpperCase()}
@@ -135,16 +197,7 @@ function CardPerfil() {
             className={styles.box}
             sx={{
               marginTop: mediaQueryMatches ? "-45px" : "0px",
-              height:
-                mediaQueryMatches &&
-                data.destacado != null &&
-                data.desarrollos != null
-                  ? "240px"
-                  : data.destacado == null && data.desarrollos == null
-                  ? "100px"
-                  : data.description == null
-                  ? "120px"
-                  : "130px",
+              marginBottom: mediaQueryMatches ? "20px" : "0px",
             }}
           >
             <TextField
@@ -244,7 +297,18 @@ function CardPerfil() {
               variant="outlined"
             />
           </Box>
-          <Box className={styles.box}>
+          <Box
+            className={styles.box}
+            sx={{
+              marginTop:
+                data.desarrollos &&
+                data.destacado &&
+                !data.estudiantes &&
+                data.description
+                  ? "-70px"
+                  : "0px",
+            }}
+          >
             {data.cursando == null && data.last_login == null ? null : (
               <TextField
                 id="outlined-read-only-input"
@@ -302,13 +366,6 @@ function CardPerfil() {
                 }}
                 style={{
                   width: "100%",
-                  marginTop: mediaQueryMatches
-                    ? "35px"
-                    : data.description != null &&
-                      data.desarrollos != null &&
-                      data.destacado
-                    ? "75px"
-                    : "40px",
                 }}
                 variant="outlined"
               />
@@ -319,7 +376,7 @@ function CardPerfil() {
               className={styles.boxDatosSobreTi}
               sx={{
                 marginTop: mediaQueryMatches ? "-45px" : "0px",
-                height: mediaQueryMatches ? "400px" : "275px",
+                marginBottom: mediaQueryMatches ? "20px" : "0px",
               }}
             >
               <TextField
@@ -340,14 +397,33 @@ function CardPerfil() {
                         <InputAdornment position="start">
                           <BadgeIcon style={{ marginRight: "5px" }} />
                         </InputAdornment>
-                        <Typography variant="body1">
-                          {" "}
-                          {`Dni: ${
-                            data.dni == null
-                              ? "No tiene dni agregado"
-                              : data.dni
-                          }`}
-                        </Typography>
+                        {editableFields.dni.isEditing ? (
+                          <TextField
+                            value={data.dni}
+                            onChange={(e) => handleChange("dni", e)}
+                            onBlur={() => handleBlur("dni")}
+                            autoFocus
+                            InputProps={{
+                              style: {
+                                height: "30px",
+                              },
+                            }}
+                          />
+                        ) : (
+                          <Typography variant="body1">
+                            {" "}
+                            {`Dni: ${
+                              data.dni == null
+                                ? "No tiene dni agregado"
+                                : data.dni
+                            }`}
+                          </Typography>
+                        )}
+                        <EditIcon
+                          fontSize="small"
+                          style={{ marginLeft: "auto", cursor: "pointer" }}
+                          onClick={() => handleEditClick("dni")}
+                        />
                       </Box>
                       <Box
                         display="flex"
@@ -358,14 +434,33 @@ function CardPerfil() {
                         <InputAdornment position="start">
                           <PhoneIcon style={{ marginRight: "5px" }} />
                         </InputAdornment>
-                        <Typography variant="body1">
-                          {" "}
-                          {`Contacto: ${
-                            data.phone == null
-                              ? "No hay telefono registrado"
-                              : data.phone
-                          }`}
-                        </Typography>
+                        {editableFields.phone.isEditing ? (
+                          <TextField
+                            value={data.phone}
+                            onChange={(e) => handleChange("phone", e)}
+                            onBlur={() => handleBlur("phone")}
+                            autoFocus
+                            InputProps={{
+                              style: {
+                                height: "30px",
+                              },
+                            }}
+                          />
+                        ) : (
+                          <Typography variant="body1">
+                            {" "}
+                            {`Contacto: ${
+                              data.phone == null
+                                ? "No hay telefono registrado"
+                                : data.phone
+                            }`}
+                          </Typography>
+                        )}
+                        <EditIcon
+                          fontSize="small"
+                          style={{ marginLeft: "auto", cursor: "pointer" }}
+                          onClick={() => handleEditClick("phone")}
+                        />
                       </Box>
                       <Box display="flex" alignItems="center" flexWrap="wrap">
                         <InputAdornment
@@ -396,16 +491,35 @@ function CardPerfil() {
                       </Box>
                       <Box display="flex" alignItems="center">
                         <InputAdornment position="start">
-                          <LocationOnIcon style={{ marginRight: "5px" }} />
+                          <LocationOnIcon />
                         </InputAdornment>
-                        <Typography variant="body1">
-                          {" "}
-                          {`Dirección: ${
-                            data.address == null
-                              ? "No registrada"
-                              : data.address
-                          }`}
-                        </Typography>
+                        {editableFields.address.isEditing ? (
+                          <TextField
+                            value={data.address}
+                            onChange={(e) => handleChange("address", e)}
+                            onBlur={() => handleBlur("address")}
+                            autoFocus
+                            InputProps={{
+                              style: {
+                                height: "30px",
+                              },
+                            }}
+                          />
+                        ) : (
+                          <Typography variant="body1">
+                            {" "}
+                            {`Dirección: ${
+                              data.address == null
+                                ? "No registrada"
+                                : data.address
+                            }`}
+                          </Typography>
+                        )}
+                        <EditIcon
+                          fontSize="small"
+                          style={{ marginLeft: "auto", cursor: "pointer" }}
+                          onClick={() => handleEditClick("address")}
+                        />
                       </Box>
                       <Box
                         display="flex"
@@ -413,14 +527,33 @@ function CardPerfil() {
                         marginTop={"10px"}
                       >
                         <InputAdornment position="start">
-                          <GpsFixedIcon style={{ marginRight: "5px" }} />
+                          <GpsFixedIcon />
                         </InputAdornment>
-                        <Typography variant="body1">
-                          {" "}
-                          {`Ciudad: ${
-                            data.city == null ? "No registrada" : data.city
-                          }`}
-                        </Typography>
+                        {editableFields.city.isEditing ? (
+                          <TextField
+                            value={data.city}
+                            onChange={(e) => handleChange("city", e)}
+                            onBlur={() => handleBlur("city")}
+                            autoFocus
+                            InputProps={{
+                              style: {
+                                height: "30px",
+                              },
+                            }}
+                          />
+                        ) : (
+                          <Typography variant="body1">
+                            {" "}
+                            {`Ciudad: ${
+                              data.city == null ? "No registrada" : data.city
+                            }`}
+                          </Typography>
+                        )}
+                        <EditIcon
+                          fontSize="small"
+                          style={{ marginLeft: "auto", cursor: "pointer" }}
+                          onClick={() => handleEditClick("city")}
+                        />
                       </Box>
                       <Box
                         display="flex"
@@ -429,17 +562,33 @@ function CardPerfil() {
                       >
                         <InputAdornment position="start">
                           <img
-                            src={cuit}
+                            src={cuitImg}
                             alt="cuit"
-                            style={{ background: "white" }}
+                            style={{ background: "white", marginRight: "5px" }}
                           />
                         </InputAdornment>
-                        <Typography variant="body1">
-                          {" "}
-                          {`Cuit: ${
-                            data.cuit == null ? "No registrado" : data.cuit
-                          }`}
-                        </Typography>
+                        {editableFields.cuit.isEditing ? (
+                          <TextField
+                            value={data.cuit ? data.cuit : "No registrado"}
+                            onChange={(e) => handleChange("cuit", e)}
+                            onBlur={() => handleBlur("cuit")}
+                            autoFocus
+                            InputProps={{
+                              style: {
+                                height: "30px",
+                              },
+                            }}
+                          />
+                        ) : (
+                          <Typography variant="body1">
+                            {`Cuit: ${data.cuit ? data.cuit : "No registrado"}`}
+                          </Typography>
+                        )}
+                        <EditIcon
+                          fontSize="small"
+                          style={{ marginLeft: "auto", cursor: "pointer" }}
+                          onClick={() => handleEditClick("cuit")}
+                        />
                       </Box>
                       <Box display="flex" alignItems="center" flexWrap="wrap">
                         <InputAdornment
@@ -448,24 +597,43 @@ function CardPerfil() {
                         >
                           <AssignmentIndIcon style={{ marginRight: "5px" }} />
                         </InputAdornment>
-                        <Typography
-                          variant="body1"
-                          style={{
-                            wordWrap: "break-word",
-                            maxWidth: mediaQueryMatches
-                              ? "calc(80% - 50px)"
-                              : "calc(100% - 50px)",
-                            flex: 1,
-                            minWidth: 0,
-                            marginTop: "10px",
-                          }}
-                        >
-                          {`${
-                            data.linkedin == null
-                              ? "Linkedin no registrado"
-                              : data.linkedin
-                          }`}
-                        </Typography>
+                        {editableFields.linkedin.isEditing ? (
+                          <TextField
+                            value={data.linkedin}
+                            onChange={(e) => handleChange("linkedin", e)}
+                            onBlur={() => handleBlur("linkedin")}
+                            autoFocus
+                            InputProps={{
+                              style: {
+                                height: "30px",
+                              },
+                            }}
+                          />
+                        ) : (
+                          <Typography
+                            variant="body1"
+                            style={{
+                              wordWrap: "break-word",
+                              maxWidth: mediaQueryMatches
+                                ? "calc(80% - 50px)"
+                                : "calc(100% - 50px)",
+                              flex: 1,
+                              minWidth: 0,
+                              marginTop: "10px",
+                            }}
+                          >
+                            {`${
+                              data.linkedin == null
+                                ? "Linkedin no registrado"
+                                : data.linkedin
+                            }`}
+                          </Typography>
+                        )}
+                        <EditIcon
+                          fontSize="small"
+                          style={{ marginLeft: "auto", cursor: "pointer" }}
+                          onClick={() => handleEditClick("linkedin")}
+                        />
                       </Box>
                     </Box>
                   ),
