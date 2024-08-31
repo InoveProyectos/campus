@@ -25,9 +25,7 @@ import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 
 import Avatar from '@mui/material/Avatar';
 import { AppContext } from "../context/context";
-import { useTheme } from "@emotion/react";
 import footWave from '../assets/footWave.svg'
-import theme from "../utils/Theme";
 const drawerWidth = 220;
 
 function ResponsiveDrawer() {
@@ -35,7 +33,7 @@ function ResponsiveDrawer() {
   const navigate = useNavigate();
 
   const { state } = React.useContext(AppContext)
-  const { username, isStaff } = state
+  const { username } = state
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);

@@ -84,9 +84,8 @@ export default function CardNosotros({ data }) {
               label="Ver perfil completo"
               href="#basic-chip"
               variant="outlined"
-              disabled="true"
               onClick={() => {
-                navigate(`/login`)
+                navigate(`/perfil/${myData.username}`)
               }}
               clickable
             />

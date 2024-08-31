@@ -24,7 +24,6 @@ import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
 import cuitImg from "../../assets/cuitx24.png";
 import styles from "./CardPerfil.module.css";
 import EditIcon from "@mui/icons-material/Edit";
-import { updatePerfilAPI } from "../../api/updatePerfilAPI";
 
 function CardPerfil() {
   const [isLoading, setIsLoading] = useState(true);
@@ -57,40 +56,11 @@ function CardPerfil() {
       value: data.linkedin || "",
       isEditing: false,
     },
+    description: {
+      value: data.description || "",
+      isEditing: false,
+    },
   });
-
-  const updateField = async (field, value) => {
-    const dataToUpdate = { [field]: value };
-
-    updatePerfilAPI
-      .update(username, dataToUpdate)
-      .then((updatedData) => {
-        console.log("Perfil actualizado:", updatedData);
-      })
-      .catch((error) => {
-        console.error("Error al actualizar el perfil:", error);
-      });
-
-    window.location.reload();
-  };
-
-  const handleBlur = (field) => {
-    setEditableFields({
-      ...editableFields,
-      [field]: {
-        ...editableFields[field],
-        isEditing: false,
-      },
-    });
-
-    // Enviar datos a la API
-    const newValue = editableFields[field].value;
-    if (!editableFields[field].value) {
-      updateField(field, data[field]);
-    } else {
-      updateField(field, newValue);
-    }
-  };
 
   const handleEditClick = (field) => {
     setEditableFields({
@@ -98,7 +68,6 @@ function CardPerfil() {
       [field]: {
         ...editableFields[field],
         isEditing: true,
-        value: data[field] || "",
       },
     });
   };
@@ -113,12 +82,22 @@ function CardPerfil() {
     });
   };
 
+  const handleBlur = (field) => {
+    setEditableFields({
+      ...editableFields,
+      [field]: {
+        ...editableFields[field],
+        isEditing: false,
+      },
+    });
+  };
+
   useEffect(() => {
     perfilAPI
       .get(username)
       .then((response) => {
         setData(response);
-        console.log("Data = ", response);
+        console.log(response);
       })
       .catch((error) => {
         console.log(`${error.response.status} | ${error.response.data.detail}`);
@@ -183,25 +162,28 @@ function CardPerfil() {
               }
             />
           </article>
-          <Box
+          {/* <Box
             className={styles.box}
             sx={{
               marginTop: mediaQueryMatches ? "-55px" : "0px",
             }}
           >
-            {data.description === "" ? null : (
+            {editableFields.description.value === data.description ? null : (
               <TextField
                 id="outlined-read-only-input"
                 label="Acerca de"
+                onChange={handleChange}
                 multiline
-                value={`${
-                  data.description === ""
-                    ? "No hay descripción"
-                    : data.description
-                }`}
+                value={data.description}
                 InputProps={{
                   readOnly: true,
-                  shrink: true,
+                  endAdornment: (
+                    <EditIcon
+                      fontSize="small"
+                      style={{ cursor: "pointer" }}
+                      onClick={handleAcercaDeMiClick}
+                    />
+                  ),
                   className: styles.InputPropsAcercaDe,
                 }}
                 InputLabelProps={{
@@ -214,9 +196,86 @@ function CardPerfil() {
                   width: "100%",
                 }}
                 variant="outlined"
+                onBlur={() => handleBlur("description")}
               />
             )}
-          </Box>
+          </Box> */}
+          {/* {data.description ? (
+            <Box
+              className={styles.box}
+              sx={{
+                marginTop: mediaQueryMatches ? "-55px" : "0px",
+              }}
+            >
+              <TextField
+                id="outlined-read-only-input"
+                label="Acerca De"
+                multiline
+                InputProps={{
+                  readOnly: true,
+                  startAdornment: (
+                    <Box
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        // marginBottom: mediaQueryMatches ? "15px" : "35px",
+                      }}
+                    >
+                      <Box display="flex" alignItems="center" mb={1}>
+                        {editableFields.description.isEditing ? (
+                          <TextField
+                            value={data.description}
+                            onChange={(e) => handleChange("description", e)}
+                            onBlur={() => handleBlur("description")}
+                            autoFocus
+                            InputProps={{
+                              style: {
+                                height: "30px",
+                              },
+                            }}
+                          />
+                        ) : (
+                          <Typography variant="body1">
+                            {" "}
+                            {`Dirección: ${
+                              data.description == null
+                                ? "No registrada"
+                                : data.description
+                            }`}
+                          </Typography>
+                        )}
+                        <EditIcon
+                          fontSize="small"
+                          style={{ marginLeft: "auto", cursor: "pointer" }}
+                          onClick={() => handleEditClick("description")}
+                        />
+                      </Box>
+                    </Box>
+                  ),
+                  style: {
+                    maxHeight: mediaQueryMatches ? "401px" : "275px",
+                    fontSize: "16px",
+                    width: "100%",
+                    whiteSpace: "pre-wrap",
+                    overflowWrap: "break-word",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "normal",
+                  },
+                }}
+                InputLabelProps={{
+                  style: {
+                    marginTop: "1px",
+                    marginLeft: "-1px",
+                  },
+                }}
+                style={{
+                  width: "100%",
+                }}
+                variant="outlined"
+              />
+            </Box>
+          ) : null} */}
           <Box
             className={styles.box}
             sx={{
@@ -423,14 +482,9 @@ function CardPerfil() {
                         </InputAdornment>
                         {editableFields.dni.isEditing ? (
                           <TextField
-                            value={editableFields.dni.value}
+                            value={data.dni}
                             onChange={(e) => handleChange("dni", e)}
                             onBlur={() => handleBlur("dni")}
-                            onKeyDown={(e) => {
-                              if (e.key === "Enter") {
-                                handleBlur("dni");
-                              }
-                            }}
                             autoFocus
                             InputProps={{
                               style: {
@@ -465,14 +519,9 @@ function CardPerfil() {
                         </InputAdornment>
                         {editableFields.phone.isEditing ? (
                           <TextField
-                            value={editableFields.phone.value}
+                            value={data.phone}
                             onChange={(e) => handleChange("phone", e)}
                             onBlur={() => handleBlur("phone")}
-                            onKeyDown={(e) => {
-                              if (e.key === "Enter") {
-                                handleBlur("phone");
-                              }
-                            }}
                             autoFocus
                             InputProps={{
                               style: {
@@ -529,14 +578,9 @@ function CardPerfil() {
                         </InputAdornment>
                         {editableFields.address.isEditing ? (
                           <TextField
-                            value={editableFields.address.value}
+                            value={data.address}
                             onChange={(e) => handleChange("address", e)}
                             onBlur={() => handleBlur("address")}
-                            onKeyDown={(e) => {
-                              if (e.key === "Enter") {
-                                handleBlur("address");
-                              }
-                            }}
                             autoFocus
                             InputProps={{
                               style: {
@@ -570,14 +614,9 @@ function CardPerfil() {
                         </InputAdornment>
                         {editableFields.city.isEditing ? (
                           <TextField
-                            value={editableFields.city.value}
+                            value={data.city}
                             onChange={(e) => handleChange("city", e)}
                             onBlur={() => handleBlur("city")}
-                            onKeyDown={(e) => {
-                              if (e.key === "Enter") {
-                                handleBlur("city");
-                              }
-                            }}
                             autoFocus
                             InputProps={{
                               style: {
@@ -613,14 +652,9 @@ function CardPerfil() {
                         </InputAdornment>
                         {editableFields.cuit.isEditing ? (
                           <TextField
-                            value={editableFields.cuit.value}
+                            value={data.cuit ? data.cuit : "No registrado"}
                             onChange={(e) => handleChange("cuit", e)}
                             onBlur={() => handleBlur("cuit")}
-                            onKeyDown={(e) => {
-                              if (e.key === "Enter") {
-                                handleBlur("cuit");
-                              }
-                            }}
                             autoFocus
                             InputProps={{
                               style: {
@@ -648,14 +682,9 @@ function CardPerfil() {
                         </InputAdornment>
                         {editableFields.linkedin.isEditing ? (
                           <TextField
-                            value={editableFields.linkedin.value}
+                            value={data.linkedin}
                             onChange={(e) => handleChange("linkedin", e)}
                             onBlur={() => handleBlur("linkedin")}
-                            onKeyDown={(e) => {
-                              if (e.key === "Enter") {
-                                handleBlur("linkedin");
-                              }
-                            }}
                             autoFocus
                             InputProps={{
                               style: {
