@@ -17,6 +17,7 @@ import ModeSwitcher from "./ModeSwitcher";
 import RequestQuoteIcon from "@mui/icons-material/RequestQuote";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import LogoutIcon from "@mui/icons-material/Logout";
+import InfoIcon from '@mui/icons-material/Info';
 import styles from "./ResponsiveDrawer.module.css";
 import Groups3Icon from '@mui/icons-material/Groups3';
 import Logo from "../assets/logoInove.png";

@@ -17,6 +17,21 @@
     height: 25px;
 }
 
+.divMiddleCertificados {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.certificateConteiner{
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
 .myBody {
     margin: 0;
     padding: 0;
