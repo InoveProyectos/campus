@@ -8,6 +8,7 @@ import CursosImg from "../model/CursosImg.jsx";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import { cursosAPI } from "../api/cursosAPI";
 import styles from "./Cursos.module.css";
+import Alert from '@mui/material/Alert';
 
 export default function CurrentCourses() {
   const [data, setData] = useState([]);
@@ -51,6 +52,9 @@ export default function CurrentCourses() {
 
   return (
     <>
+      <Alert variant="filled" severity="warning" sx={{fontSize: "1.1rem"}}>
+      Sus cursos pronto se cerrarán (el 28-Febrero). Una vez cerrado podrá continuar descargando sus apuntes y viendo las clases pero no podrá realizar entregas. Ante cualquier consulta escribimos al email de alumnos@inovecode.com
+      </Alert>
       <h1 className={styles.titleCard}>Mis cursos</h1>
       <Divider
         variant="middle"
